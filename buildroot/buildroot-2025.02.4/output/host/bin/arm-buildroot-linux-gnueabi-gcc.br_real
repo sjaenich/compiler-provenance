@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+import shlex
+import subprocess
+
+REAL_COMPILER = "MY_REAL_COMPILER"
+ENV_FLAG_VAR = "MY_EXTRA_FLAGS"
+
+def extract_flag_prefix(flag):
+    """Return the prefix of a flag (e.g. -DDEBUG -> -D)."""
+    if flag.startswith(("-D", "-I", "-v")):
+        print("Flags", flag[:2])
+        return flag[:2]
+    if flag.startswith("-U"):
+        return flag[:2]
+    if flag.startswith("-f"):
+        return "-f"
+    if flag.startswith("-O"):
+        return "-O"
+    if "stack-protector" in flag:
+        return "-fstack-protector"
+    if "no-sysroot" in flag:
+        return
+    if "--target" in flag:
+        return "--target"
+    return 
+
+def clean_conflicting_flags(args, overrides):
+    """Remove conflicting flags from args based on overrides."""
+    cleaned_args = []
+    override_prefixes = {extract_flag_prefix(f): f for f in overrides}
+    print("override_args", override_prefixes)
+    for arg in args:
+        prefix = extract_flag_prefix(arg)
+        print("Extracted", prefix, " from ", args)
+        # If this prefix is in overrides, skip it
+        if prefix in override_prefixes:
+            continue
+        cleaned_args.append(arg)
+        print("Cleaned args", cleaned_args)
+    return cleaned_args
+
+def main():
+    # Original command-line args
+    original_args = sys.argv[1:]
+
+    # Read override flags from environment variable
+    env_flags = os.environ.get(ENV_FLAG_VAR, "")
+    
+    override_args = shlex.split(env_flags)
+    
+    # Remove conflicting flags
+    cleaned_args = clean_conflicting_flags(original_args, override_args)
+
+    #Get compiler
+    compiler = os.environ.get(REAL_COMPILER, "")
+
+    # Combine all into final compiler command
+    final_command = [compiler] + override_args + cleaned_args
+
+    print("Final compiler command:", " ".join(final_command))
+
+    try:
+        result = subprocess.run(final_command, check=False)
+        sys.exit(result.returncode)
+    except FileNotFoundError:
+        print(f"Error: Real compiler not found at {REAL_COMPILER}", file=sys.stderr)
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
