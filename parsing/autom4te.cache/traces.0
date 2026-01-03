@@ -1,0 +1,1372 @@
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_INIT([curl], [-], [a suitable curl mailing list: https://curl.haxx.se/mail/])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_forbid([^_?A[CHUM]_])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_forbid([_AC_])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_forbid([^LIBOBJS$], [do not use LIBOBJS directly, use AC_LIBOBJ (see section `AC_LIBOBJ vs LIBOBJS'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^AS_FLAGS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_forbid([^_?m4_])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_forbid([^dnl$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_forbid([^_?AS_])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([SHELL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([SHELL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^SHELL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([PATH_SEPARATOR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([PATH_SEPARATOR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^PATH_SEPARATOR$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([PACKAGE_NAME], [m4_ifdef([AC_PACKAGE_NAME],      ['AC_PACKAGE_NAME'])])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([PACKAGE_NAME])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^PACKAGE_NAME$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([PACKAGE_TARNAME], [m4_ifdef([AC_PACKAGE_TARNAME],   ['AC_PACKAGE_TARNAME'])])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([PACKAGE_TARNAME])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^PACKAGE_TARNAME$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([PACKAGE_VERSION], [m4_ifdef([AC_PACKAGE_VERSION],   ['AC_PACKAGE_VERSION'])])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([PACKAGE_VERSION])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^PACKAGE_VERSION$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([PACKAGE_STRING], [m4_ifdef([AC_PACKAGE_STRING],    ['AC_PACKAGE_STRING'])])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([PACKAGE_STRING])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^PACKAGE_STRING$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([PACKAGE_BUGREPORT], [m4_ifdef([AC_PACKAGE_BUGREPORT], ['AC_PACKAGE_BUGREPORT'])])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([PACKAGE_BUGREPORT])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^PACKAGE_BUGREPORT$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([PACKAGE_URL], [m4_ifdef([AC_PACKAGE_URL],       ['AC_PACKAGE_URL'])])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([PACKAGE_URL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^PACKAGE_URL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([exec_prefix], [NONE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([exec_prefix])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^exec_prefix$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([prefix], [NONE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([prefix])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^prefix$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([program_transform_name], [s,x,x,])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([program_transform_name])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^program_transform_name$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([bindir], ['${exec_prefix}/bin'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([bindir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^bindir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([sbindir], ['${exec_prefix}/sbin'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([sbindir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^sbindir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([libexecdir], ['${exec_prefix}/libexec'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([libexecdir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^libexecdir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([datarootdir], ['${prefix}/share'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([datarootdir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^datarootdir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([datadir], ['${datarootdir}'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([datadir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^datadir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([sysconfdir], ['${prefix}/etc'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([sysconfdir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^sysconfdir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([sharedstatedir], ['${prefix}/com'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([sharedstatedir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^sharedstatedir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([localstatedir], ['${prefix}/var'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([localstatedir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^localstatedir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([runstatedir], ['${localstatedir}/run'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([runstatedir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^runstatedir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([includedir], ['${prefix}/include'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([includedir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^includedir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([oldincludedir], ['/usr/include'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([oldincludedir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^oldincludedir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([docdir], [m4_ifset([AC_PACKAGE_TARNAME],
+				     ['${datarootdir}/doc/${PACKAGE_TARNAME}'],
+				     ['${datarootdir}/doc/${PACKAGE}'])])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([docdir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^docdir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([infodir], ['${datarootdir}/info'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([infodir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^infodir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([htmldir], ['${docdir}'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([htmldir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^htmldir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([dvidir], ['${docdir}'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([dvidir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^dvidir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([pdfdir], ['${docdir}'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([pdfdir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^pdfdir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([psdir], ['${docdir}'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([psdir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^psdir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([libdir], ['${exec_prefix}/lib'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([libdir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^libdir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([localedir], ['${datarootdir}/locale'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([localedir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^localedir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([mandir], ['${datarootdir}/man'])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([mandir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^mandir$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_DEFINE_TRACE_LITERAL([PACKAGE_NAME])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^PACKAGE_NAME$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AH_OUTPUT([PACKAGE_NAME], [/* Define to the full name of this package. */
+@%:@undef PACKAGE_NAME])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_DEFINE_TRACE_LITERAL([PACKAGE_TARNAME])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^PACKAGE_TARNAME$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AH_OUTPUT([PACKAGE_TARNAME], [/* Define to the one symbol short name of this package. */
+@%:@undef PACKAGE_TARNAME])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_DEFINE_TRACE_LITERAL([PACKAGE_VERSION])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^PACKAGE_VERSION$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AH_OUTPUT([PACKAGE_VERSION], [/* Define to the version of this package. */
+@%:@undef PACKAGE_VERSION])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_DEFINE_TRACE_LITERAL([PACKAGE_STRING])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^PACKAGE_STRING$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AH_OUTPUT([PACKAGE_STRING], [/* Define to the full name and version of this package. */
+@%:@undef PACKAGE_STRING])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_DEFINE_TRACE_LITERAL([PACKAGE_BUGREPORT])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^PACKAGE_BUGREPORT$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AH_OUTPUT([PACKAGE_BUGREPORT], [/* Define to the address where bug reports for this package should be sent. */
+@%:@undef PACKAGE_BUGREPORT])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_DEFINE_TRACE_LITERAL([PACKAGE_URL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^PACKAGE_URL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AH_OUTPUT([PACKAGE_URL], [/* Define to the home page for this package. */
+@%:@undef PACKAGE_URL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([DEFS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([DEFS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^DEFS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([ECHO_C])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([ECHO_C])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^ECHO_C$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([ECHO_N])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([ECHO_N])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^ECHO_N$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([ECHO_T])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([ECHO_T])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^ECHO_T$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^LIBS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([build_alias])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([build_alias])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^build_alias$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([host_alias])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([host_alias])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^host_alias$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST([target_alias])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- AC_SUBST_TRACE([target_alias])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:27: -1- m4_pattern_allow([^target_alias$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:39: -1- AC_CONFIG_HEADERS([lib/curl_config.h])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:40: -1- AC_CONFIG_MACRO_DIR_TRACE([m4])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:60: -1- AC_SUBST([CONFIGURE_OPTIONS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:60: -1- AC_SUBST_TRACE([CONFIGURE_OPTIONS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:60: -1- m4_pattern_allow([^CONFIGURE_OPTIONS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:66: -1- AC_SUBST([SED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:66: -1- AC_SUBST_TRACE([SED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:66: -1- m4_pattern_allow([^SED$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:72: -1- AC_SUBST([SED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:72: -1- AC_SUBST_TRACE([SED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:72: -1- m4_pattern_allow([^SED$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:78: -1- AC_SUBST([GREP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:78: -1- AC_SUBST_TRACE([GREP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:78: -1- m4_pattern_allow([^GREP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:84: -1- AC_SUBST([GREP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:84: -1- AC_SUBST_TRACE([GREP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:84: -1- m4_pattern_allow([^GREP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:95: -1- AC_SUBST([EGREP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:95: -1- AC_SUBST_TRACE([EGREP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:95: -1- m4_pattern_allow([^EGREP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:102: -1- AC_SUBST([EGREP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:102: -1- AC_SUBST_TRACE([EGREP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:102: -1- m4_pattern_allow([^EGREP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:108: -1- AC_SUBST([AR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:108: -1- AC_SUBST_TRACE([AR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:108: -1- m4_pattern_allow([^AR$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:114: -1- AC_SUBST([AR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:114: -1- AC_SUBST_TRACE([AR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:114: -1- m4_pattern_allow([^AR$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:116: -1- AC_SUBST([libext])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:116: -1- AC_SUBST_TRACE([libext])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:116: -1- m4_pattern_allow([^libext$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:129: -1- AC_SUBST([CURLVERSION])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:129: -1- AC_SUBST_TRACE([CURLVERSION])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:129: -1- m4_pattern_allow([^CURLVERSION$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:134: -1- AC_SUBST([VERSIONNUM])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:134: -1- AC_SUBST_TRACE([VERSIONNUM])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:134: -1- m4_pattern_allow([^VERSIONNUM$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:140: -1- AC_SUBST([PKGADD_PKG])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:140: -1- AC_SUBST_TRACE([PKGADD_PKG])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:140: -1- m4_pattern_allow([^PKGADD_PKG$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:141: -1- AC_SUBST([PKGADD_NAME])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:141: -1- AC_SUBST_TRACE([PKGADD_NAME])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:141: -1- m4_pattern_allow([^PKGADD_NAME$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:142: -1- AC_SUBST([PKGADD_VENDOR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:142: -1- AC_SUBST_TRACE([PKGADD_VENDOR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:142: -1- m4_pattern_allow([^PKGADD_VENDOR$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_CANONICAL_HOST
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_CANONICAL_BUILD
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_REQUIRE_AUX_FILE([config.sub])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_REQUIRE_AUX_FILE([config.guess])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST([build], [$ac_cv_build])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST_TRACE([build])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- m4_pattern_allow([^build$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST([build_cpu], [$[1]])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST_TRACE([build_cpu])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- m4_pattern_allow([^build_cpu$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST([build_vendor], [$[2]])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST_TRACE([build_vendor])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- m4_pattern_allow([^build_vendor$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST([build_os])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST_TRACE([build_os])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- m4_pattern_allow([^build_os$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST([host], [$ac_cv_host])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST_TRACE([host])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- m4_pattern_allow([^host$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST([host_cpu], [$[1]])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST_TRACE([host_cpu])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- m4_pattern_allow([^host_cpu$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST([host_vendor], [$[2]])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST_TRACE([host_vendor])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- m4_pattern_allow([^host_vendor$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST([host_os])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- AC_SUBST_TRACE([host_os])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:179: -1- m4_pattern_allow([^host_os$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:181: -1- AC_DEFINE_TRACE_LITERAL([OS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:181: -1- m4_pattern_allow([^OS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:181: -1- AH_OUTPUT([OS], [/* cpu-machine-OS */
+@%:@undef OS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:184: -1- AC_SUBST([AR_FLAGS], [cr])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:184: -1- AC_SUBST_TRACE([AR_FLAGS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:184: -1- m4_pattern_allow([^AR_FLAGS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST([CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST_TRACE([CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^CC$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST([CFLAGS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST_TRACE([CFLAGS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^CFLAGS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST([LDFLAGS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST_TRACE([LDFLAGS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^LDFLAGS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST([LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST_TRACE([LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^LIBS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST([CPPFLAGS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST_TRACE([CPPFLAGS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^CPPFLAGS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST([CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST_TRACE([CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^CC$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST([CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST_TRACE([CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^CC$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST([CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST_TRACE([CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^CC$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST([CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST_TRACE([CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^CC$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST([ac_ct_CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST_TRACE([ac_ct_CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^ac_ct_CC$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST([CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST_TRACE([CC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^CC$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST([EXEEXT], [$ac_cv_exeext])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST_TRACE([EXEEXT])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^EXEEXT$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST([OBJEXT], [$ac_cv_objext])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_SUBST_TRACE([OBJEXT])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^OBJEXT$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_DEFINE_TRACE_LITERAL([_FILE_OFFSET_BITS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^_FILE_OFFSET_BITS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AH_OUTPUT([_FILE_OFFSET_BITS], [/* Number of bits in a file offset, on hosts where this is settable. */
+@%:@undef _FILE_OFFSET_BITS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AC_DEFINE_TRACE_LITERAL([_LARGE_FILES])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- m4_pattern_allow([^_LARGE_FILES$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:194: -1- AH_OUTPUT([_LARGE_FILES], [/* Define for large files, on AIX-style hosts. */
+@%:@undef _LARGE_FILES])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:238: -1- AC_SUBST([CPPFLAG_CURL_STATICLIB])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:238: -1- AC_SUBST_TRACE([CPPFLAG_CURL_STATICLIB])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:238: -1- m4_pattern_allow([^CPPFLAG_CURL_STATICLIB$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:248: -1- AC_SUBST([REQUIRE_LIB_DEPS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:248: -1- AC_SUBST_TRACE([REQUIRE_LIB_DEPS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:248: -1- m4_pattern_allow([^REQUIRE_LIB_DEPS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:252: -1- AH_OUTPUT([inline], [/* Define to `__inline__\' or `__inline\' if that\'s what the C compiler
+   calls it, or to nothing if \'inline\' is not supported under any name.  */
+#ifndef __cplusplus
+#undef inline
+#endif])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:287: -1- AC_SUBST([CURL_CFLAG_EXTRAS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:287: -1- AC_SUBST_TRACE([CURL_CFLAG_EXTRAS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:287: -1- m4_pattern_allow([^CURL_CFLAG_EXTRAS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:375: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:375: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:376: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:376: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:374: -1- AC_SUBST([CURL_DISABLE_HTTP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:374: -1- AC_SUBST_TRACE([CURL_DISABLE_HTTP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:374: -1- m4_pattern_allow([^CURL_DISABLE_HTTP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:374: -1- AC_SUBST([CURL_DISABLE_RTSP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:374: -1- AC_SUBST_TRACE([CURL_DISABLE_RTSP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:374: -1- m4_pattern_allow([^CURL_DISABLE_RTSP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:394: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:394: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:395: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:395: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:393: -1- AC_SUBST([CURL_DISABLE_FTP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:393: -1- AC_SUBST_TRACE([CURL_DISABLE_FTP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:393: -1- m4_pattern_allow([^CURL_DISABLE_FTP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:409: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:409: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:410: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:410: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:408: -1- AC_SUBST([CURL_DISABLE_FILE], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:408: -1- AC_SUBST_TRACE([CURL_DISABLE_FILE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:408: -1- m4_pattern_allow([^CURL_DISABLE_FILE$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:424: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:424: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:425: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:425: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:423: -1- AC_SUBST([CURL_DISABLE_LDAP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:423: -1- AC_SUBST_TRACE([CURL_DISABLE_LDAP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:423: -1- m4_pattern_allow([^CURL_DISABLE_LDAP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:440: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:440: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:441: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:441: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- AC_SUBST([CURL_DISABLE_LDAPS], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- AC_SUBST_TRACE([CURL_DISABLE_LDAPS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- m4_pattern_allow([^CURL_DISABLE_LDAPS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- AC_SUBST([CURL_DISABLE_LDAPS], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- AC_SUBST_TRACE([CURL_DISABLE_LDAPS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- m4_pattern_allow([^CURL_DISABLE_LDAPS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- AC_SUBST([HAVE_LDAP_SSL], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- AC_SUBST_TRACE([HAVE_LDAP_SSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- m4_pattern_allow([^HAVE_LDAP_SSL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- AC_SUBST([CURL_DISABLE_LDAPS], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- AC_SUBST_TRACE([CURL_DISABLE_LDAPS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- m4_pattern_allow([^CURL_DISABLE_LDAPS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- AC_SUBST([HAVE_LDAP_SSL], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- AC_SUBST_TRACE([HAVE_LDAP_SSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:439: -1- m4_pattern_allow([^HAVE_LDAP_SSL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:472: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:472: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:473: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:473: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:471: -1- AC_SUBST([CURL_DISABLE_RTSP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:471: -1- AC_SUBST_TRACE([CURL_DISABLE_RTSP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:471: -1- m4_pattern_allow([^CURL_DISABLE_RTSP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:498: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:498: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:499: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:499: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:497: -1- AC_SUBST([CURL_DISABLE_PROXY], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:497: -1- AC_SUBST_TRACE([CURL_DISABLE_PROXY])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:497: -1- m4_pattern_allow([^CURL_DISABLE_PROXY$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:514: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:514: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:515: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:515: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:513: -1- AC_SUBST([CURL_DISABLE_DICT], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:513: -1- AC_SUBST_TRACE([CURL_DISABLE_DICT])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:513: -1- m4_pattern_allow([^CURL_DISABLE_DICT$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:529: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:529: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:530: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:530: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:528: -1- AC_SUBST([CURL_DISABLE_TELNET], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:528: -1- AC_SUBST_TRACE([CURL_DISABLE_TELNET])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:528: -1- m4_pattern_allow([^CURL_DISABLE_TELNET$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:544: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:544: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:545: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:545: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:543: -1- AC_SUBST([CURL_DISABLE_TFTP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:543: -1- AC_SUBST_TRACE([CURL_DISABLE_TFTP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:543: -1- m4_pattern_allow([^CURL_DISABLE_TFTP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:560: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:560: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:561: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:561: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:559: -1- AC_SUBST([CURL_DISABLE_POP3], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:559: -1- AC_SUBST_TRACE([CURL_DISABLE_POP3])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:559: -1- m4_pattern_allow([^CURL_DISABLE_POP3$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:577: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:577: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:578: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:578: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:576: -1- AC_SUBST([CURL_DISABLE_IMAP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:576: -1- AC_SUBST_TRACE([CURL_DISABLE_IMAP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:576: -1- m4_pattern_allow([^CURL_DISABLE_IMAP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:594: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:594: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:595: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:595: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:593: -1- AC_SUBST([CURL_DISABLE_SMB], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:593: -1- AC_SUBST_TRACE([CURL_DISABLE_SMB])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:593: -1- m4_pattern_allow([^CURL_DISABLE_SMB$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:610: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:610: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:611: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:611: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:609: -1- AC_SUBST([CURL_DISABLE_SMTP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:609: -1- AC_SUBST_TRACE([CURL_DISABLE_SMTP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:609: -1- m4_pattern_allow([^CURL_DISABLE_SMTP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:626: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:626: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:627: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:627: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:625: -1- AC_SUBST([CURL_DISABLE_GOPHER], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:625: -1- AC_SUBST_TRACE([CURL_DISABLE_GOPHER])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:625: -1- m4_pattern_allow([^CURL_DISABLE_GOPHER$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:642: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:642: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:643: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:643: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:641: -1- AC_SUBST([CURL_ENABLE_MQTT], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:641: -1- AC_SUBST_TRACE([CURL_ENABLE_MQTT])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:641: -1- m4_pattern_allow([^CURL_ENABLE_MQTT$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:663: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:663: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:664: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:664: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:684: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:684: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:685: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:685: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:704: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:704: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:862: -1- AC_SUBST([HAVE_PROTO_BSDSOCKET_H], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:862: -1- AC_SUBST_TRACE([HAVE_PROTO_BSDSOCKET_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:862: -1- m4_pattern_allow([^HAVE_PROTO_BSDSOCKET_H$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:932: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:932: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:933: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:933: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:974: -1- AH_OUTPUT([HAVE_STDIO_H], [/* Define to 1 if you have the <stdio.h> header file. */
+@%:@undef HAVE_STDIO_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:974: -1- AH_OUTPUT([HAVE_STDLIB_H], [/* Define to 1 if you have the <stdlib.h> header file. */
+@%:@undef HAVE_STDLIB_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:974: -1- AH_OUTPUT([HAVE_STRING_H], [/* Define to 1 if you have the <string.h> header file. */
+@%:@undef HAVE_STRING_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:974: -1- AH_OUTPUT([HAVE_INTTYPES_H], [/* Define to 1 if you have the <inttypes.h> header file. */
+@%:@undef HAVE_INTTYPES_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:974: -1- AH_OUTPUT([HAVE_STDINT_H], [/* Define to 1 if you have the <stdint.h> header file. */
+@%:@undef HAVE_STDINT_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:974: -1- AH_OUTPUT([HAVE_STRINGS_H], [/* Define to 1 if you have the <strings.h> header file. */
+@%:@undef HAVE_STRINGS_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:974: -1- AH_OUTPUT([HAVE_SYS_STAT_H], [/* Define to 1 if you have the <sys/stat.h> header file. */
+@%:@undef HAVE_SYS_STAT_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:974: -1- AH_OUTPUT([HAVE_SYS_TYPES_H], [/* Define to 1 if you have the <sys/types.h> header file. */
+@%:@undef HAVE_SYS_TYPES_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:974: -1- AH_OUTPUT([HAVE_UNISTD_H], [/* Define to 1 if you have the <unistd.h> header file. */
+@%:@undef HAVE_UNISTD_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1012: -1- AC_SUBST([HAVE_LIBZ])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1012: -1- AC_SUBST_TRACE([HAVE_LIBZ])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1012: -1- m4_pattern_allow([^HAVE_LIBZ$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1028: -1- AC_SUBST([ZLIB_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1028: -1- AC_SUBST_TRACE([ZLIB_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1028: -1- m4_pattern_allow([^ZLIB_LIBS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1039: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1039: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1040: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1040: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1084: -1- AH_OUTPUT([HAVE_LIBBROTLIDEC], [/* Define to 1 if you have the `brotlidec\' library (-lbrotlidec). */
+@%:@undef HAVE_LIBBROTLIDEC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1084: -1- AC_DEFINE_TRACE_LITERAL([HAVE_LIBBROTLIDEC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1084: -1- m4_pattern_allow([^HAVE_LIBBROTLIDEC$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1090: -2- AC_SUBST([HAVE_BROTLI], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1090: -2- AC_SUBST_TRACE([HAVE_BROTLI])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1090: -2- m4_pattern_allow([^HAVE_BROTLI$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1086: -1- AH_OUTPUT([HAVE_BROTLI_DECODE_H], [/* Define to 1 if you have the <brotli/decode.h> header file. */
+@%:@undef HAVE_BROTLI_DECODE_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1086: -1- AC_DEFINE_TRACE_LITERAL([HAVE_BROTLI_DECODE_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1086: -1- m4_pattern_allow([^HAVE_BROTLI_DECODE_H$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1124: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1124: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1129: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1129: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1148: -1- AC_SUBST([CURL_DISABLE_LDAP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1148: -1- AC_SUBST_TRACE([CURL_DISABLE_LDAP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1148: -1- m4_pattern_allow([^CURL_DISABLE_LDAP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1148: -1- AC_SUBST([CURL_DISABLE_LDAPS], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1148: -1- AC_SUBST_TRACE([CURL_DISABLE_LDAPS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1148: -1- m4_pattern_allow([^CURL_DISABLE_LDAPS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1161: -1- AC_SUBST([CURL_DISABLE_LDAP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1161: -1- AC_SUBST_TRACE([CURL_DISABLE_LDAP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1161: -1- m4_pattern_allow([^CURL_DISABLE_LDAP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1163: -1- AC_SUBST([CURL_DISABLE_LDAPS], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1163: -1- AC_SUBST_TRACE([CURL_DISABLE_LDAPS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1163: -1- m4_pattern_allow([^CURL_DISABLE_LDAPS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1175: -1- AC_SUBST([CURL_DISABLE_LDAP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1175: -1- AC_SUBST_TRACE([CURL_DISABLE_LDAP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1175: -1- m4_pattern_allow([^CURL_DISABLE_LDAP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1175: -1- AC_SUBST([CURL_DISABLE_LDAPS], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1175: -1- AC_SUBST_TRACE([CURL_DISABLE_LDAPS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1175: -1- m4_pattern_allow([^CURL_DISABLE_LDAPS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1186: -1- AH_OUTPUT([HAVE_LDAP_URL_PARSE], [/* Define to 1 if you have the `ldap_url_parse\' function. */
+@%:@undef HAVE_LDAP_URL_PARSE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1186: -1- AH_OUTPUT([HAVE_LDAP_INIT_FD], [/* Define to 1 if you have the `ldap_init_fd\' function. */
+@%:@undef HAVE_LDAP_INIT_FD])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1195: -1- AC_SUBST([USE_OPENLDAP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1195: -1- AC_SUBST_TRACE([USE_OPENLDAP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1195: -1- m4_pattern_allow([^USE_OPENLDAP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1210: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1210: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1211: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1211: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1222: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:2997: AC_TRY_RUN is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1222: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1257: -1- AC_SUBST([IPV6_ENABLED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1257: -1- AC_SUBST_TRACE([IPV6_ENABLED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1257: -1- m4_pattern_allow([^IPV6_ENABLED$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1260: -1- _m4_warn([obsolete], [The macro `AC_TRY_COMPILE' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:2847: AC_TRY_COMPILE is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1260: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1321: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1321: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1328: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1328: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1335: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1335: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1366: -1- AH_OUTPUT([HAVE_GSSAPI_GSSAPI_H], [/* Define to 1 if you have the <gssapi/gssapi.h> header file. */
+@%:@undef HAVE_GSSAPI_GSSAPI_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1366: -1- AC_DEFINE_TRACE_LITERAL([HAVE_GSSAPI_GSSAPI_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1366: -1- m4_pattern_allow([^HAVE_GSSAPI_GSSAPI_H$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1366: -1- AH_OUTPUT([HAVE_GSSAPI_GSSAPI_GENERIC_H], [/* Define to 1 if you have the <gssapi/gssapi_generic.h> header file. */
+@%:@undef HAVE_GSSAPI_GSSAPI_GENERIC_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1366: -1- AH_OUTPUT([HAVE_GSSAPI_GSSAPI_KRB5_H], [/* Define to 1 if you have the <gssapi/gssapi_krb5.h> header file. */
+@%:@undef HAVE_GSSAPI_GSSAPI_KRB5_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1501: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1501: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1502: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1502: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1514: -1- AC_SUBST([DEFAULT_SSL_BACKEND])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1514: -1- AC_SUBST_TRACE([DEFAULT_SSL_BACKEND])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1514: -1- m4_pattern_allow([^DEFAULT_SSL_BACKEND$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1528: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1528: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1529: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1529: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1533: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1533: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1534: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1534: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1544: -1- AC_SUBST([USE_SCHANNEL], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1544: -1- AC_SUBST_TRACE([USE_SCHANNEL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1544: -1- m4_pattern_allow([^USE_SCHANNEL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1550: -1- AC_SUBST([USE_WINDOWS_SSPI], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1550: -1- AC_SUBST_TRACE([USE_WINDOWS_SSPI])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1550: -1- m4_pattern_allow([^USE_WINDOWS_SSPI$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1563: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1563: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1564: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1564: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1568: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1568: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1569: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1569: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1578: -1- AC_SUBST([USE_SECTRANSP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1578: -1- AC_SUBST_TRACE([USE_SECTRANSP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1578: -1- m4_pattern_allow([^USE_SECTRANSP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1593: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1593: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1594: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1594: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1629: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1629: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1630: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1630: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1648: -1- _m4_warn([obsolete], [The macro `AC_TRY_LINK' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:2920: AC_TRY_LINK is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1648: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1719: -1- AC_SUBST([SSL_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1719: -1- AC_SUBST_TRACE([SSL_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1719: -1- m4_pattern_allow([^SSL_LIBS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1740: -1- _m4_warn([obsolete], [The macro `AC_TRY_LINK' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:2920: AC_TRY_LINK is expanded from...
+lib/m4sugar/m4sh.m4:692: _AS_IF_ELSE is expanded from...
+lib/m4sugar/m4sh.m4:699: AS_IF is expanded from...
+./lib/autoconf/libs.m4:100: AC_CHECK_LIB is expanded from...
+lib/m4sugar/m4sh.m4:692: _AS_IF_ELSE is expanded from...
+lib/m4sugar/m4sh.m4:699: AS_IF is expanded from...
+./lib/autoconf/libs.m4:100: AC_CHECK_LIB is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1740: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1740: -1- _m4_warn([obsolete], [The macro `AC_TRY_LINK' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:2920: AC_TRY_LINK is expanded from...
+lib/m4sugar/m4sh.m4:692: _AS_IF_ELSE is expanded from...
+lib/m4sugar/m4sh.m4:699: AS_IF is expanded from...
+./lib/autoconf/general.m4:2894: _AC_LINK_IFELSE is expanded from...
+./lib/autoconf/general.m4:2911: AC_LINK_IFELSE is expanded from...
+./lib/autoconf/general.m4:2920: AC_TRY_LINK is expanded from...
+lib/m4sugar/m4sh.m4:692: _AS_IF_ELSE is expanded from...
+lib/m4sugar/m4sh.m4:699: AS_IF is expanded from...
+./lib/autoconf/libs.m4:100: AC_CHECK_LIB is expanded from...
+lib/m4sugar/m4sh.m4:692: _AS_IF_ELSE is expanded from...
+lib/m4sugar/m4sh.m4:699: AS_IF is expanded from...
+./lib/autoconf/libs.m4:100: AC_CHECK_LIB is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1740: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1804: -1- AH_OUTPUT([HAVE_LIBSSL], [/* Define to 1 if you have the `ssl\' library (-lssl). */
+@%:@undef HAVE_LIBSSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1804: -1- AC_DEFINE_TRACE_LITERAL([HAVE_LIBSSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1804: -1- m4_pattern_allow([^HAVE_LIBSSL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1811: -1- AH_OUTPUT([HAVE_LIBSSL], [/* Define to 1 if you have the `ssl\' library (-lssl). */
+@%:@undef HAVE_LIBSSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1811: -1- AC_DEFINE_TRACE_LITERAL([HAVE_LIBSSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1811: -1- m4_pattern_allow([^HAVE_LIBSSL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1823: -1- AH_OUTPUT([HAVE_OPENSSL_X509_H], [/* Define to 1 if you have the <openssl/x509.h> header file. */
+@%:@undef HAVE_OPENSSL_X509_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1823: -1- AH_OUTPUT([HAVE_OPENSSL_RSA_H], [/* Define to 1 if you have the <openssl/rsa.h> header file. */
+@%:@undef HAVE_OPENSSL_RSA_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1823: -1- AH_OUTPUT([HAVE_OPENSSL_CRYPTO_H], [/* Define to 1 if you have the <openssl/crypto.h> header file. */
+@%:@undef HAVE_OPENSSL_CRYPTO_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1823: -1- AH_OUTPUT([HAVE_OPENSSL_PEM_H], [/* Define to 1 if you have the <openssl/pem.h> header file. */
+@%:@undef HAVE_OPENSSL_PEM_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1823: -1- AH_OUTPUT([HAVE_OPENSSL_SSL_H], [/* Define to 1 if you have the <openssl/ssl.h> header file. */
+@%:@undef HAVE_OPENSSL_SSL_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1823: -1- AH_OUTPUT([HAVE_OPENSSL_ERR_H], [/* Define to 1 if you have the <openssl/err.h> header file. */
+@%:@undef HAVE_OPENSSL_ERR_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1834: -1- AH_OUTPUT([HAVE_X509_H], [/* Define to 1 if you have the <x509.h> header file. */
+@%:@undef HAVE_X509_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1834: -1- AH_OUTPUT([HAVE_RSA_H], [/* Define to 1 if you have the <rsa.h> header file. */
+@%:@undef HAVE_RSA_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1834: -1- AH_OUTPUT([HAVE_CRYPTO_H], [/* Define to 1 if you have the <crypto.h> header file. */
+@%:@undef HAVE_CRYPTO_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1834: -1- AH_OUTPUT([HAVE_PEM_H], [/* Define to 1 if you have the <pem.h> header file. */
+@%:@undef HAVE_PEM_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1834: -1- AH_OUTPUT([HAVE_SSL_H], [/* Define to 1 if you have the <ssl.h> header file. */
+@%:@undef HAVE_SSL_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1834: -1- AH_OUTPUT([HAVE_ERR_H], [/* Define to 1 if you have the <err.h> header file. */
+@%:@undef HAVE_ERR_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1860: -1- AH_OUTPUT([HAVE_RAND_EGD], [/* Define to 1 if you have the `RAND_egd\' function. */
+@%:@undef HAVE_RAND_EGD])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1860: -1- AH_OUTPUT([HAVE_SSLV2_CLIENT_METHOD], [/* Define to 1 if you have the `SSLv2_client_method\' function. */
+@%:@undef HAVE_SSLV2_CLIENT_METHOD])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1860: -1- AH_OUTPUT([HAVE_OPENSSL_VERSION], [/* Define to 1 if you have the `OpenSSL_version\' function. */
+@%:@undef HAVE_OPENSSL_VERSION])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1865: -1- AC_DEFINE_TRACE_LITERAL([HAVE_BORINGSSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1865: -1- m4_pattern_allow([^HAVE_BORINGSSL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1865: -1- AH_OUTPUT([HAVE_BORINGSSL], [/* Define to 1 if using BoringSSL. */
+@%:@undef HAVE_BORINGSSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1883: -1- AC_DEFINE_TRACE_LITERAL([HAVE_LIBRESSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1883: -1- m4_pattern_allow([^HAVE_LIBRESSL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1883: -1- AH_OUTPUT([HAVE_LIBRESSL], [/* Define to 1 if using libressl. */
+@%:@undef HAVE_LIBRESSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1899: -1- AC_DEFINE_TRACE_LITERAL([HAVE_OPENSSL3])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1899: -1- m4_pattern_allow([^HAVE_OPENSSL3$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1899: -1- AH_OUTPUT([HAVE_OPENSSL3], [/* Define to 1 if using OpenSSL 3 or later. */
+@%:@undef HAVE_OPENSSL3])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1956: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1956: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1961: -1- AC_DEFINE_TRACE_LITERAL([EGD_SOCKET])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1961: -1- m4_pattern_allow([^EGD_SOCKET$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1961: -1- AH_OUTPUT([EGD_SOCKET], [/* your Entropy Gathering Daemon socket pathname */
+@%:@undef EGD_SOCKET])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1967: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1967: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1966: -1- _m4_warn([cross], [cannot check for file existence when cross compiling], [./lib/autoconf/general.m4:3010: AC_CHECK_FILE is expanded from...
+lib/m4sugar/m4sh.m4:692: _AS_IF_ELSE is expanded from...
+lib/m4sugar/m4sh.m4:699: AS_IF is expanded from...
+./lib/autoconf/general.m4:1553: AC_ARG_WITH is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1966: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1980: -1- AC_SUBST([RANDOM_FILE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1980: -1- AC_SUBST_TRACE([RANDOM_FILE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1980: -1- m4_pattern_allow([^RANDOM_FILE$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1981: -1- AC_DEFINE_TRACE_LITERAL([RANDOM_FILE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1981: -1- m4_pattern_allow([^RANDOM_FILE$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1981: -1- AH_OUTPUT([RANDOM_FILE], [/* a suitable file to read random data from */
+@%:@undef RANDOM_FILE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1990: -1- AC_SUBST([HAVE_OPENSSL_SRP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1990: -1- AC_SUBST_TRACE([HAVE_OPENSSL_SRP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:1990: -1- m4_pattern_allow([^HAVE_OPENSSL_SRP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2002: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2002: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2003: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2003: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2019: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2019: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2020: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2020: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2093: -1- AC_SUBST([USE_GNUTLS], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2093: -1- AC_SUBST_TRACE([USE_GNUTLS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2093: -1- m4_pattern_allow([^USE_GNUTLS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2153: -1- AC_SUBST([USE_GNUTLS_NETTLE], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2153: -1- AC_SUBST_TRACE([USE_GNUTLS_NETTLE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2153: -1- m4_pattern_allow([^USE_GNUTLS_NETTLE$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2164: -1- AC_SUBST([HAVE_GNUTLS_SRP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2164: -1- AC_SUBST_TRACE([HAVE_GNUTLS_SRP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2164: -1- m4_pattern_allow([^HAVE_GNUTLS_SRP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2180: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2180: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2181: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2181: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2196: -1- AC_SUBST([USE_MBEDTLS], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2196: -1- AC_SUBST_TRACE([USE_MBEDTLS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2196: -1- m4_pattern_allow([^USE_MBEDTLS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2224: -1- AC_SUBST([USE_MBEDTLS], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2224: -1- AC_SUBST_TRACE([USE_MBEDTLS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2224: -1- m4_pattern_allow([^USE_MBEDTLS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2274: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2274: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2275: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2275: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2333: -1- AC_SUBST([USE_WOLFSSL], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2333: -1- AC_SUBST_TRACE([USE_WOLFSSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2333: -1- m4_pattern_allow([^USE_WOLFSSL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2374: -1- AH_OUTPUT([HAVE_WOLFSSLV3_CLIENT_METHOD], [/* Define to 1 if you have the `wolfSSLv3_client_method\' function. */
+@%:@undef HAVE_WOLFSSLV3_CLIENT_METHOD])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2374: -1- AH_OUTPUT([HAVE_WOLFSSL_GET_PEER_CERTIFICATE], [/* Define to 1 if you have the `wolfSSL_get_peer_certificate\' function. */
+@%:@undef HAVE_WOLFSSL_GET_PEER_CERTIFICATE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2374: -1- AH_OUTPUT([HAVE_WOLFSSL_USEALPN], [/* Define to 1 if you have the `wolfSSL_UseALPN\' function. */
+@%:@undef HAVE_WOLFSSL_USEALPN])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2419: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2419: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2420: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2420: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2435: -1- AC_SUBST([USE_MESALINK], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2435: -1- AC_SUBST_TRACE([USE_MESALINK])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2435: -1- m4_pattern_allow([^USE_MESALINK$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2463: -1- AC_SUBST([USE_MESALINK], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2463: -1- AC_SUBST_TRACE([USE_MESALINK])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2463: -1- m4_pattern_allow([^USE_MESALINK$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2510: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2510: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2511: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2511: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2526: -1- AC_SUBST([USE_BEARSSL], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2526: -1- AC_SUBST_TRACE([USE_BEARSSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2526: -1- m4_pattern_allow([^USE_BEARSSL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2554: -1- AC_SUBST([USE_BEARSSL], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2554: -1- AC_SUBST_TRACE([USE_BEARSSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2554: -1- m4_pattern_allow([^USE_BEARSSL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2601: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2601: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2602: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2602: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2675: -1- AC_SUBST([USE_NSS], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2675: -1- AC_SUBST_TRACE([USE_NSS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2675: -1- m4_pattern_allow([^USE_NSS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2704: -1- AC_SUBST([NSS_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2704: -1- AC_SUBST_TRACE([NSS_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2704: -1- m4_pattern_allow([^NSS_LIBS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2730: -1- AC_SUBST([SSL_ENABLED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2730: -1- AC_SUBST_TRACE([SSL_ENABLED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2730: -1- m4_pattern_allow([^SSL_ENABLED$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2736: -1- AC_SUBST([SSL_ENABLED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2736: -1- AC_SUBST_TRACE([SSL_ENABLED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2736: -1- m4_pattern_allow([^SSL_ENABLED$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2738: -1- AC_SUBST([CURL_WITH_MULTI_SSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2738: -1- AC_SUBST_TRACE([CURL_WITH_MULTI_SSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2738: -1- m4_pattern_allow([^CURL_WITH_MULTI_SSL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2759: -1- AC_DEFINE_TRACE_LITERAL([CURL_DEFAULT_SSL_BACKEND])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2759: -1- m4_pattern_allow([^CURL_DEFAULT_SSL_BACKEND$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2759: -1- AH_OUTPUT([CURL_DEFAULT_SSL_BACKEND], [/* Default SSL backend */
+@%:@undef CURL_DEFAULT_SSL_BACKEND])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2798: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2798: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2799: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2799: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2876: -1- AC_SUBST([LIBMETALINK_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2876: -1- AC_SUBST_TRACE([LIBMETALINK_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2876: -1- m4_pattern_allow([^LIBMETALINK_LIBS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2877: -1- AC_SUBST([LIBMETALINK_LDFLAGS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2877: -1- AC_SUBST_TRACE([LIBMETALINK_LDFLAGS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2877: -1- m4_pattern_allow([^LIBMETALINK_LDFLAGS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2878: -1- AC_SUBST([LIBMETALINK_CPPFLAGS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2878: -1- AC_SUBST_TRACE([LIBMETALINK_CPPFLAGS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2878: -1- m4_pattern_allow([^LIBMETALINK_CPPFLAGS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2892: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2892: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2893: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2893: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2899: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2899: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2900: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2900: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2905: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2905: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2906: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2906: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2950: -1- AH_OUTPUT([HAVE_LIBSSH2], [/* Define to 1 if you have the `ssh2\' library (-lssh2). */
+@%:@undef HAVE_LIBSSH2])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2950: -1- AC_DEFINE_TRACE_LITERAL([HAVE_LIBSSH2])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2950: -1- m4_pattern_allow([^HAVE_LIBSSH2$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2956: -2- AC_SUBST([USE_LIBSSH2], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2956: -2- AC_SUBST_TRACE([USE_LIBSSH2])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2956: -2- m4_pattern_allow([^USE_LIBSSH2$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2952: -1- AH_OUTPUT([HAVE_LIBSSH2_H], [/* Define to 1 if you have the <libssh2.h> header file. */
+@%:@undef HAVE_LIBSSH2_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2952: -1- AC_DEFINE_TRACE_LITERAL([HAVE_LIBSSH2_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:2952: -1- m4_pattern_allow([^HAVE_LIBSSH2_H$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3023: -1- AH_OUTPUT([HAVE_LIBSSH], [/* Define to 1 if you have the `ssh\' library (-lssh). */
+@%:@undef HAVE_LIBSSH])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3023: -1- AC_DEFINE_TRACE_LITERAL([HAVE_LIBSSH])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3023: -1- m4_pattern_allow([^HAVE_LIBSSH$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3029: -2- AC_SUBST([USE_LIBSSH], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3029: -2- AC_SUBST_TRACE([USE_LIBSSH])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3029: -2- m4_pattern_allow([^USE_LIBSSH$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3025: -1- AH_OUTPUT([HAVE_LIBSSH_LIBSSH_H], [/* Define to 1 if you have the <libssh/libssh.h> header file. */
+@%:@undef HAVE_LIBSSH_LIBSSH_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3025: -1- AC_DEFINE_TRACE_LITERAL([HAVE_LIBSSH_LIBSSH_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3025: -1- m4_pattern_allow([^HAVE_LIBSSH_LIBSSH_H$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3068: -1- AH_OUTPUT([HAVE_LIBWOLFSSH], [/* Define to 1 if you have the `wolfssh\' library (-lwolfssh). */
+@%:@undef HAVE_LIBWOLFSSH])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3068: -1- AC_DEFINE_TRACE_LITERAL([HAVE_LIBWOLFSSH])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3068: -1- m4_pattern_allow([^HAVE_LIBWOLFSSH$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3074: -2- AC_SUBST([USE_WOLFSSH], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3074: -2- AC_SUBST_TRACE([USE_WOLFSSH])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3074: -2- m4_pattern_allow([^USE_WOLFSSH$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3070: -1- AH_OUTPUT([HAVE_WOLFSSH_SSH_H], [/* Define to 1 if you have the <wolfssh/ssh.h> header file. */
+@%:@undef HAVE_WOLFSSH_SSH_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3070: -1- AC_DEFINE_TRACE_LITERAL([HAVE_WOLFSSH_SSH_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3070: -1- m4_pattern_allow([^HAVE_WOLFSSH_SSH_H$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3086: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3086: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3087: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3087: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3136: -2- AC_SUBST([USE_LIBRTMP], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3136: -2- AC_SUBST_TRACE([USE_LIBRTMP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3136: -2- m4_pattern_allow([^USE_LIBRTMP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3136: -1- AH_OUTPUT([HAVE_LIBRTMP_RTMP_H], [/* Define to 1 if you have the <librtmp/rtmp.h> header file. */
+@%:@undef HAVE_LIBRTMP_RTMP_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3136: -1- AC_DEFINE_TRACE_LITERAL([HAVE_LIBRTMP_RTMP_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3136: -1- m4_pattern_allow([^HAVE_LIBRTMP_RTMP_H$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3165: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3165: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3166: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3166: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3205: -1- AC_SUBST([CURL_LT_SHLIB_VERSIONED_FLAVOUR], ["$versioned_symbols_flavour"])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3205: -1- AC_SUBST_TRACE([CURL_LT_SHLIB_VERSIONED_FLAVOUR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3205: -1- m4_pattern_allow([^CURL_LT_SHLIB_VERSIONED_FLAVOUR$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3217: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3217: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3218: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3218: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3278: -1- AC_SUBST([IDN_ENABLED], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3278: -1- AC_SUBST_TRACE([IDN_ENABLED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3278: -1- m4_pattern_allow([^IDN_ENABLED$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3295: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3295: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3296: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3296: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3391: -1- AH_OUTPUT([HAVE_IDN2_H], [/* Define to 1 if you have the <idn2.h> header file. */
+@%:@undef HAVE_IDN2_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3397: -1- AC_SUBST([IDN_ENABLED], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3397: -1- AC_SUBST_TRACE([IDN_ENABLED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3397: -1- m4_pattern_allow([^IDN_ENABLED$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3430: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3430: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3431: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3431: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3478: -2- AC_SUBST([USE_NGHTTP2], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3478: -2- AC_SUBST_TRACE([USE_NGHTTP2])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3478: -2- m4_pattern_allow([^USE_NGHTTP2$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3478: -1- AH_OUTPUT([HAVE_NGHTTP2_NGHTTP2_H], [/* Define to 1 if you have the <nghttp2/nghttp2.h> header file. */
+@%:@undef HAVE_NGHTTP2_NGHTTP2_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3478: -1- AC_DEFINE_TRACE_LITERAL([HAVE_NGHTTP2_NGHTTP2_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3478: -1- m4_pattern_allow([^HAVE_NGHTTP2_NGHTTP2_H$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3517: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3517: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3518: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3518: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3566: -2- AC_SUBST([USE_NGTCP2], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3566: -2- AC_SUBST_TRACE([USE_NGTCP2])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3566: -2- m4_pattern_allow([^USE_NGTCP2$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3566: -1- AH_OUTPUT([HAVE_NGTCP2_NGTCP2_H], [/* Define to 1 if you have the <ngtcp2/ngtcp2.h> header file. */
+@%:@undef HAVE_NGTCP2_NGTCP2_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3566: -1- AC_DEFINE_TRACE_LITERAL([HAVE_NGTCP2_NGTCP2_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3566: -1- m4_pattern_allow([^HAVE_NGTCP2_NGTCP2_H$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3622: -2- AC_SUBST([USE_NGTCP2_CRYPTO_OPENSSL], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3622: -2- AC_SUBST_TRACE([USE_NGTCP2_CRYPTO_OPENSSL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3622: -2- m4_pattern_allow([^USE_NGTCP2_CRYPTO_OPENSSL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3622: -1- AH_OUTPUT([HAVE_NGTCP2_NGTCP2_CRYPTO_H], [/* Define to 1 if you have the <ngtcp2/ngtcp2_crypto.h> header file. */
+@%:@undef HAVE_NGTCP2_NGTCP2_CRYPTO_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3622: -1- AC_DEFINE_TRACE_LITERAL([HAVE_NGTCP2_NGTCP2_CRYPTO_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3622: -1- m4_pattern_allow([^HAVE_NGTCP2_NGTCP2_CRYPTO_H$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3677: -2- AC_SUBST([USE_NGTCP2_CRYPTO_GNUTLS], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3677: -2- AC_SUBST_TRACE([USE_NGTCP2_CRYPTO_GNUTLS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3677: -2- m4_pattern_allow([^USE_NGTCP2_CRYPTO_GNUTLS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3677: -1- AH_OUTPUT([HAVE_NGTCP2_NGTCP2_CRYPTO_H], [/* Define to 1 if you have the <ngtcp2/ngtcp2_crypto.h> header file. */
+@%:@undef HAVE_NGTCP2_NGTCP2_CRYPTO_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3677: -1- AC_DEFINE_TRACE_LITERAL([HAVE_NGTCP2_NGTCP2_CRYPTO_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3677: -1- m4_pattern_allow([^HAVE_NGTCP2_NGTCP2_CRYPTO_H$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3716: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3716: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3717: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3717: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3765: -2- AC_SUBST([USE_NGHTTP3], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3765: -2- AC_SUBST_TRACE([USE_NGHTTP3])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3765: -2- m4_pattern_allow([^USE_NGHTTP3$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3765: -1- AH_OUTPUT([HAVE_NGHTTP3_NGHTTP3_H], [/* Define to 1 if you have the <nghttp3/nghttp3.h> header file. */
+@%:@undef HAVE_NGHTTP3_NGHTTP3_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3765: -1- AC_DEFINE_TRACE_LITERAL([HAVE_NGHTTP3_NGHTTP3_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3765: -1- m4_pattern_allow([^HAVE_NGHTTP3_NGHTTP3_H$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3807: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3807: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3808: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3808: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3855: -2- AC_SUBST([USE_QUICHE], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3855: -2- AC_SUBST_TRACE([USE_QUICHE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3855: -2- m4_pattern_allow([^USE_QUICHE$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3855: -2- AH_OUTPUT([HAVE_QUICHE_CONN_SET_QLOG_FD], [/* Define to 1 if you have the `quiche_conn_set_qlog_fd\' function. */
+@%:@undef HAVE_QUICHE_CONN_SET_QLOG_FD])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3855: -1- AH_OUTPUT([HAVE_QUICHE_H], [/* Define to 1 if you have the <quiche.h> header file. */
+@%:@undef HAVE_QUICHE_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3855: -1- AC_DEFINE_TRACE_LITERAL([HAVE_QUICHE_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3855: -1- m4_pattern_allow([^HAVE_QUICHE_H$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3891: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3891: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3892: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3892: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3901: -1- AC_SUBST([ZSH_FUNCTIONS_DIR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3901: -1- AC_SUBST_TRACE([ZSH_FUNCTIONS_DIR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3901: -1- m4_pattern_allow([^ZSH_FUNCTIONS_DIR$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3906: -1- AC_SUBST([ZSH_FUNCTIONS_DIR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3906: -1- AC_SUBST_TRACE([ZSH_FUNCTIONS_DIR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3906: -1- m4_pattern_allow([^ZSH_FUNCTIONS_DIR$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3916: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3916: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3917: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3917: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3931: -1- AC_SUBST([FISH_FUNCTIONS_DIR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3931: -1- AC_SUBST_TRACE([FISH_FUNCTIONS_DIR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3931: -1- m4_pattern_allow([^FISH_FUNCTIONS_DIR$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3936: -1- AC_SUBST([FISH_FUNCTIONS_DIR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3936: -1- AC_SUBST_TRACE([FISH_FUNCTIONS_DIR])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3936: -1- m4_pattern_allow([^FISH_FUNCTIONS_DIR$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3945: -1- _m4_warn([obsolete], [The macro `AC_HEADER_STDC' is obsolete.
+You should run autoupdate.], [./lib/autoconf/headers.m4:704: AC_HEADER_STDC is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3945: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3945: -1- AC_SUBST([GREP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3945: -1- AC_SUBST_TRACE([GREP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3945: -1- m4_pattern_allow([^GREP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3945: -1- AC_SUBST([EGREP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3945: -1- AC_SUBST_TRACE([EGREP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3945: -1- m4_pattern_allow([^EGREP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_TYPES_H], [/* Define to 1 if you have the <sys/types.h> header file. */
+@%:@undef HAVE_SYS_TYPES_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_TIME_H], [/* Define to 1 if you have the <sys/time.h> header file. */
+@%:@undef HAVE_SYS_TIME_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_SELECT_H], [/* Define to 1 if you have the <sys/select.h> header file. */
+@%:@undef HAVE_SYS_SELECT_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_SOCKET_H], [/* Define to 1 if you have the <sys/socket.h> header file. */
+@%:@undef HAVE_SYS_SOCKET_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_IOCTL_H], [/* Define to 1 if you have the <sys/ioctl.h> header file. */
+@%:@undef HAVE_SYS_IOCTL_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_UIO_H], [/* Define to 1 if you have the <sys/uio.h> header file. */
+@%:@undef HAVE_SYS_UIO_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_ASSERT_H], [/* Define to 1 if you have the <assert.h> header file. */
+@%:@undef HAVE_ASSERT_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_UNISTD_H], [/* Define to 1 if you have the <unistd.h> header file. */
+@%:@undef HAVE_UNISTD_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_STDLIB_H], [/* Define to 1 if you have the <stdlib.h> header file. */
+@%:@undef HAVE_STDLIB_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_ARPA_INET_H], [/* Define to 1 if you have the <arpa/inet.h> header file. */
+@%:@undef HAVE_ARPA_INET_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_NET_IF_H], [/* Define to 1 if you have the <net/if.h> header file. */
+@%:@undef HAVE_NET_IF_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_NETINET_IN_H], [/* Define to 1 if you have the <netinet/in.h> header file. */
+@%:@undef HAVE_NETINET_IN_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_NETINET_IN6_H], [/* Define to 1 if you have the <netinet/in6.h> header file. */
+@%:@undef HAVE_NETINET_IN6_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_UN_H], [/* Define to 1 if you have the <sys/un.h> header file. */
+@%:@undef HAVE_SYS_UN_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_LINUX_TCP_H], [/* Define to 1 if you have the <linux/tcp.h> header file. */
+@%:@undef HAVE_LINUX_TCP_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_NETINET_TCP_H], [/* Define to 1 if you have the <netinet/tcp.h> header file. */
+@%:@undef HAVE_NETINET_TCP_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_NETDB_H], [/* Define to 1 if you have the <netdb.h> header file. */
+@%:@undef HAVE_NETDB_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_SOCKIO_H], [/* Define to 1 if you have the <sys/sockio.h> header file. */
+@%:@undef HAVE_SYS_SOCKIO_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_STAT_H], [/* Define to 1 if you have the <sys/stat.h> header file. */
+@%:@undef HAVE_SYS_STAT_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_PARAM_H], [/* Define to 1 if you have the <sys/param.h> header file. */
+@%:@undef HAVE_SYS_PARAM_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_TERMIOS_H], [/* Define to 1 if you have the <termios.h> header file. */
+@%:@undef HAVE_TERMIOS_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_TERMIO_H], [/* Define to 1 if you have the <termio.h> header file. */
+@%:@undef HAVE_TERMIO_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SGTTY_H], [/* Define to 1 if you have the <sgtty.h> header file. */
+@%:@undef HAVE_SGTTY_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_FCNTL_H], [/* Define to 1 if you have the <fcntl.h> header file. */
+@%:@undef HAVE_FCNTL_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_ALLOCA_H], [/* Define to 1 if you have the <alloca.h> header file. */
+@%:@undef HAVE_ALLOCA_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_TIME_H], [/* Define to 1 if you have the <time.h> header file. */
+@%:@undef HAVE_TIME_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_IO_H], [/* Define to 1 if you have the <io.h> header file. */
+@%:@undef HAVE_IO_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_PWD_H], [/* Define to 1 if you have the <pwd.h> header file. */
+@%:@undef HAVE_PWD_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_UTIME_H], [/* Define to 1 if you have the <utime.h> header file. */
+@%:@undef HAVE_UTIME_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_UTIME_H], [/* Define to 1 if you have the <sys/utime.h> header file. */
+@%:@undef HAVE_SYS_UTIME_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_POLL_H], [/* Define to 1 if you have the <sys/poll.h> header file. */
+@%:@undef HAVE_SYS_POLL_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_POLL_H], [/* Define to 1 if you have the <poll.h> header file. */
+@%:@undef HAVE_POLL_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SOCKET_H], [/* Define to 1 if you have the <socket.h> header file. */
+@%:@undef HAVE_SOCKET_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_RESOURCE_H], [/* Define to 1 if you have the <sys/resource.h> header file. */
+@%:@undef HAVE_SYS_RESOURCE_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_LIBGEN_H], [/* Define to 1 if you have the <libgen.h> header file. */
+@%:@undef HAVE_LIBGEN_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_LOCALE_H], [/* Define to 1 if you have the <locale.h> header file. */
+@%:@undef HAVE_LOCALE_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_ERRNO_H], [/* Define to 1 if you have the <errno.h> header file. */
+@%:@undef HAVE_ERRNO_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_STDBOOL_H], [/* Define to 1 if you have the <stdbool.h> header file. */
+@%:@undef HAVE_STDBOOL_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_ARPA_TFTP_H], [/* Define to 1 if you have the <arpa/tftp.h> header file. */
+@%:@undef HAVE_ARPA_TFTP_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_FILIO_H], [/* Define to 1 if you have the <sys/filio.h> header file. */
+@%:@undef HAVE_SYS_FILIO_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SYS_WAIT_H], [/* Define to 1 if you have the <sys/wait.h> header file. */
+@%:@undef HAVE_SYS_WAIT_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:3952: -1- AH_OUTPUT([HAVE_SETJMP_H], [/* Define to 1 if you have the <setjmp.h> header file. */
+@%:@undef HAVE_SETJMP_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4031: -1- AC_DEFINE_TRACE_LITERAL([size_t])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4031: -1- m4_pattern_allow([^size_t$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4031: -1- AH_OUTPUT([size_t], [/* Define to `unsigned int\' if <sys/types.h> does not define. */
+@%:@undef size_t])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4032: -1- _m4_warn([obsolete], [The macro `AC_HEADER_TIME' is obsolete.
+You should run autoupdate.], [./lib/autoconf/headers.m4:743: AC_HEADER_TIME is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4032: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4032: -1- AH_OUTPUT([HAVE_SYS_TIME_H], [/* Define to 1 if you have the <sys/time.h> header file. */
+@%:@undef HAVE_SYS_TIME_H])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4147: -1- _m4_warn([obsolete], [The macro `AC_TYPE_SIGNAL' is obsolete.
+You should run autoupdate.], [./lib/autoconf/types.m4:776: AC_TYPE_SIGNAL is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4147: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4147: -1- AC_DEFINE_TRACE_LITERAL([RETSIGTYPE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4147: -1- m4_pattern_allow([^RETSIGTYPE$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4147: -1- AH_OUTPUT([RETSIGTYPE], [/* Define as the return type of signal handlers (`int\' or `void\'). */
+@%:@undef RETSIGTYPE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4215: -1- AC_DEFINE_TRACE_LITERAL([HAVE_DECL_GETPWUID_R])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4215: -1- m4_pattern_allow([^HAVE_DECL_GETPWUID_R$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4215: -1- AH_OUTPUT([HAVE_DECL_GETPWUID_R], [/* Define to 1 if you have the declaration of `getpwuid_r\', and to 0 if you
+   don\'t. */
+@%:@undef HAVE_DECL_GETPWUID_R])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_FNMATCH], [/* Define to 1 if you have the `fnmatch\' function. */
+@%:@undef HAVE_FNMATCH])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_GETEUID], [/* Define to 1 if you have the `geteuid\' function. */
+@%:@undef HAVE_GETEUID])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_GETPASS_R], [/* Define to 1 if you have the `getpass_r\' function. */
+@%:@undef HAVE_GETPASS_R])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_GETPPID], [/* Define to 1 if you have the `getppid\' function. */
+@%:@undef HAVE_GETPPID])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_GETPWUID], [/* Define to 1 if you have the `getpwuid\' function. */
+@%:@undef HAVE_GETPWUID])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_GETPWUID_R], [/* Define to 1 if you have the `getpwuid_r\' function. */
+@%:@undef HAVE_GETPWUID_R])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_GETRLIMIT], [/* Define to 1 if you have the `getrlimit\' function. */
+@%:@undef HAVE_GETRLIMIT])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_GETTIMEOFDAY], [/* Define to 1 if you have the `gettimeofday\' function. */
+@%:@undef HAVE_GETTIMEOFDAY])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_IF_NAMETOINDEX], [/* Define to 1 if you have the `if_nametoindex\' function. */
+@%:@undef HAVE_IF_NAMETOINDEX])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_MACH_ABSOLUTE_TIME], [/* Define to 1 if you have the `mach_absolute_time\' function. */
+@%:@undef HAVE_MACH_ABSOLUTE_TIME])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_PIPE], [/* Define to 1 if you have the `pipe\' function. */
+@%:@undef HAVE_PIPE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_SETLOCALE], [/* Define to 1 if you have the `setlocale\' function. */
+@%:@undef HAVE_SETLOCALE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_SETMODE], [/* Define to 1 if you have the `setmode\' function. */
+@%:@undef HAVE_SETMODE])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_SETRLIMIT], [/* Define to 1 if you have the `setrlimit\' function. */
+@%:@undef HAVE_SETRLIMIT])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_USLEEP], [/* Define to 1 if you have the `usleep\' function. */
+@%:@undef HAVE_USLEEP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_UTIME], [/* Define to 1 if you have the `utime\' function. */
+@%:@undef HAVE_UTIME])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([HAVE_UTIMES], [/* Define to 1 if you have the `utimes\' function. */
+@%:@undef HAVE_UTIMES])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AC_DEFINE_TRACE_LITERAL([XC_SH_TR_CPP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- m4_pattern_allow([^XC_SH_TR_CPP$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4220: -1- AH_OUTPUT([XC_SH_TR_CPP], [/* Define to 1 if you have the @S|@func function. */
+@%:@undef XC_SH_TR_CPP])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4265: -1- AC_SUBST([PERL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4265: -1- AC_SUBST_TRACE([PERL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4265: -1- m4_pattern_allow([^PERL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4267: -1- AC_SUBST([PERL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4267: -1- AC_SUBST_TRACE([PERL])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4267: -1- m4_pattern_allow([^PERL$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4269: -1- AC_SUBST([NROFF])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4269: -1- AC_SUBST_TRACE([NROFF])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4269: -1- m4_pattern_allow([^NROFF$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4271: -1- AC_SUBST([NROFF])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4271: -1- AC_SUBST_TRACE([NROFF])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4271: -1- m4_pattern_allow([^NROFF$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4292: -1- AC_SUBST([MANOPT])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4292: -1- AC_SUBST_TRACE([MANOPT])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4292: -1- m4_pattern_allow([^MANOPT$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4335: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4335: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4337: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4337: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4436: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4436: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4437: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4437: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4455: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4455: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4456: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4456: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4454: -1- AC_SUBST([USE_WINDOWS_SSPI], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4454: -1- AC_SUBST_TRACE([USE_WINDOWS_SSPI])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4454: -1- m4_pattern_allow([^USE_WINDOWS_SSPI$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4491: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4491: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4492: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4492: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4514: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4514: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4515: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4515: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4540: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4540: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4541: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4541: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4555: -1- AC_SUBST([USE_UNIX_SOCKETS], [1])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4555: -1- AC_SUBST_TRACE([USE_UNIX_SOCKETS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4555: -1- m4_pattern_allow([^USE_UNIX_SOCKETS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4573: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4573: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4574: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4574: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4591: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4591: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4592: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4592: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4609: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4609: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4610: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4610: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4627: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4627: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4628: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4628: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4645: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4645: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4646: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4646: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4663: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4663: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4664: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4664: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4681: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4681: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4682: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4682: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4699: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4699: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4700: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4700: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4718: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4718: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4719: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [./lib/autoconf/general.m4:204: AC_HELP_STRING is expanded from...
+/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4719: the top level])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4750: -1- AH_OUTPUT([HAVE_SSL_GET_ESNI_STATUS], [/* Define to 1 if you have the `SSL_get_esni_status\' function. */
+@%:@undef HAVE_SSL_GET_ESNI_STATUS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4750: -1- AC_DEFINE_TRACE_LITERAL([HAVE_SSL_GET_ESNI_STATUS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4750: -1- m4_pattern_allow([^HAVE_SSL_GET_ESNI_STATUS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4777: -1- AC_SUBST([LIBCURL_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4777: -1- AC_SUBST_TRACE([LIBCURL_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4777: -1- m4_pattern_allow([^LIBCURL_LIBS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4778: -1- AC_SUBST([CURL_NETWORK_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4778: -1- AC_SUBST_TRACE([CURL_NETWORK_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4778: -1- m4_pattern_allow([^CURL_NETWORK_LIBS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4779: -1- AC_SUBST([CURL_NETWORK_AND_TIME_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4779: -1- AC_SUBST_TRACE([CURL_NETWORK_AND_TIME_LIBS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4779: -1- m4_pattern_allow([^CURL_NETWORK_AND_TIME_LIBS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4786: -1- AC_SUBST([BLANK_AT_MAKETIME])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4786: -1- AC_SUBST_TRACE([BLANK_AT_MAKETIME])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4786: -1- m4_pattern_allow([^BLANK_AT_MAKETIME$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4792: -1- AC_SUBST([ENABLE_SHARED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4792: -1- AC_SUBST_TRACE([ENABLE_SHARED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4792: -1- m4_pattern_allow([^ENABLE_SHARED$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4796: -1- AC_SUBST([ENABLE_STATIC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4796: -1- AC_SUBST_TRACE([ENABLE_STATIC])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4796: -1- m4_pattern_allow([^ENABLE_STATIC$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4804: -1- AC_SUBST([LIBCURL_NO_SHARED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4804: -1- AC_SUBST_TRACE([LIBCURL_NO_SHARED])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4804: -1- m4_pattern_allow([^LIBCURL_NO_SHARED$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4900: -1- AC_SUBST([SUPPORT_FEATURES])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4900: -1- AC_SUBST_TRACE([SUPPORT_FEATURES])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4900: -1- m4_pattern_allow([^SUPPORT_FEATURES$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4994: -1- AC_SUBST([SUPPORT_PROTOCOLS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4994: -1- AC_SUBST_TRACE([SUPPORT_PROTOCOLS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:4994: -1- m4_pattern_allow([^SUPPORT_PROTOCOLS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5014: -1- AC_SUBST([SSL_BACKENDS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5014: -1- AC_SUBST_TRACE([SSL_BACKENDS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5014: -1- m4_pattern_allow([^SSL_BACKENDS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5021: -1- AC_CONFIG_FILES([Makefile \
+           docs/Makefile \
+           docs/examples/Makefile \
+           docs/libcurl/Makefile \
+           docs/libcurl/opts/Makefile \
+           docs/cmdline-opts/Makefile \
+           include/Makefile \
+           include/curl/Makefile \
+           src/Makefile \
+           lib/Makefile \
+           scripts/Makefile \
+           lib/libcurl.vers \
+           tests/Makefile \
+           tests/certs/Makefile \
+           tests/certs/scripts/Makefile \
+           tests/data/Makefile \
+           tests/server/Makefile \
+           tests/libtest/Makefile \
+           tests/unit/Makefile \
+           packages/Makefile \
+           packages/vms/Makefile \
+           curl-config \
+           libcurl.pc
+])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- AC_SUBST([LIB@&t@OBJS], [$ac_libobjs])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- AC_SUBST_TRACE([LIB@&t@OBJS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- m4_pattern_allow([^LIB@&t@OBJS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- AC_SUBST([LTLIBOBJS], [$ac_ltlibobjs])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- AC_SUBST_TRACE([LTLIBOBJS])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- m4_pattern_allow([^LTLIBOBJS$])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- AC_SUBST_TRACE([top_builddir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- AC_SUBST_TRACE([top_build_prefix])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- AC_SUBST_TRACE([srcdir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- AC_SUBST_TRACE([abs_srcdir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- AC_SUBST_TRACE([top_srcdir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- AC_SUBST_TRACE([abs_top_srcdir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- AC_SUBST_TRACE([builddir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- AC_SUBST_TRACE([abs_builddir])
+m4trace:/root/buildroot/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac:5045: -1- AC_SUBST_TRACE([abs_top_builddir])

@@ -1,0 +1,204 @@
+import os
+import sys
+import pathlib
+from shutil import which
+import subprocess
+from presence_condition import PresenceCondition
+
+
+def write_content_to_file(filepath: str, content: str):
+    with open(filepath, 'w') as f:
+        f.write(content)
+
+def run(args, stdin=None, capture_stdout=True, capture_stderr=True, cwd=None, timeout=None, shell=False):
+  """Helper for running an external process.
+  Returns a tuple of (stdout, stderr, return_code, time_elapsed) for the process.
+  Arguments:
+  args -- args, a list to pass to subprocess.Popen.
+  stdin -- The content to be passed as stdin to the process.
+  capture_stdout -- If set, capture stdout to be returned by the method. Otherwise, keep it at stdout.
+  capture_stderr -- If set, capture stderr to be returned by the method. Otherwise, keep it at stdin.
+  cwd -- Current working directory for the process.
+  timeout -- timeout in seconds. If expires, raises an subprocess.TimeoutExpired exception.
+  """
+  import subprocess
+  import time
+  stdout_param = subprocess.PIPE if capture_stdout else None
+  stderr_param = subprocess.PIPE if capture_stderr else None
+  time_start = time.time()
+  env = os.environ.copy()
+
+  # Set your variables
+  env["JAVA_DEV_ROOT"] = "/root/Tools/superc/"  # adjust if needed
+
+  # Build CLASSPATH in Python
+  env["CLASSPATH"] = (
+      f"{env.get('CLASSPATH', '')}:"
+      f"{env['JAVA_DEV_ROOT']}/classes:"
+      f"{env['JAVA_DEV_ROOT']}/bin/junit.jar:"
+      f"{env['JAVA_DEV_ROOT']}/bin/antlr.jar:"
+      f"{env['JAVA_DEV_ROOT']}/bin/javabdd.jar:"
+      f"{env['JAVA_DEV_ROOT']}/bin/json-simple-1.1.1.jar:"
+      "/usr/share/java/org.sat4j.core.jar:"
+      "/usr/share/java/com.microsoft.z3.jar:"
+      "/usr/share/java/json-lib.jar"
+  )
+
+  env["JAVA_ARGS"] = "-Xms2048m -Xmx4048m -Xss128m"
+  env["JAVA_HOME"] = "/usr/lib/jvm/java-8-openjdk-amd64/"
+  popen = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=cwd, shell=shell, env=env)
+  if stdin != None: popen.stdin.write(stdin)
+  captured_stdout, captured_stderr = popen.communicate(timeout=timeout)
+  time_elapsed = time.time() - time_start
+  popen.stdin.close()
+  return captured_stdout, captured_stderr, popen.returncode, time_elapsed
+
+class BasicLogger:
+  """A simple logger."""
+  def __init__(self, quiet=False, verbose=False, flush=True):
+    assert (not (quiet and verbose))
+    self.quiet = quiet
+    self.verbose = verbose
+    self.flush = flush
+  
+  def __flush(self):
+    if self.flush: sys.stderr.flush()
+
+  def info(self, msg):
+    if not self.quiet:
+      sys.stderr.write("INFO: %s" % msg)
+      self.__flush()
+    
+  def warning(self, msg):
+    sys.stderr.write("WARNING: %s" % msg)
+    self.__flush()
+    
+  def error(self, msg):
+    sys.stderr.write("ERROR: %s" % msg)
+    self.__flush()
+    
+  def debug(self, msg):
+    if self.verbose:
+      sys.stderr.write("DEBUG: %s" % msg)
+      self.__flush()
+
+
+
+class SuperC:
+  class SuperC_Exception(Exception):
+    pass
+  class SuperC_ChecksFailed(SuperC_Exception):
+    def __init__(self, reason):
+      self.reason = reason
+      super().__init__(self.reason)
+
+  def __init__(self, logger = BasicLogger()):
+    """Arguments:
+    * superc_linux_script_path -- SuperC linux script, which is found at
+    superc/scripts/superc_linux.sh, where superc/ is the top SuperC source
+    directory. Searches "superc_linux.sh" in PATH by default.
+    """
+    self.logger = logger
+  
+    self.__check_superc() #< Check SuperC
+  
+  def __check_superc(self):
+    """Check and whether SuperC can be used for getting sourceline presence
+    conditions for Linux files.
+    
+    Returns on success.
+    Raises SuperC_ChecksFailed exception on error.
+
+    Followings checks are done:
+    * java exists
+    * java runs
+    * SuperC runs
+    * SuperC -sourcelinePC runs
+    """
+    def is_success(command_to_run: list):
+      return 0 == run(command_to_run, capture_stdout=True, capture_stderr=True)[2]
+    
+    self.logger.debug("Starting SuperC checks.\n")
+
+    #
+    # Check java
+    #
+    if not which("java"):
+      raise SuperC.SuperC_ChecksFailed("java could not be found")
+
+    cmd = ["java", "--help"]
+    if not is_success(cmd):
+      raise SuperC.SuperC_ChecksFailed("Running java (\"%s\") failed" % " ".join(cmd))
+
+    #
+    # Check SuperC
+    #
+    cmd = ["java", "superc.SuperC"]
+    if not is_success(cmd):
+      raise SuperC.SuperC_ChecksFailed("Running SuperC (\"%s\") failed" % " ".join(cmd))
+
+    cmd = ["java", "superc.SuperC", "-sourcelinePC", os.devnull, os.devnull]
+    if not is_success(cmd):
+      raise SuperC.SuperC_ChecksFailed("Running SuperC -sourcelinePC (\"%s\") failed" % " ".join(cmd))
+   # None failed: checks passed
+    self.logger.debug("SuperC checks passed.\n")
+    return True
+
+
+  def get_pc_and_macro_values(self, srcfile_path: str, library_dir: str, line_number: int|None, macro: str| None) -> list[PresenceCondition]:
+      """
+      Get the presence conditions of a line number and if applicable  the Macro value 
+      """
+
+      pc_file_path = "/root/output.txt"
+      self.logger.debug("Presence conditions file will be created at \"%s\".\n" % pc_file_path)
+      pc_file_path_check = pc_file_path
+      # If a pc file already exists, rename it to have .old extension
+      if os.path.isfile(pc_file_path):
+        old_pc_file_path = pc_file_path + ".old"
+        self.logger.debug("Moving the existing presence conditions file to \"%s\".\n" % old_pc_file_path)
+        assert pathlib.Path(pc_file_path).rename(old_pc_file_path)
+        assert not os.path.isfile(pc_file_path)
+        assert os.path.isfile(old_pc_file_path)
+      # Prepare the SuperC command
+      pc_file_path += ":" + str(line_number)
+      if macro:
+        pc_file_path += ":" + macro 
+      superc_flags = "-sourcelinePC"
+      include_flags = "-I"
+      include = "include/"
+      if line_number is None:
+        pc_file_path = "/root/all_strings.txt"
+        pc_file_path_check = pc_file_path
+
+      # superc_flags += " -I . " + srcfile_path
+      superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-singleConfigSysheaders", include_flags, include, "%s" % superc_flags, pc_file_path, srcfile_path]
+      
+      # Run SuperC
+      try:
+        self.logger.debug("Running SuperC sourcelinePC.\n")
+        out, err, ret, time_elapsed = run(superc_sourcelinepc_cmd, cwd=library_dir)
+        self.logger.debug("Finished running SuperC sourcelinePC.\n")
+
+        # Did SuperC create a presence conditions file?
+        print(pc_file_path_check)
+        if not os.path.isfile(pc_file_path_check):
+          self.logger.debug("SuperC failed to create presence conditions file at \"%s\".\n" % pc_file_path)
+          print("This should no happen")
+          return None #< Error
+        print("Read SuperC")
+        # Read the presence conditions file
+        with open(pc_file_path_check, 'r') as f:
+          entries = []
+          for line in f:
+            line = line.strip()
+            if not line.startswith("{"):   # skip headers, empty lines, etc.
+                continue
+            entry = PresenceCondition()
+            entry.parse(line)
+            entries.append(entry)
+        
+        print("done")
+        return entries
+      except subprocess.TimeoutExpired: #< SuperC timed out
+        return None #< Error

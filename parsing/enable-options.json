@@ -1,0 +1,534 @@
+
+
+ name: largefile
+  help:   --disable-largefile     omit support for large files)
+  definition: "")
+  logic:  
+ name: http
+  help:   --enable-http           Enable HTTP support
+  --disable-http          Disable HTTP support)
+  definition: "CURL_DISABLE_HTTP=1;CURL_DISABLE_RTSP=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_HTTP, 1, [to disable HTTP])
+       disable_http="yes"
+       AC_MSG_WARN([disable HTTP disables FTP over proxy and RTSP])
+       AC_SUBST(CURL_DISABLE_HTTP, [1])
+       AC_DEFINE(CURL_DISABLE_RTSP, 1, [to disable RTSP])
+       AC_SUBST(CURL_DISABLE_RTSP, [1])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: ftp
+  help:   --enable-ftp            Enable FTP support
+  --disable-ftp           Disable FTP support)
+  definition: "CURL_DISABLE_FTP=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_FTP, 1, [to disable FTP])
+       AC_SUBST(CURL_DISABLE_FTP, [1])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: file
+  help:   --enable-file           Enable FILE support
+  --disable-file          Disable FILE support)
+  definition: "CURL_DISABLE_FILE=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_FILE, 1, [to disable FILE])
+       AC_SUBST(CURL_DISABLE_FILE, [1])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: ldap
+  help:   --enable-ldap           Enable LDAP support
+  --disable-ldap          Disable LDAP support)
+  definition: "CURL_DISABLE_LDAP=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_LDAP, 1, [to disable LDAP])
+       AC_SUBST(CURL_DISABLE_LDAP, [1])
+       ;;
+  *)
+       AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: ldaps
+  help:   --enable-ldaps          Enable LDAPS support
+  --disable-ldaps         Disable LDAPS support)
+  definition: "CURL_DISABLE_LDAPS=1;CURL_DISABLE_LDAPS=1;HAVE_LDAP_SSL=1;CURL_DISABLE_LDAPS=1;HAVE_LDAP_SSL=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_LDAPS, 1, [to disable LDAPS])
+       AC_SUBST(CURL_DISABLE_LDAPS, [1])
+       ;;
+  *)   if test "x$CURL_DISABLE_LDAP" = "x1" ; then
+         AC_MSG_RESULT(LDAP needs to be enabled to support LDAPS)
+         AC_DEFINE(CURL_DISABLE_LDAPS, 1, [to disable LDAPS])
+         AC_SUBST(CURL_DISABLE_LDAPS, [1])
+       else
+         AC_MSG_RESULT(yes)
+         AC_DEFINE(HAVE_LDAP_SSL, 1, [Use LDAPS implementation])
+         AC_SUBST(HAVE_LDAP_SSL, [1])
+       fi
+       ;;
+  esac  
+ name: rtsp
+  help:   --enable-rtsp           Enable RTSP support
+  --disable-rtsp          Disable RTSP support)
+  definition: "CURL_DISABLE_RTSP=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_RTSP, 1, [to disable RTSP])
+       AC_SUBST(CURL_DISABLE_RTSP, [1])
+       ;;
+  *)   if test x$CURL_DISABLE_HTTP = x1 ; then
+          AC_MSG_ERROR(HTTP support needs to be enabled in order to enable RTSP support!)
+       else
+          AC_MSG_RESULT(yes)
+          curl_rtsp_msg="enabled"
+       fi
+       ;;
+  esac  
+ name: proxy
+  help:   --enable-proxy          Enable proxy support
+  --disable-proxy         Disable proxy support)
+  definition: "CURL_DISABLE_PROXY=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_PROXY, 1, [to disable proxies])
+       AC_SUBST(CURL_DISABLE_PROXY, [1])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: dict
+  help:   --enable-dict           Enable DICT support
+  --disable-dict          Disable DICT support)
+  definition: "CURL_DISABLE_DICT=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_DICT, 1, [to disable DICT])
+       AC_SUBST(CURL_DISABLE_DICT, [1])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: telnet
+  help:   --enable-telnet         Enable TELNET support
+  --disable-telnet        Disable TELNET support)
+  definition: "CURL_DISABLE_TELNET=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_TELNET, 1, [to disable TELNET])
+       AC_SUBST(CURL_DISABLE_TELNET, [1])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: tftp
+  help:   --enable-tftp           Enable TFTP support
+  --disable-tftp          Disable TFTP support)
+  definition: "CURL_DISABLE_TFTP=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_TFTP, 1, [to disable TFTP])
+       AC_SUBST(CURL_DISABLE_TFTP, [1])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: pop3
+  help:   --enable-pop3           Enable POP3 support
+  --disable-pop3          Disable POP3 support)
+  definition: "CURL_DISABLE_POP3=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_POP3, 1, [to disable POP3])
+       AC_SUBST(CURL_DISABLE_POP3, [1])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: imap
+  help:   --enable-imap           Enable IMAP support
+  --disable-imap          Disable IMAP support)
+  definition: "CURL_DISABLE_IMAP=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_IMAP, 1, [to disable IMAP])
+       AC_SUBST(CURL_DISABLE_IMAP, [1])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: smb
+  help:   --enable-smb            Enable SMB/CIFS support
+  --disable-smb           Disable SMB/CIFS support)
+  definition: "CURL_DISABLE_SMB=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_SMB, 1, [to disable SMB/CIFS])
+       AC_SUBST(CURL_DISABLE_SMB, [1])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: smtp
+  help:   --enable-smtp           Enable SMTP support
+  --disable-smtp          Disable SMTP support)
+  definition: "CURL_DISABLE_SMTP=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_SMTP, 1, [to disable SMTP])
+       AC_SUBST(CURL_DISABLE_SMTP, [1])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: gopher
+  help:   --enable-gopher         Enable Gopher support
+  --disable-gopher        Disable Gopher support)
+  definition: "CURL_DISABLE_GOPHER=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_GOPHER, 1, [to disable Gopher])
+       AC_SUBST(CURL_DISABLE_GOPHER, [1])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: mqtt
+  help:   --enable-mqtt           Enable MQTT support
+  --disable-mqtt          Disable MQTT support)
+  definition: "CURL_ENABLE_MQTT=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       experimental="$experimental MQTT"
+       AC_DEFINE(CURL_ENABLE_MQTT, 1, [to enable MQTT])
+       AC_SUBST(CURL_ENABLE_MQTT, [1])
+       ;;
+  esac  
+ name: manual
+  help:   --enable-manual         Enable built-in manual
+  --disable-manual        Disable built-in manual)
+  definition: "")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       USE_MANUAL="1"
+       ;;
+  esac  
+ name: libcurl_option
+  help:   --enable-libcurl-option Enable --libcurl C code generation support
+  --disable-libcurl-option 
+                          Disable --libcurl C code generation support)
+  definition: "CURL_DISABLE_LIBCURL_OPTION=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_LIBCURL_OPTION, 1, [to disable --libcurl C code generation option])
+       curl_libcurl_msg="no"
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: libgcc
+  help:   --enable-libgcc         use libgcc when linking)
+  definition: "")
+  logic:  case "$enableval" in
+  yes)
+       LIBS="-lgcc $LIBS"
+       AC_MSG_RESULT(yes)
+       ;;
+  *)   AC_MSG_RESULT(no)
+       ;;
+  esac  
+ name: ipv6
+  help:   --enable-ipv6           Enable IPv6 (with IPv4) support
+  --disable-ipv6          Disable IPv6 support)
+  definition: "")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       ipv6=no
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ipv6=yes
+       ;;
+  esac  
+ name: openssl-auto-load-config
+  help:   --enable-openssl-auto-load-config 
+                          Enable automatic loading of OpenSSL configuration
+  --disable-openssl-auto-load-config 
+                          Disable automatic loading of OpenSSL configuration)
+  definition: "CURL_DISABLE_OPENSSL_AUTO_LOAD_CONFIG=1;")
+  logic:  if test X"$enableval" = X"no"; then
+    AC_MSG_NOTICE([automatic loading of OpenSSL configuration disabled])
+    AC_DEFINE(CURL_DISABLE_OPENSSL_AUTO_LOAD_CONFIG, 1, [if the OpenSSL configuration won't be loaded automatically])
+  fi
+ 
+ name: versioned-symbols
+  help:   --enable-versioned-symbols 
+                          Enable versioned symbols in shared library
+  --disable-versioned-symbols 
+                          Disable versioned symbols in shared library)
+  definition: "")
+  logic:  case "$enableval" in
+  yes) AC_MSG_RESULT(yes)
+    AC_MSG_CHECKING([if libraries can be versioned])
+    GLD=`$LD --help < /dev/null 2>/dev/null | grep version-script`
+    if test -z "$GLD"; then
+        AC_MSG_RESULT(no)
+        AC_MSG_WARN([You need an ld version supporting the --version-script option])
+    else
+        AC_MSG_RESULT(yes)
+        if test "x$CURL_WITH_MULTI_SSL" = "x1"; then
+          versioned_symbols_flavour="MULTISSL_"
+        elif test "x$OPENSSL_ENABLED" = "x1"; then
+          versioned_symbols_flavour="OPENSSL_"
+        elif test "x$GNUTLS_ENABLED" = "x1"; then
+          versioned_symbols_flavour="GNUTLS_"
+        elif test "x$NSS_ENABLED" = "x1"; then
+          versioned_symbols_flavour="NSS_"
+        elif test "x$WOLFSSL_ENABLED" = "x1"; then
+          versioned_symbols_flavour="WOLFSSL_"
+        elif test "x$WINSSL_ENABLED" = "x1"; then
+          versioned_symbols_flavour="SCHANNEL_"
+        elif test "x$SECURETRANSPORT_ENABLED" = "x1"; then
+          versioned_symbols_flavour="SECURE_TRANSPORT_"
+        else
+          versioned_symbols_flavour=""
+        fi
+        versioned_symbols="yes"
+    fi
+    ;;
+
+  *)   AC_MSG_RESULT(no)
+    ;;
+  esac
+ 
+ name: pthreads
+  help:   --enable-pthreads       Enable POSIX threads (default for threaded resolver)
+  --disable-pthreads      Disable POSIX threads)
+  definition: "")
+  logic:  case "$enableval" in
+  no)  AC_MSG_RESULT(no)
+       want_pthreads=no
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       want_pthreads=yes
+       ;;
+  esac  
+ name: verbose
+  help:   --enable-verbose        Enable verbose strings
+  --disable-verbose       Disable verbose strings)
+  definition: "CURL_DISABLE_VERBOSE_STRINGS=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_VERBOSE_STRINGS, 1, [to disable verbose strings])
+       curl_verbose_msg="no"
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: sspi
+  help:   --enable-sspi           Enable SSPI
+  --disable-sspi          Disable SSPI)
+  definition: "USE_WINDOWS_SSPI=1;")
+  logic:  case "$enableval" in
+  yes)
+       if test "$curl_cv_native_windows" = "yes"; then
+         AC_MSG_RESULT(yes)
+         AC_DEFINE(USE_WINDOWS_SSPI, 1, [to enable SSPI support])
+         AC_SUBST(USE_WINDOWS_SSPI, [1])
+         curl_sspi_msg="enabled"
+       else
+         AC_MSG_RESULT(no)
+         AC_MSG_WARN([--enable-sspi Ignored. Only supported on native Windows builds.])
+       fi
+       ;;
+  *)
+       if test "x$WINSSL_ENABLED" = "x1"; then
+         # --with-winssl implies --enable-sspi
+         AC_MSG_RESULT(yes)
+       else
+         AC_MSG_RESULT(no)
+       fi
+       ;;
+  esac  
+ name: crypto-auth
+  help:   --enable-crypto-auth    Enable cryptographic authentication
+  --disable-crypto-auth   Disable cryptographic authentication)
+  definition: "CURL_DISABLE_CRYPTO_AUTH=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_CRYPTO_AUTH, 1, [to disable cryptographic authentication])
+       CURL_DISABLE_CRYPTO_AUTH=1
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: tls-srp
+  help:   --enable-tls-srp        Enable TLS-SRP authentication
+  --disable-tls-srp       Disable TLS-SRP authentication)
+  definition: "")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       want_tls_srp=no
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       want_tls_srp=yes
+       ;;
+  esac  
+ name: unix-sockets
+  help:   --enable-unix-sockets   Enable Unix domain sockets
+  --disable-unix-sockets  Disable Unix domain sockets)
+  definition: "")
+  logic:  case "$enableval" in
+  no)  AC_MSG_RESULT(no)
+       want_unix_sockets=no
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       want_unix_sockets=yes
+       ;;
+  esac  
+ name: cookies
+  help:   --enable-cookies        Enable cookies support
+  --disable-cookies       Disable cookies support)
+  definition: "CURL_DISABLE_COOKIES=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_COOKIES, 1, [to disable cookies support])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: http-auth
+  help:   --enable-http-auth      Enable HTTP authentication support
+  --disable-http-auth     Disable HTTP authentication support)
+  definition: "CURL_DISABLE_HTTP_AUTH=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_HTTP_AUTH, 1, [disable HTTP authentication])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: doh
+  help:   --enable-doh            Enable DoH support
+  --disable-doh           Disable DoH support)
+  definition: "CURL_DISABLE_DOH=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_DOH, 1, [disable DoH])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: mime
+  help:   --enable-mime           Enable mime API support
+  --disable-mime          Disable mime API support)
+  definition: "CURL_DISABLE_MIME=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_MIME, 1, [disable mime API])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: dateparse
+  help:   --enable-dateparse      Enable date parsing
+  --disable-dateparse     Disable date parsing)
+  definition: "CURL_DISABLE_PARSEDATE=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_PARSEDATE, 1, [disable date parsing])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: netrc
+  help:   --enable-netrc          Enable netrc parsing
+  --disable-netrc         Disable netrc parsing)
+  definition: "CURL_DISABLE_NETRC=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_NETRC, 1, [disable netrc parsing])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: progress-meter
+  help:   --enable-progress-meter Enable progress-meter
+  --disable-progress-meter 
+                          Disable progress-meter)
+  definition: "CURL_DISABLE_PROGRESS_METER=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_PROGRESS_METER, 1, [disable progress-meter])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: dnsshuffle
+  help:   --enable-dnsshuffle     Enable DNS shuffling
+  --disable-dnsshuffle    Disable DNS shuffling)
+  definition: "CURL_DISABLE_SHUFFLE_DNS=1;")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       AC_DEFINE(CURL_DISABLE_SHUFFLE_DNS, 1, [disable DNS shuffling])
+       ;;
+  *)   AC_MSG_RESULT(yes)
+       ;;
+  esac  
+ name: alt-svc
+  help:   --enable-alt-svc        Enable alt-svc support
+  --disable-alt-svc       Disable alt-svc support)
+  definition: "")
+  logic:  case "$enableval" in
+  no)
+       AC_MSG_RESULT(no)
+       ;;
+  *) AC_MSG_RESULT(yes)
+       curl_altsvc_msg="enabled";
+       enable_altsvc="yes"
+       ;;
+  esac  
+
+]

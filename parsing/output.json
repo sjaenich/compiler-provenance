@@ -1,0 +1,5 @@
+{"StartLine": 0, "EndLine": 1, "PC": "(assert (or and))\n", "Sub": [[{"StartLine": 6, "EndLine": 8, "PC": "(declare-fun |(defined USE_GREETING)| () Bool)\n(assert (or (and |(defined USE_GREETING)|)))\n", "Sub": []}, {"StartLine": 8, "EndLine": 10, "PC": "(declare-fun |(defined USE_GREETING)| () Bool)\n(assert (or (and (not |(defined USE_GREETING)|))))\n", "Sub": []}]]}
+
+=== Additional Information ===
+Line 9 Presence Condition: !(defined USE_GREETING)
+Macro 'null' Values:
