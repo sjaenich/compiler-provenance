@@ -9,9 +9,8 @@ from reverse_engineering.information.information_extractor import InformationExt
 from superc import SuperC
 from presence_condition import PresenceCondition
 from dataclasses import dataclass
-
-
-
+from reverse_engineering.features.feature_extractor import Feature, FeatureExtractor
+from macrostringconnection import *
 
 
 @dataclass    
@@ -60,9 +59,11 @@ def get_variants(entry: TreePath, filepath, library) -> list[TreePath]:
     if len(entry.data) >1:
         return ValueError("TreePath should only have length 1")
     if entry.data[0].macro:
+        print("Macro", entry.data[0].content)
         presence_conditions = SuperC().get_pc_and_macro_values(filepath, library, entry.data[0].line_number, entry.data[0].content)
         for pc in presence_conditions:
-            if pc.macro == "undefined":
+            print("PC", pc.pc, pc.macro)
+            if pc.macro == "undefined" or pc.macro == "None":
                 entry.presence_conditions = And(entry.presence_conditions, pc.pc)
                 variants.append(entry)
             else:
@@ -105,7 +106,7 @@ def resolve_macros(unresolved: list[TreePath]) -> list[TreePath]:
 def get_pc_of_normal_strings(strings: list[TreePath]) -> list[TreePath]:
     resolved_strings = []
     entries = SuperC().get_pc_and_macro_values(filepath, library, None, None)
-    for string in sp.strings:
+    for string in strings:
         entry = entries[0]
         for e in entries:
             if e.line > string.line_number:
@@ -116,66 +117,23 @@ def get_pc_of_normal_strings(strings: list[TreePath]) -> list[TreePath]:
         resolved_strings.append(string_tp)
     return resolved_strings
 
+def connect_pc_and_binary_strings(resolved_strings: list[TreePath], binary_strings: InformationExtractor, features: FeatureExtractor) -> list[Feature]:
+    """
+
+
+    """
+    pass
 
 if __name__ == "__main__":
     
     filepath = sys.argv[1]
     binary_path = sys.argv[2]
     library = sys.argv[3]
-    sp = StringParser(filepath)
-    sp.extract_string_literals()
-    sp.clean_string_literals()
-    # print(sp.strings_with_unresolved_macros)
-    binary_strings = InformationExtractor(file_path=binary_path)
-    resolved_strings = []
-    
-    for concat in sp.strings_with_unresolved_macros:
-        concat_tp = TreePath(concat, True)
-        resolved_strings += get_all(concat_tp, [],filepath, library)
-
-    strings = []
-    entries = SuperC().get_pc_and_macro_values(filepath, library, None, None)
-    for string in sp.strings:
-        entry = entries[0]
-        for e in entries:
-            if e.line > string.line_number:
-                break
-            entry = e
-        # entry = next((e for e in entries if e.line >= string.line_number),None)
-        string_tp = TreePath([string], entry.pc)
-        resolved_strings.append(string_tp)
-
-    found_strings = defaultdict(list)
-    final_solver = Solver()
-    found = False
-    print("Superc is done ")
-    for string_tp in resolved_strings:
-        arguments = []
-        
-        
-        if string_tp.contains_unresolved_macro():
-            arguments = string_tp.to_z3()
-            for target in binary_strings.strings:
-                s = Solver()
-                s.add(Concat(arguments) == target)
-                if s.check() == sat:
-                    print("This is the model", s.model(), string_tp.presence_conditions)
-                    found_strings[target].append((string_tp.presence_conditions, s.model()))
-                    break
-        else:
-            string = string_tp.to_string() 
-            for target in binary_strings.strings:
-                if target == string:
-                    print("This is a ", string, string_tp.presence_conditions)
-                    found_strings[target].append((string_tp.presence_conditions, True))
-                    found = True
-                
-    if not found:
-        for string_tp in resolved_strings:
-            if not string_tp.contains_unresolved_macro():
-                final_solver.add(Not(string_tp.presence_conditions))
-                print(final_solver)
-                final_solver.add(string_tp.presence_conditions)
-                final_solver.check()
-
-    print(final_solver)
+    binary_strings = InformationExtractor(binary_path)
+    sf = SourceFile(filepath, binary_strings, library)
+    solver = sf.get_macro_formulas()
+    if solver.check() == sat:
+        print("HELL YEAH")
+        print(solver.model())
+    for c in solver.assertions():
+        print(c)

@@ -166,14 +166,14 @@ class SuperC:
         pc_file_path += ":" + macro 
       superc_flags = "-sourcelinePC"
       include_flags = "-I"
-      include = "include/"
+      include = "lib/"
       if line_number is None:
         pc_file_path = "/root/all_strings.txt"
         pc_file_path_check = pc_file_path
 
       # superc_flags += " -I . " + srcfile_path
       superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-singleConfigSysheaders", include_flags, include, "%s" % superc_flags, pc_file_path, srcfile_path]
-      
+      print("Superc", superc_sourcelinepc_cmd)
       # Run SuperC
       try:
         self.logger.debug("Running SuperC sourcelinePC.\n")

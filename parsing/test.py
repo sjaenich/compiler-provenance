@@ -166,6 +166,7 @@ if __name__ == "__main__":
     binary_path = Path(binary_path)
     # binary_strings = InformationExtractor(binary_path)
 
+
     # source = SourceFile(filepath,binary_strings, library)
     
     # solver = source.get_macro_formulas()

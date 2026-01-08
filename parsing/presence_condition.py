@@ -1,3 +1,4 @@
+import re
 from ast import literal_eval
 from z3 import *
  
@@ -41,6 +42,7 @@ def parse_AND_connected_smt2(text: str):
 
     for p in parts:
         # parse each SMT-LIB block separately
+        p = re.sub(r'defined ([a-zA-Z0-9_]*)', r'\1', p)
         smt = parse_smt2_string(p)
         z3_exprs.extend(smt)
     # AND all extracted assertions together
