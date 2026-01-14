@@ -59,10 +59,10 @@ def get_variants(entry: TreePath, filepath, library) -> list[TreePath]:
     if len(entry.data) >1:
         return ValueError("TreePath should only have length 1")
     if entry.data[0].macro:
-        print("Macro", entry.data[0].content)
+        
         presence_conditions = SuperC().get_pc_and_macro_values(filepath, library, entry.data[0].line_number, entry.data[0].content)
         for pc in presence_conditions:
-            print("PC", pc.pc, pc.macro)
+        
             if pc.macro == "undefined" or pc.macro == "None":
                 entry.presence_conditions = And(entry.presence_conditions, pc.pc)
                 variants.append(entry)
@@ -117,23 +117,82 @@ def get_pc_of_normal_strings(strings: list[TreePath]) -> list[TreePath]:
         resolved_strings.append(string_tp)
     return resolved_strings
 
-def connect_pc_and_binary_strings(resolved_strings: list[TreePath], binary_strings: InformationExtractor, features: FeatureExtractor) -> list[Feature]:
-    """
 
 
+
+def feature_states_from_solver(solver, features: dict[str, 'BoolRef']):
     """
-    pass
+    Given a solver and feature BoolRefs, return enabled/disabled/unknown features.
+    """
+    if solver.check() != sat:
+        raise ValueError("Solver is UNSAT")
+
+    model = solver.model()
+
+    enabled = set()
+    disabled = set()
+    unknown = set()
+
+    for name, feature in features.items():
+        
+        if type(feature) is bool:
+            continue
+        val = model.eval(feature)
+
+        if is_true(val):
+            enabled.add(name)
+        elif is_false(val):
+            disabled.add(name)
+        else:
+            unknown.add(name)
+
+    return enabled, disabled, unknown
+    
+
+
+
 
 if __name__ == "__main__":
     
-    filepath = sys.argv[1]
-    binary_path = sys.argv[2]
-    library = sys.argv[3]
+    filepatha = sys.argv[1]
+    binary_path = Path(sys.argv[2])
+    library = Path(sys.argv[3])
+    conifgure_path = Path(sys.argv[4])
+    m4_constraints_path = Path(sys.argv[5])
     binary_strings = InformationExtractor(binary_path)
-    sf = SourceFile(filepath, binary_strings, library)
+    solver = Solver()
+    # for filepath in tqdm(library.rglob("*.c")):
+    #     print(filepath)
+    #     sf = SourceFile(filepath, binary_strings, library)
+    #     solver_a = sf.get_macro_formulas()
+    #     solver.add(solver_a.assertions())
+    #     if solver.check() == "unsat":
+    #         print("ERROR", filepath)
+    #         raise KeyError
+
+
+    sf = SourceFile(filepatha, binary_strings, library)
     solver = sf.get_macro_formulas()
+    raise KeyError
     if solver.check() == sat:
         print("HELL YEAH")
-        print(solver.model())
-    for c in solver.assertions():
-        print(c)
+        # print(solver.model())
+    # for c in solver.assertions():
+    #     print(c)
+    features = FeatureExtractor()
+
+
+    features.extract(conifgure_path, m4_constraints_path)
+    bools = features.macros_as_z3()
+    
+    enabled, disabled, unknown = feature_states_from_solver(solver, bools)
+
+    print("Enabled features:")
+    for f in sorted(enabled):
+        print("  +", f)
+    print("\nDisabled features:")
+    for f in sorted(disabled):
+        print("  -", f)
+    print("\nUnknown Features")
+    for f in sorted(unknown):
+        print( " **", f)

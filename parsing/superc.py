@@ -166,14 +166,13 @@ class SuperC:
         pc_file_path += ":" + macro 
       superc_flags = "-sourcelinePC"
       include_flags = "-I"
-      include = "lib/"
+      include = "include/"
       if line_number is None:
         pc_file_path = "/root/all_strings.txt"
         pc_file_path_check = pc_file_path
 
       # superc_flags += " -I . " + srcfile_path
       superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-singleConfigSysheaders", include_flags, include, "%s" % superc_flags, pc_file_path, srcfile_path]
-      print("Superc", superc_sourcelinepc_cmd)
       # Run SuperC
       try:
         self.logger.debug("Running SuperC sourcelinePC.\n")
@@ -181,12 +180,11 @@ class SuperC:
         self.logger.debug("Finished running SuperC sourcelinePC.\n")
 
         # Did SuperC create a presence conditions file?
-        print(pc_file_path_check)
+        
         if not os.path.isfile(pc_file_path_check):
           self.logger.debug("SuperC failed to create presence conditions file at \"%s\".\n" % pc_file_path)
           print("This should no happen")
-          return None #< Error
-        print("Read SuperC")
+          return None #< Error 
         # Read the presence conditions file
         with open(pc_file_path_check, 'r') as f:
           entries = []
@@ -197,8 +195,6 @@ class SuperC:
             entry = PresenceCondition()
             entry.parse(line)
             entries.append(entry)
-        
-        print("done")
         return entries
       except subprocess.TimeoutExpired: #< SuperC timed out
         return None #< Error

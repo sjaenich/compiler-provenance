@@ -40,7 +40,6 @@ class StringParser:
                     node = capture
                     text = self.__code[node.start_byte:node.end_byte].decode()
                     line = node.start_point[0] + 1
-                    print("String", text)
                     self.strings.append(SourceStringEntry(text,line))
             else:
                 for capture in match[1]['concat']:
@@ -59,11 +58,11 @@ class StringParser:
                             concat.append(SourceStringEntry(text,line,macro))
                     if macro:
                         self.strings_with_unresolved_macros.append(concat)
-                        print("Unresolved", concat)
+
                         continue
                     text = self.__code[node.start_byte:node.end_byte].decode()
                     line = node.start_point[0] + 1
-                    print("string", text)
+
                     self.strings.append(SourceStringEntry(text, line))
     
     def clean_string_literals(self) -> None:

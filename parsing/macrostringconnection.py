@@ -20,84 +20,99 @@ class SourceFile:
         self.library_dir = library_dir
         self.binary_strings = binary_strings.strings
         self.source_strings: StringParser
+        self.str_to_pc: dict[str, BoolRef] = dict()
+        self.macro_to_presence_condition: dict[str, BoolRef] = dict()
+        self.macro_string_connection: dict[int, BoolRef] = dict()
+        self.covered_lines: set[int] = set()
+
 
     def get_macro_formulas(self) -> Solver:
+        s = Solver()
         self.source_strings = StringParser(self.source_file_path)
         self.source_strings.extract_string_literals()
         self.source_strings.clean_string_literals()
         print("Getting the strings --> normal and resolved")
         normal_strings = self.source_strings.strings
-        for strings in normal_strings:
-            print("Normal", strings)
         resolved_strings = self.resolve_strings(self.source_strings.strings_with_unresolved_macros) 
-        for s in resolved_strings:
-            print("Resolved", s)
         print("Getting the macro string connections --> normal and resolved")
+        
         msc_normal_strings = self.get_macro_string_connection(normal_strings)
+        if msc_normal_strings is None:
+            return s
+        print("Getting tp connections")
         msc_resolved_strings = self.get_macro_string_tp_connection(resolved_strings)
-
-        s = Solver()
+        if msc_resolved_strings is None:
+            return s
+      
+       
         
         for msc in msc_normal_strings:
-            if msc in msc_resolved_strings:
-                s.add(Or(msc_normal_strings[msc], msc_resolved_strings[msc]))
-                print(msc, "or")
-            else:
-                s.add(msc_normal_strings[msc])
-                print(msc)
+            # print(msc)
+            # if msc in msc_resolved_strings:
+            #     s.add(Or(msc_normal_strings[msc], msc_resolved_strings[msc]))
+            # else:
+            s.add(msc)
             if s.check() != sat:
-                for c in s.assertions():
-                    print(c)
                 raise KeyError
         for msc in msc_resolved_strings:
-            if False:
+            if msc in msc_normal_strings:
                 continue
             else:
-                s.add(msc_resolved_strings[msc])
+                s.add(msc)
             if s.check() != sat:
-                for c in s.assertions():
-                    print(c)
+                # for c in s.assertions():
+                    # print(c)
                 raise KeyError
         return s
 
 
-    def get_macro_string_tp_connection(self, resolved_strings: list[TreePath]) -> dict[int, BoolRef]:
-        mscs = dict()
+
+    def get_macro_string_tp_connection(self, resolved_strings: list[TreePath]) -> set[BoolRef]:
+        macros = set()
+        strings_to_presence_condition = dict()
         found = False
         for string_tp in resolved_strings:
             arguments = []
-            
+            line = string_tp.data[0].line_number
             if string_tp.contains_unresolved_macro():
                 arguments = string_tp.to_z3()
                 for target in self.binary_strings:
                     s = Solver()
                     s.add(Concat(arguments) == target)
                     if s.check() == sat:
-                        
                         m = s.model()
+                        pc = string_tp.presence_conditions
                         for d in m.decls():
-                            pc = And(string_tp.presence_conditions, d() == m[d])
-                        if string_tp.data[0].line_number not in mscs:
-                            mscs[string_tp.data[0].line_number] = pc
+                            if d in self.macro_to_presence_condition:
+                                pc = And(pc, d() == m[d])
+                                pc = Or(pc, self.macro_to_presence_condition[d])
+                                self.macro_to_presence_condition[d] = pc
+                            else:
+                                pc = And(pc, d() == m[d])
+                                self.macro_to_presence_condition[d] = pc
+                        if target not in strings_to_presence_condition:
+                            strings_to_presence_condition[target] = pc                            
                         else:
-                            mscs[string_tp.data[0].line_number] = Or(mscs[string_tp.data[0].line_number], pc)
-                        found = True
-                        print(string_tp.data)
-                          
+                            strings_to_presence_condition[target] = Or(strings_to_presence_condition[target], pc)
             else:
                 string = string_tp.to_string() 
                 for target in self.binary_strings:
                     if target == string:
-                        print(string)
-                        if string_tp.data[0].line_number not in mscs:
-                            mscs[string_tp.data[0].line_number] = string_tp.presence_conditions
+                        if target not in self.strings_to_presence_condition: 
+                            strings_to_presence_condition[target] = string_tp.presence_conditions
                         else:
-                            mscs[string_tp.data[0].line_number] = Or(mscs[string_tp.data[0].line_number], string_tp.presence_conditions)
+                            strings_to_presence_condition[target] = Or(strings_to_presence_condition[target], string_tp.presence_conditions)                            
                         found = True
         
             if not found:
-                mscs[string_tp.data[0].line_number] = Not(string_tp.presence_conditions)
-        return mscs                
+                self.macro_string_connection[string_tp.data[0].line_number] = Not(string_tp.presence_conditions)
+
+        for s in strings_to_presence_condition:
+            macros.add(strings_to_presence_condition[s])
+
+        self.str_to_pc.update(strings_to_presence_condition)
+    
+        return macros                
                 
                 
 
@@ -105,9 +120,13 @@ class SourceFile:
 
 
     def get_macro_string_connection(self, strings: list[SourceStringEntry]) -> dict[int, BoolRef]:
-
+        macros = set()
         resolved_strings = []
+        strings_to_presence_condition = dict()
         entries = SuperC().get_pc_and_macro_values(self.source_file_path, self.library_dir, None, None)
+        if entries == []:
+            print("No Presence Conditions for",  self.source_file_path)
+            return None
         for string in strings:
             entry = entries[0]
             for e in entries:
@@ -117,24 +136,28 @@ class SourceFile:
         # entry = next((e for e in entries if e.line >= string.line_number),None)
             string_tp = TreePath([string], entry.pc)
             resolved_strings.append(string_tp)
-
-        mscs = dict()
+        
+            
         for string in resolved_strings:
             found = False
-            print(string)
             for target in self.binary_strings:
                 if string.data[0].content == target:
-                    if string.data[0].line_number not in mscs:
-                        mscs[string.data[0].line_number] = string.presence_conditions
+                    if target not in strings_to_presence_condition:
+                        strings_to_presence_condition[target] = string.presence_conditions
                     else:
-                        mscs[string.data[0].line_number] = Or(mscs[string.data[0].line_number], string.presence_conditions)
+                        strings_to_presence_condition[target] = Or(strings_to_presence_condition[target], string.presence_conditions)        
                     found = True
             if not found:
-                mscs[string.data[0].line_number] = Not(string.presence_conditions)
+                self.macro_string_connection[string.data[0].line_number] = Not(string.presence_conditions)
 
-        return mscs
+        for s in strings_to_presence_condition:
+            macros.add(strings_to_presence_condition[s])
+        
+        self.str_to_pc.update(strings_to_presence_condition)
+        
 
-
+        
+        return macros
 
 
     def resolve_strings(self, unresolved: list[list[SourceStringEntry]]) -> list[TreePath]:
