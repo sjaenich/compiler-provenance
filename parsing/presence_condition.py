@@ -1,6 +1,6 @@
 import re
 from ast import literal_eval
-from z3 import *
+from z3.z3 import *
  
 def split_on_top_level_AND(text: str):
     parts = []

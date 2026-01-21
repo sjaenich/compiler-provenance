@@ -2,7 +2,6 @@ import sys
 from collections import defaultdict
 import z3
 from z3 import *
-from z3 import And
 import os
 from string_parser import StringParser, SourceStringEntry
 from reverse_engineering.information.information_extractor import InformationExtractor
@@ -161,24 +160,33 @@ if __name__ == "__main__":
     m4_constraints_path = Path(sys.argv[5])
     binary_strings = InformationExtractor(binary_path)
     solver = Solver()
-    # for filepath in tqdm(library.rglob("*.c")):
-    #     print(filepath)
-    #     sf = SourceFile(filepath, binary_strings, library)
-    #     solver_a = sf.get_macro_formulas()
-    #     solver.add(solver_a.assertions())
-    #     if solver.check() == "unsat":
-    #         print("ERROR", filepath)
-    #         raise KeyError
+    index = 0
+    for filepath in tqdm(library.rglob("*.c")):
+        print(filepath)
+        sf = SourceFile(filepath, binary_strings, library, index)
+        solver_a = sf.get_macro_formulas()
+        solver.add(solver_a.assertions())
+        index = sf.index
+        if solver.check() == "unsat":
+            print("ERROR", filepath)
+            raise KeyError
 
-
-    sf = SourceFile(filepatha, binary_strings, library)
-    solver = sf.get_macro_formulas()
-    raise KeyError
-    if solver.check() == sat:
-        print("HELL YEAH")
-        # print(solver.model())
+    # index = 0
+    # sf = SourceFile(filepatha, binary_strings, library, index)
+    # solver = sf.get_macro_formulas()
+    # if solver.check() == sat:
+    #     print("HELL YEAH")
+    #     # print(solver.model())
+    # else:
+    #     print("getting unsat core")
+    #     core = solver.unsat_core()
+    #     print("UNSAT CORE:")
+    #     for c in core:
+    #         print(c)
+    #         print(sf.str_to_pc[c])
+    #     raise KeyError
     # for c in solver.assertions():
-    #     print(c)
+        # print(c)
     features = FeatureExtractor()
 
 

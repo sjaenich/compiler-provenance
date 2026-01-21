@@ -1,9 +1,16 @@
+from __future__ import annotations
 from collections import defaultdict
 from pathlib import Path
 import re
 import subprocess
 import os
+from dataclasses import dataclass
+from z3.z3 import *
 
+@dataclass
+class Feature:
+    name: str
+    macros: list[str]
 
 
 class FeatureExtractor:
@@ -13,7 +20,8 @@ class FeatureExtractor:
     """ 
     def __init__(self):
         self.feature_map: dict
-        self.macros: list = []   
+        self.macros: list = []
+        self.features: list[Feature]
         
 
     def extract(self, configure_ac_path: Path, m4_constraints_path: Path):
@@ -30,7 +38,6 @@ class FeatureExtractor:
         results = parse_macro_file(enable_json)
 
         self.feature_map = self.connect_features_and_macros(results)
-
         return results
 
 
@@ -58,6 +65,31 @@ class FeatureExtractor:
         self.feature_map = result      
         return result
         
+
+    def macros_as_z3(self) -> dict[str, dict[str, BoolRef]]:
+        """
+        Returns:
+          {
+            '--disable-http': {
+                'CURL_DISABLE_HTTP': BoolRef,
+                'CURL_DISABLE_RTSP': BoolRef
+            },
+            ...
+          }
+        """
+        result: dict[str, dict[str, BoolRef]] = {}
+
+        for flag, macros in self.feature_map.items():
+            macro_bool = True
+
+            for macro in macros:
+                # "CURL_DISABLE_HTTP=1" -> "CURL_DISABLE_HTTP"
+                name = macro.split("=", 1)[0]
+                boolo = Bool(name)
+                macro_bool = And(macro_bool, boolo)
+            result[flag] = macro_bool
+
+        return result
 
 
 
@@ -153,7 +185,7 @@ def run(cwd, command):
     """
     print(command)
     try:
-        result = subprocess.run(command, cwd=cwd, check=True)
+        result = subprocess.run(command, cwd=cwd, check=True, capture_output=True,text=True)
     except subprocess.CalledProcessError as c:
         pass
     

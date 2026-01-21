@@ -29,7 +29,7 @@ def run(args, stdin=None, capture_stdout=True, capture_stderr=True, cwd=None, ti
   env = os.environ.copy()
 
   # Set your variables
-  env["JAVA_DEV_ROOT"] = "/root/Tools/superc/"  # adjust if needed
+  env["JAVA_DEV_ROOT"] = "/workspaces/RevEng/Tools/superc/"  # adjust if needed
 
   # Build CLASSPATH in Python
   env["CLASSPATH"] = (
@@ -149,8 +149,8 @@ class SuperC:
       """
       Get the presence conditions of a line number and if applicable  the Macro value 
       """
-
-      pc_file_path = "/root/output.txt"
+      
+      pc_file_path = "/workspaces/RevEng/output.txt"
       self.logger.debug("Presence conditions file will be created at \"%s\".\n" % pc_file_path)
       pc_file_path_check = pc_file_path
       # If a pc file already exists, rename it to have .old extension
@@ -168,17 +168,15 @@ class SuperC:
       include_flags = "-I"
       include = "include/"
       if line_number is None:
-        pc_file_path = "/root/all_strings.txt"
+        pc_file_path = "/workspaces/RevEng/all_strings.txt"
         pc_file_path_check = pc_file_path
-
       # superc_flags += " -I . " + srcfile_path
       superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-singleConfigSysheaders", include_flags, include, "%s" % superc_flags, pc_file_path, srcfile_path]
       # Run SuperC
       try:
         self.logger.debug("Running SuperC sourcelinePC.\n")
         out, err, ret, time_elapsed = run(superc_sourcelinepc_cmd, cwd=library_dir)
-        self.logger.debug("Finished running SuperC sourcelinePC.\n")
-
+        self.logger.debug("Finished running SuperC sourcelinePC.\n") 
         # Did SuperC create a presence conditions file?
         
         if not os.path.isfile(pc_file_path_check):
