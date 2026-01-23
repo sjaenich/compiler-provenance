@@ -44,9 +44,12 @@ class StringParser:
             else:
                 for capture in match[1]['concat']:
                     node = capture
+                    false_positiv = False
                     macro = False
                     concat = []
+                    # print("it starts")
                     for child in node.children:
+                        # print("child")
                         if child.type == "string_literal":
                             text = self.__code[child.start_byte:child.end_byte].decode()
                             line = child.start_point[0] + 1
@@ -55,7 +58,15 @@ class StringParser:
                             text =  self.__code[child.start_byte:child.end_byte].decode()
                             line = child.start_point[0] + 1
                             macro = True
-                            concat.append(SourceStringEntry(text,line,macro))
+                            # print(text)
+                            if ("ENABLE" in text) or "DISABLE" in text or "USE" in text:
+                                # print("never")
+                                false_positiv = True
+                                break
+                            concat.append(SourceStringEntry(text,line,macro))                               
+                    # print("concat", concat)
+                    if false_positiv:
+                        continue
                     if macro:
                         self.strings_with_unresolved_macros.append(concat)
 

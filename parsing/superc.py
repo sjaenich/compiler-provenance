@@ -167,15 +167,19 @@ class SuperC:
       superc_flags = "-sourcelinePC"
       include_flags = "-I"
       include = "include/"
+      mock_header ="-include"
+      mock_header_location = "/workspaces/RevEng/standard_b_header.h"
       if line_number is None:
         pc_file_path = "/workspaces/RevEng/all_strings.txt"
         pc_file_path_check = pc_file_path
       # superc_flags += " -I . " + srcfile_path
-      superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-singleConfigSysheaders", include_flags, include, "%s" % superc_flags, pc_file_path, srcfile_path]
+      superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-singleConfigSysheaders", mock_header, mock_header_location, include_flags, include, "%s" % superc_flags, pc_file_path, srcfile_path]
       # Run SuperC
       try:
         self.logger.debug("Running SuperC sourcelinePC.\n")
+        # print(superc_sourcelinepc_cmd)
         out, err, ret, time_elapsed = run(superc_sourcelinepc_cmd, cwd=library_dir)
+        # print(out,err,ret)
         self.logger.debug("Finished running SuperC sourcelinePC.\n") 
         # Did SuperC create a presence conditions file?
         

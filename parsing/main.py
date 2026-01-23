@@ -1,5 +1,5 @@
 from z3.z3 import *
-
+import re  
 HAVE_CONFIG_H = Bool('HAVE_CONFIG_H')
 HTTP_ENABLE = Bool('HTTP_ENABLE')
 M1 = Bool('HAVE_FTP')
@@ -19,8 +19,10 @@ SourceStrings = [
     StringVal("https"),
     Concat(StringVal("htt"), X )
 ]
-
-
+p = " CURL_DISABLE_FTP "
+print(p)
+p = re.sub(r'^\s+|\s+$', '', p)
+print(p)
 Y=Int('Y')
 # Binary string as Boolean
 # True if "http" exists in binary
@@ -33,11 +35,11 @@ m = Bool('m')  # schematic; see note below
 solver = Solver()
 r = String('r')
 Q = Function('Q', StringSort(),BoolSort())
-solver.add((MacroConditions == InBinary(Source_http, 1)))
-solver.add((And(M1, Not(M2))) == InBinary(StringVal("https"),IntVal(2)))
-solver.add((MacroConditions == InBinary(StringVal("https"),IntVal(3))))
-solver.add((M3 == InBinary(StringVal("http"), IntVal(4))))
-solver.add((M3) == InBinary(StringVal("https"),5))
+solver.add((MacroConditions == InBinary(StringVal("https"), 1)))
+# solver.add((And(M1, Not(M2))) == InBinary(StringVal("https"),IntVal(2)))
+# solver.add((MacroConditions == InBinary(StringVal("https"),IntVal(3))))
+# solver.add((M3 == InBinary(StringVal("http"), IntVal(4))))
+# solver.add((M3) == InBinary(StringVal("https"),5))
 # Solver Typechecking einschalten
 
 # solver.add(
@@ -86,8 +88,8 @@ print("Solver check:", solver.check())
 if solver.check() == sat:
     m = solver.model()
     print("Macros and string values:")
-    print("HAVE_CONFIG_H =", m.evaluate(HAVE_CONFIG_H))
-    print("HTTP_ENABLE   =", m.evaluate(HTTP_ENABLE))
+    print("HAVE_CONFIG_H =", m.evaluate(Bool("HAVE_CONFIG_H")))
+    print("HTTP_ENABLE   =", m.evaluate(HAVE_CONFIG_H))
     print("HAVE_FTP =", m.evaluate(M1))
     print("HTTP_ENABL 2 =", m.evaluate(M2))
     print("http  1 = ", m.evaluate(InBinary(StringVal("https"),2)))

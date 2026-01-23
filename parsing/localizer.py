@@ -58,8 +58,8 @@ def get_variants(entry: TreePath, filepath, library) -> list[TreePath]:
     if len(entry.data) >1:
         return ValueError("TreePath should only have length 1")
     if entry.data[0].macro:
-        
         presence_conditions = SuperC().get_pc_and_macro_values(filepath, library, entry.data[0].line_number, entry.data[0].content)
+        
         for pc in presence_conditions:
         
             if pc.macro == "undefined" or pc.macro == "None":
@@ -100,6 +100,7 @@ def resolve_macros(unresolved: list[TreePath]) -> list[TreePath]:
     for concat in unresolved:
         concat_tp = TreePath(concat, True)
         resolved_strings += get_all(concat_tp, [],filepath, library)
+    
     return resolved_strings
 
 def get_pc_of_normal_strings(strings: list[TreePath]) -> list[TreePath]:
@@ -136,8 +137,8 @@ def feature_states_from_solver(solver, features: dict[str, 'BoolRef']):
         
         if type(feature) is bool:
             continue
-        val = model.eval(feature)
-
+        val = model.eval(feature, model_completion=True)
+        
         if is_true(val):
             enabled.add(name)
         elif is_false(val):
@@ -162,6 +163,7 @@ if __name__ == "__main__":
     solver = Solver()
     index = 0
     for filepath in tqdm(library.rglob("*.c")):
+    # for filepath in [filepatha, "/workspaces/RevEng/buildroot-2025.02.4/output/build/libcurl-7.71.1/lib/http.c"]:
         print(filepath)
         sf = SourceFile(filepath, binary_strings, library, index)
         solver_a = sf.get_macro_formulas()
@@ -170,23 +172,28 @@ if __name__ == "__main__":
         if solver.check() == "unsat":
             print("ERROR", filepath)
             raise KeyError
-
+        else:
+            m = solver.model()
+            print(m)
+            
     # index = 0
     # sf = SourceFile(filepatha, binary_strings, library, index)
     # solver = sf.get_macro_formulas()
     # if solver.check() == sat:
     #     print("HELL YEAH")
-    #     # print(solver.model())
+    #     m = solver.model()
+    #     print(m)
+    #     # for d in m.decls():
+    #     #     print(d.name(), m[d])
     # else:
-    #     print("getting unsat core")
-    #     core = solver.unsat_core()
+    #     # print("getting unsat core")
+    #     # core = solver.unsat_core()
     #     print("UNSAT CORE:")
-    #     for c in core:
-    #         print(c)
-    #         print(sf.str_to_pc[c])
     #     raise KeyError
     # for c in solver.assertions():
-        # print(c)
+    #     # print(c)
+    # print("Evaluate" ,  m.evaluate(Bool(" CURL_DISABLE_FTP ")))
+    # print("Evaluate", m.evaluate(Bool("CURL_FORMAT_CURL_OFF_T")))
     features = FeatureExtractor()
 
 

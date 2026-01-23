@@ -42,10 +42,18 @@ def parse_AND_connected_smt2(text: str):
 
     for p in parts:
         # parse each SMT-LIB block separately
-        p = re.sub(r'defined ([a-zA-Z0-9_]*)', r'\1', p)
+        p = re.sub(r'\bdefined\s+([A-Za-z0-9_]+)', r'\1', p)
+        p = re.sub(r'\(\s*([A-Za-z0-9_]+)\s*\)', r'\1', p)
+        p = re.sub(r'\|\s*([^|]+?)\s*\|', r'|\1|', p)
+        
         smt = parse_smt2_string(p)
         z3_exprs.extend(smt)
     # AND all extracted assertions together
+        # for e in z3_exprs:
+        #     print(e, type(e))
+        #     if isinstance(e,BoolRef):
+        #         print("this is it", e)
+        # raise KeyError
     return And(*[e for e in z3_exprs if isinstance(e, BoolRef)])
 
 

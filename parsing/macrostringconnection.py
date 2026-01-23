@@ -53,7 +53,34 @@ class SourceFile:
 
         SourceStrings = self.source_code_strings
         IndexSet = self.index_set
-        self.solver.assert_and_track(
+        # self.solver.assert_and_track(
+        #     ForAll(
+        #         [s],
+        #             (Implies(
+        #                 Or([s ==  b for b in BinaryStrings]),   
+        #                 Exists(
+        #                     [i],
+        #                     And(
+        #                         Or([And(i == IntVal(v), s== r) for (r,v) in IndexSet]), 
+        #                         InBinary(s, i)
+        #                     )
+        #                 )
+        #             ) for s in SourceStrings)
+        #         )
+        #     , Bool("Q_exists")
+        # )
+        # print("The solver is done being prepared")
+
+        # Strings mit gleicher PresenceCondition reichen dass einer wahr ist.
+
+
+        # self.solver.assert_and_track(
+        #    ForAll(
+        #         [s,i],
+        #         Implies(InBinary(s,i), Or([s == b for b in BinaryStrings]))
+        #         ), Bool("Q_Inbinary")
+        # )   
+        self.solver.add(
             ForAll(
                 [s],
                     (Implies(
@@ -67,16 +94,19 @@ class SourceFile:
                         )
                     ) for s in SourceStrings)
                 )
-            , Bool("Q_exists")
         )
         print("The solver is done being prepared")
-        self.solver.assert_and_track(
-           ForAll(
-                [s,i],
-                Implies(InBinary(s,i), Or([s == b for b in BinaryStrings]))
-                ), Bool("Q_Inbinary")
-        )   
-        
+        # self.solver.add(
+        #    ForAll(
+        #         [s,i],
+        #         Implies(InBinary(s,i), Or([s == b for b in BinaryStrings]))
+        #         )
+        # )   
+        # print(self.solver.assertions())
+        # if self.solver.check() == sat:
+        #     print(self.solver.model())
+        #     raise KeyError
+
         return self.solver
 
 
@@ -201,12 +231,14 @@ class SourceFile:
         return macros
 
 
+
+
     def resolve_strings(self, unresolved: list[list[SourceStringEntry]]) -> list[TreePath]:
         resolved_strings = []
         for concat in tqdm(unresolved):
             concat_tp = TreePath(concat, True)
             resolved_strings += get_all(concat_tp, [], self.source_file_path, self.library_dir)
-
+        print(resolved_strings)
         return resolved_strings
 
 
@@ -236,7 +268,8 @@ class SourceFile:
             string = string_tp.to_string()
             # print("normal",string_tp.presence_conditions == InBinary(StringVal(string), self.index) )
             label = Bool(f"pc_{string}_{self.index}")
-            self.solver.assert_and_track(string_tp.presence_conditions == InBinary(StringVal(string), self.index), label)
+            # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(StringVal(string), self.index), label)
+            self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
             self.str_to_pc[label] = string_tp.presence_conditions 
             self.index_set.append((string, self.index))
             self.source_code_strings.append(string)
@@ -261,7 +294,8 @@ class SourceFile:
                 arguments = string_tp.to_z3()
                 # print("unresolved", string_tp.presence_conditions == InBinary(Concat(arguments), self.index))
                 label = Bool(f"pc{Concat(arguments)}_{self.index}")
-                self.solver.assert_and_track(string_tp.presence_conditions == InBinary(Concat(arguments), self.index), label)
+                # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(Concat(arguments), self.index), label)
+                self.solver.add(string_tp.presence_conditions == InBinary(Concat(arguments), self.index))
                 self.index_set.append((Concat(arguments), self.index))
                 self.source_code_strings.append(Concat(arguments))
                 self.str_to_pc[label] = string_tp.presence_conditions
@@ -269,7 +303,8 @@ class SourceFile:
             else:
                 string = string_tp.to_string()
                 label = Bool(f"pc_{string}_{self.index}")
-                self.solver.assert_and_track(string_tp.presence_conditions == InBinary(StringVal(string), self.index), label)
+                # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(StringVal(string), self.index), label)
+                self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
                 # print("resolved", string_tp.presence_conditions == InBinary(StringVal(string), self.index))
                 self.index_set.append((string, self.index))
                 self.source_code_strings.append(string)
