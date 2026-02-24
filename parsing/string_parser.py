@@ -17,6 +17,41 @@ class StringParser:
         self.__code = Path(path).read_bytes()
         self.__tree = parser.parse(self.__code)
 
+    def add_func_names(self):
+        root = self.__tree.root_node
+        self.strings.extend(self.find_function(root, self.__code))
+
+    def find_function(self, node, source):
+        results = []
+
+        if node.type == "function_definition":
+            declarator = node.child_by_field_name("declarator")
+            if declarator:
+                identifier = self.find_identifier(declarator)
+                if identifier:
+                    name = source[identifier.start_byte:identifier.end_byte].decode()
+                    line = identifier.start_point[0] + 1
+                    print(name)
+                    results.append(SourceStringEntry(name, line))
+
+        for child in node.children:
+            results.extend(self.find_function(child, source))
+        # print("func names", results)
+        return results
+
+
+    def find_identifier(self, node):
+        if node.type == "identifier":
+            return node
+        for child in node.children:
+            result = self.find_identifier(child)
+            if result:
+                return result
+        return None
+
+
+
+
 
     def print_tree(self, node, indent=0):
         start = node.start_point

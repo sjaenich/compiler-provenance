@@ -1,97 +1,94 @@
 from z3.z3 import *
 import re  
-HAVE_CONFIG_H = Bool('HAVE_CONFIG_H')
-HTTP_ENABLE = Bool('HTTP_ENABLE')
-M1 = Bool('HAVE_FTP')
-M2 = Bool('HTTP_ENABLE')
-M3 = Bool('HAVE_H')
-MacroConditions = And(HAVE_CONFIG_H, HTTP_ENABLE)
-X=String('X')
-# Source string as Boolean
-Source_http = Concat(StringVal("htt"), X)
-# Source_http = StringVal('http')  # True if "http" exists in source
-BinaryStrings = [
-   "https"
+from pathlib import Path
+from reverse_engineering.features.feature_extractor import Feature, FeatureExtractor
+
+ground_truth = [
+     "--disable-ntlm",
+  "--disable-ntlm-wb",
+  "--disable-curldebug",
+  "--disable-libcurl-option",
+  "--disable-ldap",
+  "--disable-ldaps",
+  "--disable-threaded-resolver",
+  "--disable-verbose", 
+  "--disable-ares", 
+  "--enable-cookies", 
+  "--enable-proxy",
+  "--disable-websockets", 
+  "--enable-dict",
+  "--enable-gopher",
+  "--enable-imap",
+  "--enable-pop3",
+  "--enable-rtsp",
+  "--enable-smb",
+  "--enable-smtp",
+  "--enable-telnet",
+  "--enable-tftp",
 ]
 
-SourceStrings = [
-    StringVal("http"),
-    StringVal("https"),
-    Concat(StringVal("htt"), X )
-]
-p = " CURL_DISABLE_FTP "
-print(p)
-p = re.sub(r'^\s+|\s+$', '', p)
-print(p)
-Y=Int('Y')
-# Binary string as Boolean
-# True if "http" exists in binary
 
-Equations = [ IntVal(1) , IntVal(2),  IntVal(3)]
-InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
-s = String('s')
-i = Int('i')
-m = Bool('m')  # schematic; see note below
 solver = Solver()
-r = String('r')
-Q = Function('Q', StringSort(),BoolSort())
-solver.add((MacroConditions == InBinary(StringVal("https"), 1)))
-# solver.add((And(M1, Not(M2))) == InBinary(StringVal("https"),IntVal(2)))
-# solver.add((MacroConditions == InBinary(StringVal("https"),IntVal(3))))
-# solver.add((M3 == InBinary(StringVal("http"), IntVal(4))))
-# solver.add((M3) == InBinary(StringVal("https"),5))
-# Solver Typechecking einschalten
+solver.from_file("state.smt2.old")
+x=Bool("CURL_DISABLE_HTTP")
+solver.add(x==False)
 
-# solver.add(
- 
-#     ForAll(
-#         [s,i],
-#         InBinary(s,i ) == Or([s == b for b in BinaryStrings])
-#     )
- 
-# )
 
-IndexSet = [ ("http" ,4), ("https",5) ]
- 
-solver.add(
-    ForAll(
-        [s],
-        Implies(Or([s == t for t in SourceStrings]),
-        Implies(
-            Or([s ==  b for b in BinaryStrings]),   
-            Exists(
-                [i],
-                And(
-                    Or([And(i == IntVal(v), s== r) for (r,v) in IndexSet]), 
-                    InBinary(s, i)
-                )
-            )
-        )
-        )
-    )
-)
-# solver.add(
-#     ForAll(
-#         [s,i],
-#         Implies(InBinary(s,i), Or([s == b for b in BinaryStrings]))
-#     )
-# )
+configure_path = Path("/workspaces/RevEng/buildroot-2025.02.4/output/build/libcurl-7.71.1/configure.ac")
+m4_constraints_path = Path("/workspaces/RevEng/Tools/compiler-provenance/reverse_engineering/features/extract.m4")
+
+features = FeatureExtractor()
+
+
+features.extract(configure_path, m4_constraints_path)
+bools = features.macros_as_z3()
 
 
 
-print(solver.assertions())
-# solver.add(ec)
+enabled = set()
+disabled = set()
+unknown = set()
+for name, feature in bools.items():
+        
+    if type(feature) is bool:
+        continue
+    
+    solver.add(feature == True)
+    
 
-# solver.add(EquivCondition)
+if solver.check() == unsat:
+    print("Does not work")
+    raise KeyError
+print(bools)
+model = solver.model()
+print("Test", model.eval(Bool("CURL_DISABLE_COOKIES")))
+for name, feature in bools.items():
+        
+    if type(feature) is bool:
+        continue
 
-print("Solver check:", solver.check())
-if solver.check() == sat:
-    m = solver.model()
-    print("Macros and string values:")
-    print("HAVE_CONFIG_H =", m.evaluate(Bool("HAVE_CONFIG_H")))
-    print("HTTP_ENABLE   =", m.evaluate(HAVE_CONFIG_H))
-    print("HAVE_FTP =", m.evaluate(M1))
-    print("HTTP_ENABL 2 =", m.evaluate(M2))
-    print("http  1 = ", m.evaluate(InBinary(StringVal("https"),2)))
-    print("http 2 = ", m.evaluate(InBinary(StringVal("http"),3)))
-    print("M3 =", m.evaluate(M3))
+
+    val = model.eval(feature)
+    print(feature, val)
+    if is_true(val):
+        enabled.add(name)
+    elif is_false(val):
+        disabled.add(name)
+    else:
+        unknown.add(name)
+
+print("Enabled features:")
+for f in sorted(enabled):
+    print("  +", f)
+print("\nDisabled features:")
+for f in sorted(disabled):
+    print("  -", f)
+print("\nUnknown Features")
+for f in sorted(unknown):
+    print( " **", f)
+# if solver.check() == sat:
+#     print(solver.model())
+
+
+
+

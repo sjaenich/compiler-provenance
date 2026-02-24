@@ -1,0 +1,31 @@
+Enabled features:
+  + --disable-ldap
+  + --disable-ldaps
+  + --disable-libcurl-optionDisable
+  + --disable-verbose
+
+Disabled features:
+  - --disable-cookies
+  - --disable-crypto-auth
+  - --disable-dateparse
+  - --disable-dict
+  - --disable-dnsshuffle
+  - --disable-doh
+  - --disable-file
+  - --disable-ftp
+  - --disable-gopher
+  - --disable-http
+  - --disable-http-auth
+  - --disable-imap
+  - --disable-mime
+  - --disable-netrc
+  - --disable-openssl-auto-load-configDisable
+  - --disable-pop3
+  - --disable-progress-meterDisable
+  - --disable-proxy
+  - --disable-rtsp
+  - --disable-smb
+  - --disable-smtp
+  - --disable-telnet
+  - --disable-tftp
+  - --enable-mqtt

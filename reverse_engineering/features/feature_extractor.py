@@ -31,8 +31,8 @@ class FeatureExtractor:
         3. Parse the resulting file to a list of dictionaries
         4. Connect enable and with features to the corresponding Macros
         """
-        append_enable_json_block(configure_ac_path)
-        run(configure_ac_path.cwd(),["autom4te", "--language=autoconf", str(m4_constraints_path), str(configure_ac_path)])
+        # append_enable_json_block(configure_ac_path)
+        # run(configure_ac_path.cwd(),["autom4te", "--language=autoconf", str(m4_constraints_path), str(configure_ac_path)])
         enable_json=Path(str(configure_ac_path.cwd()) + "/enable-options.json")    
             
         results = parse_macro_file(enable_json)
