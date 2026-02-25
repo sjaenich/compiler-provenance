@@ -150,7 +150,7 @@ class SuperC:
       Get the presence conditions of a line number and if applicable  the Macro value 
       """
       
-      pc_file_path = "/workspaces/RevEng/output.txt"
+      pc_file_path = "/workspaces/RevEng/output" + library_dir + ".txt"
       self.logger.debug("Presence conditions file will be created at \"%s\".\n" % pc_file_path)
       pc_file_path_check = pc_file_path
       # If a pc file already exists, rename it to have .old extension
@@ -170,7 +170,7 @@ class SuperC:
       mock_header ="-include"
       mock_header_location = "/workspaces/RevEng/other_defines.h"
       if line_number is None:
-        pc_file_path = "/workspaces/RevEng/all_strings.txt"
+        pc_file_path = "/workspaces/RevEng/all_strings" + library_dir +  ".txt"
         pc_file_path_check = pc_file_path
       # superc_flags += " -I . " + srcfile_path
       superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-restrictFreeToHeader", "/workspaces/RevEng/buildroot-2025.02.4/output/build/libcurl-7.71.1/curl_config.h", mock_header, mock_header_location, include_flags, include, "%s" % superc_flags, pc_file_path, srcfile_path]

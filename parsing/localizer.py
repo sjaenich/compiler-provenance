@@ -222,7 +222,7 @@ if __name__ == "__main__":
             index = sf.index
             s = String('s')
             i = Int('i') 
-            # BinaryStrings.extend(sf.binary_strings)
+            
             InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
             SourceStrings.extend(sf.source_code_strings)
             IndexSet.extend(sf.index_set)
@@ -232,12 +232,7 @@ if __name__ == "__main__":
 
     BinaryStrings.extend(sf.binary_strings)
         
-        # if solver.check() == "unsat":
-        #     print("ERROR", filepath)
-        #     raise KeyError
-        # else:
-        #     m = solver.model()
-        #     print(m)
+
     InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
  
     
@@ -342,32 +337,9 @@ if __name__ == "__main__":
 
     
        
-    # with open("state.smt2", "w") as f:
-    #     f.write(solver.to_smt2())
 
-    # for d in solver.assertions():
-    #     print(d)
-
-    # check = solver.check()
-    # if check == sat:
-    #     print("HELL YEAH")
-        
-    # elif check == unsat:
-    #     print("getting unsat core")
-    #     raise KeyError
-    # else:
-    #     print("Check", check)
-        # core = solver.unsat_core()
-        # print("UNSAT CORE:")
-        # raise KeyError
-        # for c in core:
-            # print(c)
-    # for c in solver.assertions():
-    #     # print(c)
-    # print("Evaluate" ,  m.evaluate(Bool(" CURL_DISABLE_FTP ")))
-    # print("Evaluate", m.evaluate(Bool("CURL_FORMAT_CURL_OFF_T")))
     features = FeatureExtractor()
-    # raise KeyError
+   # raise KeyError
 
     features.extract(conifgure_path, m4_constraints_path)
     bools = features.macros_as_z3()
@@ -388,15 +360,12 @@ if __name__ == "__main__":
     #             macro_name = m_undef.group(1)
     #             solver.add(Bool(macro_name) == False)
     #             print("Bools", macro_name, "false")
+     
     
-    # solver.add(Bool("CURL_DISABLE_HTTP") == False)
-    # solver.add(Bool("HTTP_ONLY")==False)
     for d in solver.assertions():
         print("Assertion", d)
 
-    # solver.add(InBinary(StringVal("Content-Length: %lld"), IntVal(497)) ==True )
-
-
+    
     check = solver.check()
     if check == sat:
         print("HELL YEAH")
