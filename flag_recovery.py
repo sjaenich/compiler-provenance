@@ -16,8 +16,8 @@ from .parsing.macrostringconnection import *
 
 class FlagRecovery:
 
-    def __init__(self, files: Path, binary_path: Path, library_dir: Path, config_h: Path, name: str, include_dir: str):
-        self.files = files
+    def __init__(self, source_dir: Path, binary_path: Path, library_dir: Path, config_h: Path, name: str, include_dir: str):
+        self.source_dir = source_dir
         self.binary_path = binary_path
         self.library_dir = library_dir
         self.config_h = config_h
@@ -30,7 +30,7 @@ class FlagRecovery:
     def collect_presence_conditions(self) -> list[str]: 
         binary_strings = InformationExtractor(self.binary_path)
         index = 0
-        for filepath in tqdm(self.library_dir.rglob("*.c")):
+        for filepath in tqdm(self.source_dir.rglob("*.c")):
             print(filepath)
             # TODO: Add the config_h location and the new other_defines location, maybe just give the name... 
             sf = SourceFile(filepath, binary_strings, self.library_dir, index, self.config_h, self.name, self.include_dir)
