@@ -2,10 +2,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from z3.z3 import *
 from z3.z3 import BoolRef
-from reverse_engineering.information.information_extractor import InformationExtractor
-from parsing.string_parser import StringParser, SourceStringEntry
-from localizer import TreePath
-from localizer import *
+from compiler_provenance.reverse_engineering.information.information_extractor import InformationExtractor
+from .string_parser import StringParser, SourceStringEntry
 from tqdm import tqdm
 
 @dataclass
@@ -14,8 +12,50 @@ class MSC:
     line: int
 
 
+@dataclass    
+class TreePath:
+    data: list[SourceStringEntry]
+    presence_conditions: BoolRef
+
+
+    def __add__(self, other: "TreePath") -> "TreePath":
+        if not isinstance(other, TreePath):
+            return NotImplemented
+        return TreePath(self.data + other.data, And(self.presence_conditions,other.presence_conditions))
+    def head(self) -> "TreePath":
+        return TreePath([self.data[0]],self.presence_conditions)
+
+    def tail(self) -> "TreePath":
+        return TreePath(self.data[1:], self.presence_conditions)
+    
+    def to_string(self) -> str:
+        string =""
+        for sse in self.data:
+            string += sse.content
+        return string
+
+    def to_z3(self) -> BoolRef:
+        arguments = []
+        for sse in self.data:
+            if sse.macro:
+                x = String(sse.content)
+                arguments.append(x)
+            else:
+                arguments.append(sse.content)
+        return arguments
+
+    def contains_unresolved_macro(self) -> bool:
+        for sse in self.data:
+            if sse.macro:
+                return True
+        return False
+    
+    def __len__(self) -> int:
+        return len(self.data)
+
+
 class SourceFile:
-    def __init__(self, source_file_path :Path, binary_strings: InformationExtractor, library_dir: str, index: int):
+    def __init__(self, source_file_path :Path, binary_strings: InformationExtractor, library_dir: str, index: int, config_h: Path, name: str, include_dir: str):
         self.source_file_path = source_file_path
         self.library_dir = library_dir
         self.binary_strings = binary_strings.strings
@@ -28,6 +68,9 @@ class SourceFile:
         self.index_set: list = []
         self.source_code_strings: list[str] = []
         self.index: int = index
+        self.config_h = config_h
+        self.name = name
+        self.include_dir = include_dir
 
     def get_macro_formulas(self) -> Solver:
         self.solver = Solver()
@@ -64,7 +107,7 @@ class SourceFile:
         resolved_strings = []
         for concat in tqdm(unresolved):
             concat_tp = TreePath(concat, True)
-            resolved_strings += get_all(concat_tp, [], self.source_file_path, self.library_dir)
+            resolved_strings += self._get_all(concat_tp, [], self.source_file_path, self.library_dir)
         return resolved_strings
 
 
@@ -145,3 +188,42 @@ class SourceFile:
             #         print(c)
             #         print(self.str_to_pc[c])
             #     raise KeyError
+    def _get_variants(self, entry: TreePath, filepath, library) -> list[TreePath]:
+        variants = []
+        if len(entry.data) >1:
+            return ValueError("TreePath should only have length 1")
+        if entry.data[0].macro:
+            presence_conditions = SuperC().get_pc_and_macro_values(filepath, library, entry.data[0].line_number, entry.data[0].content, self.config_h, self.name, self.include_dir)
+            
+            for pc in presence_conditions:
+            
+                if pc.macro == "undefined" or pc.macro == "None":
+                    entry.presence_conditions = And(entry.presence_conditions, pc.pc)
+                    variants.append(entry)
+                else:
+                    new_sse = SourceStringEntry(pc.macro, pc.line, False)
+                    new_tp = TreePath([new_sse], pc.pc)
+                    variants.append(new_tp)
+        else:
+            variants.append(entry)
+        return variants
+
+
+    def _get_all(self,input: TreePath, outputs: list[TreePath], filepath, library) -> list[TreePath]:
+        if len(input) == 0:
+            return outputs
+        h = input.head()
+        
+        variants = self._get_variants(h, filepath, library)
+        tail = input.tail()
+        old_outputs = outputs.copy()
+        outputs.clear()
+        for variant in variants:
+            # print("Variant", variant)    
+            for output in old_outputs:
+                # print("Output", output)
+                outputs.append(output + variant)
+            if outputs == []:
+                outputs.append(variant)
+        
+        return self._get_all(tail, outputs, filepath, library)
