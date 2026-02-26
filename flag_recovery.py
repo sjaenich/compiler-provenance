@@ -30,7 +30,8 @@ class FlagRecovery:
     def collect_presence_conditions(self) -> list[str]: 
         binary_strings = InformationExtractor(self.binary_path)
         index = 0
-        for filepath in tqdm(self.source_dir.rglob("*.c")):
+        for filepath in ["/workspaces/RevEng/buildroot-2025.02.4/output/build/libcurl-7.71.1/lib/http.c"]:
+        # tqdm(self.source_dir.rglob("*.c")):
             print(filepath)
             # TODO: Add the config_h location and the new other_defines location, maybe just give the name... 
             sf = SourceFile(filepath, binary_strings, self.library_dir, index, self.config_h, self.name, self.include_dir)
@@ -39,6 +40,7 @@ class FlagRecovery:
                 self.solver.add(solver_a.assertions())
                 index = sf.index
                 self.SourceStrings.extend(sf.source_code_strings)
+                print("Index set size", len(sf.index_set))
                 self.IndexSet.extend(sf.index_set)
             except Exception as e:
                 print("EXCEPTION", e)   
@@ -79,11 +81,12 @@ class FlagRecovery:
 
 
         m = self.solver.model()
-
+        print("INdexSet:", self.IndexSet)
         concrete = []  
         symbolic = []
         for (r, i) in self.IndexSet:
             if isinstance(r, str):
+                print("concrete", r, i)
                 concrete.append((r, i))
             else:
                 symbolic.append((r, i))
@@ -152,7 +155,7 @@ class FlagRecovery:
     def recover_macros(self, binary_strings, external_strings):
         self.solver.push()
         InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
-
+        print("Binary strings:", binary_strings)
         concrete = []  
         symbolic = []
         for (r, i) in self.IndexSet:
@@ -182,6 +185,7 @@ class FlagRecovery:
                 print(s, indices, index_by_string[s])
                 if s in base:
                     continue
+                print("Adding to solver:", s, indices)
                 self.solver.add(
                     Or([InBinary(StringVal(s), IntVal(i)) for i in indices])
                 )
@@ -195,9 +199,9 @@ class FlagRecovery:
             raise KeyError
 
         m = self.solver.model()
-        macros =[]
+        macros = set()
         for ms in m.decls():
-            macros.append((ms, m[ms]))
+            macros.add((str(ms), str(m[ms])))
             print("decl", m[ms], ms)
         self.solver.pop()
         return macros
