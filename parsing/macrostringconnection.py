@@ -5,6 +5,7 @@ from z3.z3 import BoolRef
 from compiler_provenance.reverse_engineering.information.information_extractor import InformationExtractor
 from .string_parser import StringParser, SourceStringEntry
 from tqdm import tqdm
+from .superc import SuperC
 
 @dataclass
 class MSC:
@@ -117,7 +118,7 @@ class SourceFile:
         resolved_strings = []
         InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
         strings_to_presence_condition = dict()
-        entries = SuperC().get_pc_and_macro_values(self.source_file_path, self.library_dir, None, None)
+        entries = SuperC().get_pc_and_macro_values(self.source_file_path, self.library_dir, None, None, self.config_h, self.name, self.include_dir)
         if entries == []:
             print("No Presence Conditions for",  self.source_file_path)
             return None

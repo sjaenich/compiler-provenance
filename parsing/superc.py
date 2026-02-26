@@ -3,7 +3,7 @@ import sys
 import pathlib
 from shutil import which
 import subprocess
-from presence_condition import PresenceCondition
+from .presence_condition import PresenceCondition
 
 
 def write_content_to_file(filepath: str, content: str):
@@ -145,12 +145,12 @@ class SuperC:
     return True
 
 
-  def get_pc_and_macro_values(self, srcfile_path: str, library_dir: str, line_number: int|None, macro: str| None) -> list[PresenceCondition]:
+  def get_pc_and_macro_values(self, srcfile_path: str, library_dir: str, line_number: int|None, macro: str| None, config_h = None, name = None, include_dir = None) -> list[PresenceCondition]:
       """
       Get the presence conditions of a line number and if applicable  the Macro value 
       """
       
-      pc_file_path = "/workspaces/RevEng/output" + library_dir + ".txt"
+      pc_file_path = "/workspaces/RevEng/output_" + name + ".txt"
       self.logger.debug("Presence conditions file will be created at \"%s\".\n" % pc_file_path)
       pc_file_path_check = pc_file_path
       # If a pc file already exists, rename it to have .old extension
@@ -166,14 +166,14 @@ class SuperC:
         pc_file_path += ":" + macro 
       superc_flags = "-sourcelinePC"
       include_flags = "-I"
-      include = "lib/"
+      include = include_dir
       mock_header ="-include"
-      mock_header_location = "/workspaces/RevEng/other_defines.h"
+      mock_header_location = "/workspaces/RevEng/other_defines" + name + ".h"
       if line_number is None:
-        pc_file_path = "/workspaces/RevEng/all_strings" + library_dir +  ".txt"
+        pc_file_path = "/workspaces/RevEng/all_strings_" + name +  ".txt"
         pc_file_path_check = pc_file_path
       # superc_flags += " -I . " + srcfile_path
-      superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-restrictFreeToHeader", "/workspaces/RevEng/buildroot-2025.02.4/output/build/libcurl-7.71.1/curl_config.h", mock_header, mock_header_location, include_flags, include, "%s" % superc_flags, pc_file_path, srcfile_path]
+      superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-restrictFreeToHeader", config_h, mock_header, mock_header_location, include_flags, include, "%s" % superc_flags, pc_file_path, srcfile_path]
       # Run SuperC
       try:
         self.logger.debug("Running SuperC sourcelinePC.\n")
