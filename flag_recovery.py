@@ -16,10 +16,10 @@ from .parsing.macrostringconnection import *
 
 class FlagRecovery:
 
-    def __init__(self, source_dir: Path, binary_path: Path, library_dir: Path, config_h: Path, name: str, include_dir: str):
+    def __init__(self, source_dir: Path, binary_path: Path, config_h: Path, name: str, include_dir: str):
         self.source_dir = source_dir
         self.binary_path = binary_path
-        self.library_dir = library_dir
+        self.library_dir = source_dir
         self.config_h = config_h
         self.include_dir = include_dir
         self.solver = Solver()
@@ -228,13 +228,13 @@ class FlagRecovery:
                     m_other = DEFINE_OTHER_RE.match(line)
                     if m_other:
                         out.write(line)
-        destination = "workspaces/RevEng/" + name + ".h"
+        destination = "/workspaces/RevEng/" + name + ".h"
         self.config_h = Path(destination)
         shutil.move(path, destination)        
 
     def run(self) -> list[(str,str)]:
 
-        self.modify_config_h(self.config_h)
+        self.modify_config_h(self.name)
 
         binary_strings = self.collect_presence_conditions()
         external_strings = self.find_external_strings(binary_strings)
