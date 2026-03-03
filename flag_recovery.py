@@ -30,8 +30,7 @@ class FlagRecovery:
     def collect_presence_conditions(self) -> list[str]: 
         binary_strings = InformationExtractor(self.binary_path)
         index = 0
-        for filepath in ["/workspaces/RevEng/buildroot-2025.02.4/output/build/libcurl-7.71.1/lib/http.c"]:
-        # tqdm(self.source_dir.rglob("*.c")):
+        for filepath in tqdm(self.source_dir.rglob("*.c")):
             print(filepath)
             # TODO: Add the config_h location and the new other_defines location, maybe just give the name... 
             sf = SourceFile(filepath, binary_strings, self.library_dir, index, self.config_h, self.name, self.include_dir)
@@ -48,7 +47,7 @@ class FlagRecovery:
     
 
     def add_groundtruth_to_solver(self):
-        DEFINE_BOOL_RE = re.compile(r'^\s*#define\s+([A-Z0-9_]+)\s+1\s*$')
+        DEFINE_BOOL_RE = re.compile(r'^\s*#define\s+([A-Z0-9_]+)\s+(?:0|1)\s*$')
         UNDEF_RE = re.compile(r'^\s*/\*\s*#undef\s+([A-Z0-9_]+)\s*\*/\s*$')
         
         with open(str(self.config_h), "r", encoding="utf-8", errors="ignore") as f:
@@ -201,13 +200,15 @@ class FlagRecovery:
         m = self.solver.model()
         macros = set()
         for ms in m.decls():
+            if str(ms).startswith("InBinary"):
+                continue
             macros.add((str(ms), str(m[ms])))
             print("decl", m[ms], ms)
         self.solver.pop()
         return macros
 
     def modify_config_h(self, name: str):
-        DEFINE_BOOL_RE = re.compile(r'^\s*#define\s+([A-Z0-9_]+)\s+1\s*$')
+        DEFINE_BOOL_RE = re.compile(r'^\s*#define\s+([A-Z0-9_]+)\s+(?:0|1)\s*$')
         UNDEF_RE = re.compile(r'^\s*/\*\s*#undef\s+([A-Z0-9_]+)\s*\*/\s*$')
         DEFINE_OTHER_RE = re.compile(r'^\s*#define\s+([A-Za-z_][A-Za-z0-9_]*)\b(?!\s*\()')
 
