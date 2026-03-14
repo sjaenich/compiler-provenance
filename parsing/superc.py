@@ -1,6 +1,6 @@
 import os
 import sys
-import pathlib
+from pathlib import Path
 from shutil import which
 import subprocess
 from .presence_condition import PresenceCondition
@@ -145,21 +145,33 @@ class SuperC:
     return True
 
 
-  def get_pc_and_macro_values(self, srcfile_path: str, library_dir: str, line_number: int|None, macro: str| None, config_h = None, name = None, include_dir = None) -> list[PresenceCondition]:
+  def get_pc_and_macro_values(self, srcfile_path: Path, library_dir: str, line_number: int|None, macro: str| None, config_h = None, name = None, include_dir = None) -> list[PresenceCondition]:
       """
       Get the presence conditions of a line number and if applicable  the Macro value 
       """
-      
-      pc_file_path = "/workspaces/RevEng/output_" + name + ".txt"
+      print("SuperC this is the free header file", config_h)
+
+      srcfile = srcfile_path.stem
+
+
+      if macro is not None:
+        pc_file_path = "/workspaces/RevEng/superc_output/output_" + name + "_" + macro + "_" + str(srcfile) + ".txt"
+        if line_number is not None:
+          pc_file_path = "/workspaces/RevEng/superc_output/output_" + name + "_" + macro + "_" + str(srcfile) + "_" + str(line_number) + ".txt"
+      else:
+        pc_file_path = "/workspaces/RevEng/superc_output/output_" + name + "_" + str(srcfile) + ".txt"
       self.logger.debug("Presence conditions file will be created at \"%s\".\n" % pc_file_path)
       pc_file_path_check = pc_file_path
+ 
+
+      
       # If a pc file already exists, rename it to have .old extension
-      if os.path.isfile(pc_file_path):
-        old_pc_file_path = pc_file_path + ".old"
-        self.logger.debug("Moving the existing presence conditions file to \"%s\".\n" % old_pc_file_path)
-        assert pathlib.Path(pc_file_path).rename(old_pc_file_path)
-        assert not os.path.isfile(pc_file_path)
-        assert os.path.isfile(old_pc_file_path)
+      # if os.path.isfile(pc_file_path):
+      #   old_pc_file_path = pc_file_path + ".old"
+      #   self.logger.debug("Moving the existing presence conditions file to \"%s\".\n" % old_pc_file_path)
+      #   assert pathlib.Path(pc_file_path).rename(old_pc_file_path)
+      #   assert not os.path.isfile(pc_file_path)
+      #   assert os.path.isfile(old_pc_file_path)
       # Prepare the SuperC command
       pc_file_path += ":" + str(line_number)
       if macro:
@@ -168,35 +180,41 @@ class SuperC:
       include_flags = "-I"
       include = include_dir
       mock_header ="-include"
-      mock_header_location = "/workspaces/RevEng/other_defines" + name + ".h"
+      mock_header_location = "/workspaces/RevEng/header/other_defines/other_defines" + name + ".h"
       if line_number is None:
-        pc_file_path = "/workspaces/RevEng/all_strings_" + name +  ".txt"
+        pc_file_path = "/workspaces/RevEng/all_strings/all_strings_" + name + "_" + str(srcfile) + ".txt"
         pc_file_path_check = pc_file_path
       # superc_flags += " -I . " + srcfile_path
       superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-restrictFreeToHeader", config_h, mock_header, mock_header_location, include_flags, include, "%s" % superc_flags, pc_file_path, srcfile_path]
       # Run SuperC
-      try:
-        self.logger.debug("Running SuperC sourcelinePC.\n")
-        # print(superc_sourcelinepc_cmd)
-        out, err, ret, time_elapsed = run(superc_sourcelinepc_cmd, cwd=library_dir)
-        # print(out,err,ret)
-        self.logger.debug("Finished running SuperC sourcelinePC.\n") 
-        # Did SuperC create a presence conditions file?
-        
-        if not os.path.isfile(pc_file_path_check):
-          self.logger.debug("SuperC failed to create presence conditions file at \"%s\".\n" % pc_file_path)
-          print("This should no happen")
-          return None #< Error 
+      # print("Running SuperC with command:", superc_sourcelinepc_cmd)
+      if not os.path.isfile(pc_file_path_check):
+        try:
+          self.logger.debug("Running SuperC sourcelinePC.\n")
+          # print(superc_sourcelinepc_cmd)
+          out, err, ret, time_elapsed = run(superc_sourcelinepc_cmd, cwd=library_dir)
+          # print(out,err,ret)
+          self.logger.debug("Finished running SuperC sourcelinePC.\n") 
+          # Did SuperC create a presence conditions file?
+          
+          if not os.path.isfile(pc_file_path_check):
+            self.logger.debug("SuperC failed to create presence conditions file at \"%s\".\n" % pc_file_path)
+            print("This should no happen")
+            return None #< Error 
+        except subprocess.TimeoutExpired: #< SuperC timed out
+          return None #< Error
+      else:
+        print("Presence conditions file already exists at \"%s\". Skipping SuperC execution.\n" % pc_file_path_check)
         # Read the presence conditions file
-        with open(pc_file_path_check, 'r') as f:
-          entries = []
-          for line in f:
-            line = line.strip()
-            if not line.startswith("{"):   # skip headers, empty lines, etc.
-                continue
-            entry = PresenceCondition()
-            entry.parse(line)
-            entries.append(entry)
-        return entries
-      except subprocess.TimeoutExpired: #< SuperC timed out
-        return None #< Error
+      with open(pc_file_path_check, 'r') as f:
+        entries = []
+        for line in f:
+          line = line.strip()
+          if not line.startswith("{"):   # skip headers, empty lines, etc.
+            continue
+          entry = PresenceCondition()
+          entry.parse(line)
+          entries.append(entry)
+      return entries
+
+      

@@ -15,7 +15,7 @@ from .parsing.macrostringconnection import *
 
 
 class FlagRecovery:
-
+    
     def __init__(self, source_dir: Path, binary_path: Path, config_h: Path, name: str, include_dir: str):
         self.source_dir = source_dir
         self.binary_path = binary_path
@@ -30,29 +30,40 @@ class FlagRecovery:
     def collect_presence_conditions(self) -> list[str]: 
         binary_strings = InformationExtractor(self.binary_path)
         index = 0
-        for filepath in tqdm(self.source_dir.rglob("*.c")):
+        for filepath in tqdm(self.source_dir.glob("*.c")):
+        # for filepath in tqdm([Path("/workspaces/RevEng/buildroot-2025.02.4/output/build/libxml2-2.13.8/testapi.c")]):
+            if "test" in filepath.name:
+                continue
             print(filepath)
             # TODO: Add the config_h location and the new other_defines location, maybe just give the name... 
             sf = SourceFile(filepath, binary_strings, self.library_dir, index, self.config_h, self.name, self.include_dir)
-            try:
-                solver_a = sf.get_macro_formulas()
-                self.solver.add(solver_a.assertions())
-                index = sf.index
-                self.SourceStrings.extend(sf.source_code_strings)
-                print("Index set size", len(sf.index_set))
-                self.IndexSet.extend(sf.index_set)
-            except Exception as e:
-                print("EXCEPTION", e)   
+            # try:
+            solver_a = sf.get_macro_formulas()
+            # solver_a.check()
+            # print("Solver alone Check worked")
+            self.solver.add(solver_a.assertions())
+            index = sf.index
+            self.SourceStrings.extend(sf.source_code_strings)
+            print("Index set size", len(sf.index_set))
+            self.IndexSet.extend(sf.index_set)
+            # self.solver.check()
+            # print("Check worked")
+            # except Exception as e:
+                # print("EXCEPTION", e)   
         return sf.binary_strings
-    
+
+
+
 
     def add_groundtruth_to_solver(self):
         DEFINE_BOOL_RE = re.compile(r'^\s*#define\s+([A-Z0-9_]+)\s+(?:0|1)\s*$')
         UNDEF_RE = re.compile(r'^\s*/\*\s*#undef\s+([A-Z0-9_]+)\s*\*/\s*$')
-        
-        with open(str(self.config_h), "r", encoding="utf-8", errors="ignore") as f:
+        print("Adding ground truth to solver from config_h", self.config_h)
+        with open(str(self.config_h), "r", encoding="utf-8") as f:
+            print("OPENED CONFIG")
             for line in f:
-                match = DEFINE_BOOL_RE.match(line)
+                print(line)
+                match = DEFINE_BOOL_RE.match(line)                
                 if match:
                     macro_name = match.group(1)
                     self.solver.add((Bool(macro_name)))
@@ -80,7 +91,7 @@ class FlagRecovery:
 
 
         m = self.solver.model()
-        print("INdexSet:", self.IndexSet)
+        print("IndexSet:", self.IndexSet)
         concrete = []  
         symbolic = []
         for (r, i) in self.IndexSet:
@@ -149,6 +160,7 @@ class FlagRecovery:
                 continue
             weird_strings.append((r,l))
         self.solver.pop()
+        print("Not active removed", weird_strings)
         return weird_strings
 
     def recover_macros(self, binary_strings, external_strings):
@@ -213,7 +225,7 @@ class FlagRecovery:
         DEFINE_OTHER_RE = re.compile(r'^\s*#define\s+([A-Za-z_][A-Za-z0-9_]*)\b(?!\s*\()')
 
         path = str(self.config_h)
-        out_path = "/workspaces/RevEng/other_defines" + name + ".h"
+        out_path = "/workspaces/RevEng/header/other_defines/other_defines" + name + ".h"
 
         with open(path, "r", encoding="utf-8", errors="ignore") as f, \
             open(out_path, "w", encoding="utf-8") as out:
@@ -239,8 +251,9 @@ class FlagRecovery:
 
     def run(self) -> list[(str,str)]:
 
-        self.modify_config_h(self.name)
-
+        # self.modify_config_h(self.name)
+     
+        self.config_h = Path("/workspaces/RevEng/header/libraries/" + self.name + ".h")
         binary_strings = self.collect_presence_conditions()
         external_strings = self.find_external_strings(binary_strings)
         macros = self.recover_macros(binary_strings, external_strings)
