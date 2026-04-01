@@ -57,7 +57,7 @@ class FlagRecovery:
 
 
 
-    def add_groundtruth_to_solver(self):
+    def add_groundtruth_to_solver(self, iteration):
         DEFINE_BOOL_RE = re.compile(r'^\s*#define\s+([A-Z0-9_]+)\s+(.+?)\s*$')
         UNDEF_RE = re.compile(r'^\s*/\*\s*#undef\s+([A-Z0-9_]+)\s*\*/\s*$')
 
@@ -72,20 +72,31 @@ class FlagRecovery:
             for line in f:
                 print(line)
                 match = DEFINE_BOOL_RE.match(line)                
-                if match:
+                if match and iteration == 0:
                     macro_name = match.group(1)
                     self.solver.add((Bool(macro_name)))
                     print("Bools", macro_name)
+                elif iteration > 0 and match:
+                    macro_name = match.group(1)
+                    self.solver.add(Bool(macro_name) == False)
+                    print("Bools", macro_name, "false")
                 m_undef = UNDEF_RE.match(line)        
-                if m_undef:
+                if m_undef and iteration == 0:
                     macro_name = m_undef.group(1)
                     self.solver.add(Bool(macro_name) == False)
                     print("Bools", macro_name, "false")
+                elif m_undef and iteration > 0:
+                    macro_name = m_undef.group(1)
+                    self.solver.add(Bool(macro_name))
+                    print("Bools", macro_name)
 
-    def find_external_strings(self, binary_strings) -> list[(str,int)]:
+
+
+
+    def find_external_strings(self, binary_strings, external_strings, iteration) -> list[(str,int)]:
         self.solver.push()
         InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
-        self.add_groundtruth_to_solver()
+        self.add_groundtruth_to_solver(iteration)
 
         for d in self.solver.assertions():
             print("Assertion", d)
@@ -168,7 +179,17 @@ class FlagRecovery:
                 continue
             weird_strings.append((r,l))
         self.solver.pop()
+        
+        print("Weird strings", weird_strings)
+        
+        if len(external_strings) > 1:
+            weird_strings = list(set(weird_strings) & set(external_strings))
+        
+        
+
         print("Not active removed", weird_strings)
+
+
         return weird_strings
 
     def recover_macros(self, binary_strings, external_strings):
@@ -263,6 +284,13 @@ class FlagRecovery:
      
         self.config_h = Path("/workspaces/RevEng/header/libraries/" + self.name + ".h")
         binary_strings = self.collect_presence_conditions()
-        external_strings = self.find_external_strings(binary_strings)
+        iteration = 0
+        external_strings = []
+        while iteration < 2:
+            print("Iteration", iteration)
+            external_strings = self.find_external_strings(binary_strings, external_strings,iteration)
+            print("External strings", external_strings)
+            iteration += 1
+        # external_strings = []
         macros = self.recover_macros(binary_strings, external_strings)
         return macros
