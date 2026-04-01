@@ -42,11 +42,14 @@ def parse_AND_connected_smt2(text: str):
 
     for p in parts:
         # parse each SMT-LIB block separately
+        
         p = re.sub(r'\bdefined\s+([A-Za-z0-9_]+)', r'\1', p)
         p = re.sub(r'\(\s*([A-Za-z0-9_]+)\s*\)', r'\1', p)
         p = re.sub(r'\|\s*([^|]+?)\s*\|', r'|\1|', p)
-        
-        smt = parse_smt2_string(p)
+        try:
+            smt = parse_smt2_string(p)
+        except:
+            continue
         z3_exprs.extend(smt)
     # AND all extracted assertions together
         # for e in z3_exprs:
@@ -73,6 +76,7 @@ class PresenceCondition():
     
 
     def parse(self, pc_string: str):
+        pc_string = pc_string.replace("'Value': '\"'\"'", "'Value': \"'\"")
         pc_string = literal_eval(pc_string)
         self.line = int(pc_string["Line"])
         self.pc = parse_AND_connected_smt2(pc_string["PC"])

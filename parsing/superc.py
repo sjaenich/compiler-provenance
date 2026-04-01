@@ -187,13 +187,13 @@ class SuperC:
       # superc_flags += " -I . " + srcfile_path
       superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-restrictFreeToHeader", config_h, mock_header, mock_header_location, include_flags, include, "%s" % superc_flags, pc_file_path, srcfile_path]
       # Run SuperC
-      # print("Running SuperC with command:", superc_sourcelinepc_cmd)
+      print("Running SuperC with command:", superc_sourcelinepc_cmd)
       if not os.path.isfile(pc_file_path_check):
         try:
           self.logger.debug("Running SuperC sourcelinePC.\n")
           # print(superc_sourcelinepc_cmd)
           out, err, ret, time_elapsed = run(superc_sourcelinepc_cmd, cwd=library_dir)
-          # print(out,err,ret)
+          print(out,err,ret)
           self.logger.debug("Finished running SuperC sourcelinePC.\n") 
           # Did SuperC create a presence conditions file?
           

@@ -1,7 +1,7 @@
 import shutil
 import re
 from collections import defaultdict
-
+import os
 
 from z3.z3 import *
 
@@ -30,8 +30,10 @@ class FlagRecovery:
     def collect_presence_conditions(self) -> list[str]: 
         binary_strings = InformationExtractor(self.binary_path)
         index = 0
-        for filepath in tqdm(self.source_dir.glob("*.c")):
-        # for filepath in tqdm([Path("/workspaces/RevEng/buildroot-2025.02.4/output/build/libxml2-2.13.8/testapi.c")]):
+        # list_c = list(self.source_dir.glob("*.c")) + list(self.source_dir.glob("*/*.c"))
+        for filepath in tqdm(self.source_dir.rglob("*.c")):
+        # for filepath in tqdm(list_c):
+        # for filepath in tqdm([Path("/worksrpaces/RevEng/buildroot-2025.02.4/output/build/libxml2-2.13.8/testapi.c")]):
             if "test" in filepath.name:
                 continue
             print(filepath)
@@ -56,10 +58,16 @@ class FlagRecovery:
 
 
     def add_groundtruth_to_solver(self):
-        DEFINE_BOOL_RE = re.compile(r'^\s*#define\s+([A-Z0-9_]+)\s+(?:0|1)\s*$')
+        DEFINE_BOOL_RE = re.compile(r'^\s*#define\s+([A-Z0-9_]+)\s+(.+?)\s*$')
         UNDEF_RE = re.compile(r'^\s*/\*\s*#undef\s+([A-Z0-9_]+)\s*\*/\s*$')
-        print("Adding ground truth to solver from config_h", self.config_h)
-        with open(str(self.config_h), "r", encoding="utf-8") as f:
+
+        output_path = f"/workspaces/RevEng/header/groundtruth/{self.name}_groundtruth.h"
+        if not os.path.isfile(output_path):
+            output_path = str(self.config_h)
+
+
+        print("Adding ground truth to solver from config_h", output_path)
+        with open(output_path, "r", encoding="utf-8") as f:
             print("OPENED CONFIG")
             for line in f:
                 print(line)

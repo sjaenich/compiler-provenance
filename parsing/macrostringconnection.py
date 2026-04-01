@@ -79,7 +79,7 @@ class SourceFile:
         self.source_strings = StringParser(self.source_file_path)
         self.source_strings.extract_string_literals()
         self.source_strings.clean_string_literals()
-        self.source_strings.add_func_names()
+        # self.source_strings.add_func_names()
         
 
         print("Getting the strings --> normal and resolved")
@@ -94,7 +94,7 @@ class SourceFile:
         InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
 
         self.add_string_presence_conditions(normal_strings)
-
+          
         print("Getting the macro string connections --> resolved")
         self.add_string_tp_presence_conditions(resolved_strings)
 
@@ -122,6 +122,7 @@ class SourceFile:
         if entries == []:
             print("No Presence Conditions for",  self.source_file_path)
             return None
+        
         for string in strings:
             if string.content.endswith(".h"):
                 continue
@@ -136,15 +137,26 @@ class SourceFile:
         for string_tp in resolved_strings:
             self.index = self.index + 1
             string = string_tp.to_string()
+            if len(string) <= 3:
+                continue
             print("normal",string_tp.presence_conditions == InBinary(StringVal(string), self.index) )
             label = Bool(f"pc_{string}_{self.index}")
             # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(StringVal(string), self.index), label)
-            self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
+            if not str(string_tp.presence_conditions) == "And(True)":
+                print("not added to solver")
+                self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
+            # print("Added to solver", string_tp.presence_conditions == InBinary(StringVal(string), self.index))
+            
+            
+            # self.solver.check()
+            
             self.str_to_pc[label] = string_tp.presence_conditions 
             self.index_set.append((string, self.index))
             self.source_code_strings.append(string)
+            # for d in self.solver.assertions():
+                # print("Assertion", d )
             # if self.solver.check() == sat:
-            #     print('works')
+                # print('works')
             # else:
             #     core = self.solver.unsat_core()
             #     print("UNSAT CORE:")
@@ -165,7 +177,7 @@ class SourceFile:
                 print("unresolved", InBinary(Concat(arguments), self.index))
                 label = Bool(f"pc{Concat(arguments)}_{self.index}")
                 # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(Concat(arguments), self.index), label)
-                self.solver.add(string_tp.presence_conditions == InBinary(Concat(arguments), self.index))
+                # self.solver.add(string_tp.presence_conditions == InBinary(Concat(arguments), self.index))
                 # self.index_set.append((Concat(arguments), self.index))
                 self.source_code_strings.append(Concat(arguments))
                 self.str_to_pc[label] = string_tp.presence_conditions
@@ -173,7 +185,8 @@ class SourceFile:
                 string = string_tp.to_string()
                 label = Bool(f"pc_{string}_{self.index}")
                 # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(StringVal(string), self.index), label)
-                self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
+                if not str(string_tp.presence_conditions) == "And(True)":
+                    self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
                 print("resolved", string_tp.presence_conditions ==  InBinary(StringVal(string), self.index))
                 self.index_set.append((string, self.index))
                 self.source_code_strings.append(string)
@@ -195,16 +208,18 @@ class SourceFile:
             return ValueError("TreePath should only have length 1")
         if entry.data[0].macro:
             presence_conditions = SuperC().get_pc_and_macro_values(filepath, library, entry.data[0].line_number, entry.data[0].content, self.config_h, self.name, self.include_dir)
-            
-            for pc in presence_conditions:
-            
-                if pc.macro == "undefined" or pc.macro == "None":
-                    entry.presence_conditions = And(entry.presence_conditions, pc.pc)
-                    variants.append(entry)
-                else:
-                    new_sse = SourceStringEntry(pc.macro, pc.line, False)
-                    new_tp = TreePath([new_sse], pc.pc)
-                    variants.append(new_tp)
+            if presence_conditions is None:
+                variants.append(entry)
+            else:
+                for pc in presence_conditions:
+                
+                    if pc.macro == "undefined" or pc.macro == "None":
+                        entry.presence_conditions = And(entry.presence_conditions, pc.pc)
+                        variants.append(entry)
+                    else:
+                        new_sse = SourceStringEntry(pc.macro, pc.line, False)
+                        new_tp = TreePath([new_sse], pc.pc)
+                        variants.append(new_tp)
         else:
             variants.append(entry)
         return variants
