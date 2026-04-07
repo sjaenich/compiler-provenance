@@ -79,7 +79,7 @@ class SourceFile:
         self.source_strings = StringParser(self.source_file_path)
         self.source_strings.extract_string_literals()
         self.source_strings.clean_string_literals()
-        # self.source_strings.add_func_names()
+        self.source_strings.add_func_names()
         
 
         print("Getting the strings --> normal and resolved")
@@ -143,7 +143,7 @@ class SourceFile:
             label = Bool(f"pc_{string}_{self.index}")
             # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(StringVal(string), self.index), label)
             if not str(string_tp.presence_conditions) == "And(True)":
-                print("not added to solver")
+                print("added to solver")
                 self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
             # print("Added to solver", string_tp.presence_conditions == InBinary(StringVal(string), self.index))
             
@@ -151,8 +151,9 @@ class SourceFile:
             # self.solver.check()
             
             self.str_to_pc[label] = string_tp.presence_conditions 
-            self.index_set.append((string, self.index))
-            self.source_code_strings.append(string)
+            if not str(string_tp.presence_conditions) == "And(False)":
+                self.index_set.append((string, self.index))
+                self.source_code_strings.append(string)
             # for d in self.solver.assertions():
                 # print("Assertion", d )
             # if self.solver.check() == sat:
@@ -186,9 +187,11 @@ class SourceFile:
                 label = Bool(f"pc_{string}_{self.index}")
                 # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(StringVal(string), self.index), label)
                 if not str(string_tp.presence_conditions) == "And(True)":
+                    print("added to solver", string_tp.presence_conditions == InBinary(StringVal(string), self.index))
                     self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
                 print("resolved", string_tp.presence_conditions ==  InBinary(StringVal(string), self.index))
-                self.index_set.append((string, self.index))
+                if not str(string_tp.presence_conditions) == "And(False)":
+                    self.index_set.append((string, self.index))
                 self.source_code_strings.append(string)
                 self.str_to_pc[label] = string_tp.presence_conditions
             

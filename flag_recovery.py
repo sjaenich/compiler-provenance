@@ -1,3 +1,4 @@
+import random
 import shutil
 import re
 from collections import defaultdict
@@ -26,6 +27,12 @@ class FlagRecovery:
         self.SourceStrings = []
         self.IndexSet = []
         self.name = name
+        self.approach = "standard"
+        self.iteration = 0 
+        self.strings_count = 0
+
+
+
 
     def collect_presence_conditions(self) -> list[str]: 
         binary_strings = InformationExtractor(self.binary_path)
@@ -78,7 +85,10 @@ class FlagRecovery:
                     print("Bools", macro_name)
                 elif iteration > 0 and match:
                     macro_name = match.group(1)
-                    self.solver.add(Bool(macro_name) == False)
+                    if random.choice([True, False]):
+                        self.solver.add(Bool(macro_name) == False)
+                    else:
+                        self.solver.add(Bool(macro_name))
                     print("Bools", macro_name, "false")
                 m_undef = UNDEF_RE.match(line)        
                 if m_undef and iteration == 0:
@@ -87,7 +97,10 @@ class FlagRecovery:
                     print("Bools", macro_name, "false")
                 elif m_undef and iteration > 0:
                     macro_name = m_undef.group(1)
-                    self.solver.add(Bool(macro_name))
+                    if random.choice([True, False]):
+                        self.solver.add(Bool(macro_name))
+                    else:
+                        self.solver.add(Bool(macro_name) == False)
                     print("Bools", macro_name)
 
 
@@ -106,7 +119,7 @@ class FlagRecovery:
         if check == sat:
             print("HELL YEAH")
         else: 
-            raise KeyError
+            return external_strings
 
 
         m = self.solver.model()
@@ -185,7 +198,8 @@ class FlagRecovery:
         if len(external_strings) > 1:
             weird_strings = list(set(weird_strings) & set(external_strings))
         
-        
+        print("Weird strings - external strings", set(weird_strings) - set(external_strings))
+        print("External strings- weird strings", set(external_strings) - set(weird_strings))      
 
         print("Not active removed", weird_strings)
 
@@ -222,31 +236,64 @@ class FlagRecovery:
         for s in binary_strings:
             indices = index_by_string.get(s, [])        
             if indices:
-                print(s, indices, index_by_string[s])
+                # print(s, indices, index_by_string[s])
                 if s in base:
                     continue
                 print("Adding to solver:", s, indices)
                 self.solver.add(
                     Or([InBinary(StringVal(s), IntVal(i)) for i in indices])
                 )
-        
-
-        
+        self.solver.push()
+        self.add_negative_constraints(binary_strings, index_by_string, base)
+        if self.approach == "with_ground_truth":
+            self.approach = "with_ground_truth_and_negative_constraints"
+        else:
+            self.approach = "with_negative_constraints"
         check = self.solver.check()
         if check == sat:
             print("HELL YEAH")
         else: 
-            raise KeyError
+            self.solver.pop()
+            check = self.solver.check()
+            if self.approach == "with_ground_truth_and_negative_constraints":
+                self.approach = "with_ground_truth_only"
+            else:
+                self.approach = "without_negative_constraints"
+            if check != sat:
+                if self.approach == "with_ground_truth_only":
+                    self.approach = "not_working"
+                else:
+                    self.approach = "with_ground_truth" 
+                raise Exception("Solver is unsat even without negative constraints")
 
         m = self.solver.model()
         macros = set()
         for ms in m.decls():
             if str(ms).startswith("InBinary"):
-                continue
+                continue    
             macros.add((str(ms), str(m[ms])))
             print("decl", m[ms], ms)
         self.solver.pop()
         return macros
+
+    def add_negative_constraints(self, binary_strings, index_by_string, base):
+        with open(f"/workspaces/RevEng/{self.name}_stripped_strings.txt", "r") as f:
+            unique_strings = list(set(line.strip() for line in f if line.strip()))
+
+        InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
+
+        for s in unique_strings:
+            if s in base:
+                continue
+            if s not in binary_strings and len(s) > 10:
+                indices = index_by_string.get(s, [])
+                if indices:
+                    self.solver.add(
+                        And([Not(InBinary(StringVal(s), IntVal(i))) for i in indices])
+                    )
+                    print("Adding negative constraint for", s, indices)
+              
+
 
     def modify_config_h(self, name: str):
         DEFINE_BOOL_RE = re.compile(r'^\s*#define\s+([A-Z0-9_]+)\s+(?:0|1)\s*$')
@@ -286,11 +333,15 @@ class FlagRecovery:
         binary_strings = self.collect_presence_conditions()
         iteration = 0
         external_strings = []
-        while iteration < 2:
-            print("Iteration", iteration)
-            external_strings = self.find_external_strings(binary_strings, external_strings,iteration)
-            print("External strings", external_strings)
-            iteration += 1
+        try:
+            macros = self.recover_macros(binary_strings, external_strings)
+        except Exception as e:       
+            while iteration < 5:
+                print("Iteration", iteration)
+                external_strings = self.find_external_strings(binary_strings, external_strings,iteration)
+                print("External strings", external_strings)
+                iteration += 1
+            self.recover_macros(binary_strings, external_strings)
         # external_strings = []
-        macros = self.recover_macros(binary_strings, external_strings)
+        
         return macros
