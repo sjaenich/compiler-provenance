@@ -145,7 +145,7 @@ class SuperC:
     return True
 
 
-  def get_pc_and_macro_values(self, srcfile_path: Path, library_dir: str, line_number: int|None, macro: str| None, config_h = None, name = None, include_dir = None) -> list[PresenceCondition]:
+  def get_pc_and_macro_values(self, srcfile_path: Path, library_dir: str, line_number: int|None, macro: str| None, config_h = None, name = None, include_dir = None, extra_include=None) -> list[PresenceCondition]:
       """
       Get the presence conditions of a line number and if applicable  the Macro value 
       """
@@ -179,13 +179,15 @@ class SuperC:
       superc_flags = "-sourcelinePC"
       include_flags = "-I"
       include = include_dir
+      extra_include_flag = "-I"
+
       mock_header ="-include"
       mock_header_location = "/workspaces/RevEng/header/other_defines/other_defines" + name + ".h"
       if line_number is None:
         pc_file_path = "/workspaces/RevEng/all_strings/all_strings_" + name + "_" + str(srcfile) + ".txt"
         pc_file_path_check = pc_file_path
       # superc_flags += " -I . " + srcfile_path
-      superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-restrictFreeToHeader", config_h, mock_header, mock_header_location, include_flags, include, "-I", "/workspaces/RevEng/buildroot-2025.02.4/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/13.3.0/include", "%s" % superc_flags, pc_file_path, srcfile_path]
+      superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-restrictFreeToHeader", config_h, mock_header, mock_header_location, include_flags, include, extra_include_flag, extra_include,  "-I", "/workspaces/RevEng/buildroot-2025.02.4/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/13.3.0/include", "%s" % superc_flags, pc_file_path, srcfile_path]
       # Run SuperC
       print("Running SuperC with command:", superc_sourcelinepc_cmd)
       if not os.path.isfile(pc_file_path_check):

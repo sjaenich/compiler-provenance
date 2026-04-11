@@ -1,3 +1,4 @@
+import glob
 import random
 import shutil
 import re
@@ -17,7 +18,7 @@ from .parsing.macrostringconnection import *
 
 class FlagRecovery:
     
-    def __init__(self, source_dir: Path, binary_path: Path, config_h: Path, name: str, include_dir: str):
+    def __init__(self, source_dir: Path, binary_path: Path, config_h: Path, name: str, include_dir: str, extra_include=None):
         self.source_dir = source_dir
         self.binary_path = binary_path
         self.library_dir = source_dir
@@ -30,11 +31,13 @@ class FlagRecovery:
         self.approach = "standard"
         self.iteration = 0 
         self.strings_count = 0
+        self.extra_include = extra_include
 
 
 
 
     def collect_presence_conditions(self) -> list[str]: 
+        print("THIS IS BINARY PATH", self.binary_path)
         binary_strings = InformationExtractor(self.binary_path)
         index = 0
         # list_c = list(self.source_dir.glob("*.c")) + list(self.source_dir.glob("*/*.c"))
@@ -45,7 +48,7 @@ class FlagRecovery:
                 continue
             print(filepath)
             # TODO: Add the config_h location and the new other_defines location, maybe just give the name... 
-            sf = SourceFile(filepath, binary_strings, self.library_dir, index, self.config_h, self.name, self.include_dir)
+            sf = SourceFile(filepath, binary_strings, self.library_dir, index, self.config_h, self.name, self.include_dir, self.extra_include)
             # try:
             solver_a = sf.get_macro_formulas()
             # solver_a.check()
@@ -64,14 +67,17 @@ class FlagRecovery:
 
 
 
-    def add_groundtruth_to_solver(self, iteration):
+    def add_groundtruth_to_solver(self, config):
         DEFINE_BOOL_RE = re.compile(r'^\s*#define\s+([A-Z0-9_]+)\s+(.+?)\s*$')
         UNDEF_RE = re.compile(r'^\s*/\*\s*#undef\s+([A-Z0-9_]+)\s*\*/\s*$')
-
-        output_path = f"/workspaces/RevEng/header/groundtruth/{self.name}_groundtruth.h"
+        
+        output_path = f"/workspaces/RevEng/header/groundtruth/{self.name}_groundtruth.h" 
         if not os.path.isfile(output_path):
             output_path = str(self.config_h)
 
+   
+
+        output_path = config
 
         print("Adding ground truth to solver from config_h", output_path)
         with open(output_path, "r", encoding="utf-8") as f:
@@ -79,38 +85,27 @@ class FlagRecovery:
             for line in f:
                 print(line)
                 match = DEFINE_BOOL_RE.match(line)                
-                if match and iteration == 0:
+                if match:
                     macro_name = match.group(1)
                     self.solver.add((Bool(macro_name)))
                     print("Bools", macro_name)
-                elif iteration > 0 and match:
-                    macro_name = match.group(1)
-                    if random.choice([True, False]):
-                        self.solver.add(Bool(macro_name) == False)
-                    else:
-                        self.solver.add(Bool(macro_name))
-                    print("Bools", macro_name, "false")
                 m_undef = UNDEF_RE.match(line)        
-                if m_undef and iteration == 0:
+                if m_undef:
                     macro_name = m_undef.group(1)
                     self.solver.add(Bool(macro_name) == False)
                     print("Bools", macro_name, "false")
-                elif m_undef and iteration > 0:
-                    macro_name = m_undef.group(1)
-                    if random.choice([True, False]):
-                        self.solver.add(Bool(macro_name))
-                    else:
-                        self.solver.add(Bool(macro_name) == False)
-                    print("Bools", macro_name)
+            
 
 
 
 
-    def find_external_strings(self, binary_strings, external_strings, iteration) -> list[(str,int)]:
+    def find_external_strings(self, binary_strings, external_strings, config) -> list[(str,int)]:
         self.solver.push()
         InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
-        self.add_groundtruth_to_solver(iteration)
-
+        
+        
+        
+        self.add_groundtruth_to_solver(config)
         for d in self.solver.assertions():
             print("Assertion", d)
 
@@ -245,26 +240,15 @@ class FlagRecovery:
                 )
         self.solver.push()
         self.add_negative_constraints(binary_strings, index_by_string, base)
-        if self.approach == "with_ground_truth":
-            self.approach = "with_ground_truth_and_negative_constraints"
-        else:
-            self.approach = "with_negative_constraints"
         check = self.solver.check()
         if check == sat:
             print("HELL YEAH")
         else: 
             self.solver.pop()
             check = self.solver.check()
-            if self.approach == "with_ground_truth_and_negative_constraints":
-                self.approach = "with_ground_truth_only"
-            else:
-                self.approach = "without_negative_constraints"
+            self.approach += "_no_negative_constraints"
             if check != sat:
-                if self.approach == "with_ground_truth_only":
-                    self.approach = "not_working"
-                else:
-                    self.approach = "with_ground_truth" 
-                raise Exception("Solver is unsat even without negative constraints")
+                return []
 
         m = self.solver.model()
         macros = set()
@@ -325,7 +309,7 @@ class FlagRecovery:
         self.config_h = Path(destination)
         shutil.move(path, destination)        
 
-    def run(self) -> list[(str,str)]:
+    def run(self, stage: str) -> list[(str,str)]:
 
         # self.modify_config_h(self.name)
      
@@ -333,15 +317,22 @@ class FlagRecovery:
         binary_strings = self.collect_presence_conditions()
         iteration = 0
         external_strings = []
-        try:
+        self.approach = stage
+        if stage == "initial":
             macros = self.recover_macros(binary_strings, external_strings)
-        except Exception as e:       
-            while iteration < 5:
-                print("Iteration", iteration)
-                external_strings = self.find_external_strings(binary_strings, external_strings,iteration)
+        elif stage == "filter":
+            # except Exception as e:       
+            # dirs = [d for d in glob.glob("/workspaces/RevEng/buildroot-2025.02.4/output/build/"+ self.name +"_*_bundle/") if os.path.isfile(os.path.join(d, "config.h"))]
+            dirs = [
+                os.path.join(d, next(f for f in os.listdir(d) if f.endswith(".h")))
+                for d in glob.glob(f"/workspaces/RevEng/buildroot-2025.02.4/output/build/{self.name}_*_bundle/")
+                if any(f.endswith(".h") for f in os.listdir(d))
+            ]
+            selected = random.sample(dirs, min(3, len(dirs)))
+            for config in selected:
+                external_strings = self.find_external_strings(binary_strings, external_strings,config)
                 print("External strings", external_strings)
-                iteration += 1
-            self.recover_macros(binary_strings, external_strings)
+            macros = self.recover_macros(binary_strings, external_strings)
+    
         # external_strings = []
-        
         return macros

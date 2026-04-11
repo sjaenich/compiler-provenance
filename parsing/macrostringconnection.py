@@ -56,7 +56,7 @@ class TreePath:
 
 
 class SourceFile:
-    def __init__(self, source_file_path :Path, binary_strings: InformationExtractor, library_dir: str, index: int, config_h: Path, name: str, include_dir: str):
+    def __init__(self, source_file_path :Path, binary_strings: InformationExtractor, library_dir: str, index: int, config_h: Path, name: str, include_dir: str, extra_include=None):
         self.source_file_path = source_file_path
         self.library_dir = library_dir
         self.binary_strings = binary_strings.strings
@@ -72,6 +72,7 @@ class SourceFile:
         self.config_h = config_h
         self.name = name
         self.include_dir = include_dir
+        self.extra_include = extra_include
 
     def get_macro_formulas(self) -> Solver:
         self.solver = Solver()
@@ -79,7 +80,7 @@ class SourceFile:
         self.source_strings = StringParser(self.source_file_path)
         self.source_strings.extract_string_literals()
         self.source_strings.clean_string_literals()
-        self.source_strings.add_func_names()
+        # self.source_strings.add_func_names()
         
 
         print("Getting the strings --> normal and resolved")
@@ -118,7 +119,7 @@ class SourceFile:
         resolved_strings = []
         InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
         strings_to_presence_condition = dict()
-        entries = SuperC().get_pc_and_macro_values(self.source_file_path, self.library_dir, None, None, self.config_h, self.name, self.include_dir)
+        entries = SuperC().get_pc_and_macro_values(self.source_file_path, self.library_dir, None, None, self.config_h, self.name, self.include_dir, self.extra_include)
         if entries == []:
             print("No Presence Conditions for",  self.source_file_path)
             return None
@@ -210,7 +211,7 @@ class SourceFile:
         if len(entry.data) >1:
             return ValueError("TreePath should only have length 1")
         if entry.data[0].macro:
-            presence_conditions = SuperC().get_pc_and_macro_values(filepath, library, entry.data[0].line_number, entry.data[0].content, self.config_h, self.name, self.include_dir)
+            presence_conditions = SuperC().get_pc_and_macro_values(filepath, library, entry.data[0].line_number, entry.data[0].content, self.config_h, self.name, self.include_dir, self.extra_include)
             if presence_conditions is None:
                 variants.append(entry)
             else:
