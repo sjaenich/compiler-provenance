@@ -33,7 +33,7 @@ class FlagRecovery:
         self.strings_count = 0
         self.extra_include = extra_include
         self.binary_strings = None
-        
+        self.external_strings = None
 
 
 
@@ -203,17 +203,17 @@ class FlagRecovery:
 
         return weird_strings
 
-    def recover_macros(self, binary_strings, external_strings):
+    def recover_macros(self):
         self.solver.push()
         InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
-        print("Binary strings:", binary_strings)
+        print("Binary strings:", self.binary_strings)
         concrete = []  
         symbolic = []
         print("IndexSet:", self.IndexSet)
         print("Länge")
         index_by_string = defaultdict(list)
         for (r, i) in self.IndexSet:
-            print("Länge", len(self.IndexSet), r, i)
+            # print("Länge", len(self.IndexSet), r, i)
             if isinstance(r, str):
                 concrete.append((r, i))
                 index_by_string[r].append(i)
@@ -230,17 +230,18 @@ class FlagRecovery:
         #     print(r,i)
         #     index_by_symbol[r].append(i)
 
-        print("Opening c positive strings.txt")
+        
             
-        base = [first for first, _ in external_strings]
-        with open(f"/workspaces/RevEng/string_diffs/libcurl/positive_strings.txt", "r") as f:
+        base = [first for first, _ in self.external_strings]
+        # with open(f"/workspaces/RevEng/string_diffs/libcurl/positive_strings.txt", "r") as f:
+        with open(f"/workspaces/RevEng/string_diffs/{self.name}/positive_strings.txt", "r") as f:
             unique_strings = list(set(line.strip() for line in f if line.strip()))
             print("postive strings", unique_strings)
         base = list(set(base) - set(unique_strings))
         print("Base", base)
 
 
-        for s in binary_strings:
+        for s in self.binary_strings:
             indices = index_by_string.get(s, [])        
             if indices:
                 # print(s, indices, index_by_string[s])
@@ -250,17 +251,17 @@ class FlagRecovery:
                 self.solver.add(
                     Or([InBinary(StringVal(s), IntVal(i)) for i in indices])
                 )
-        self.solver.push()
-        self.add_negative_constraints(binary_strings, index_by_string, base)
-        check = self.solver.check()
-        if check == sat:
-            print("HELL YEAH")
-        else: 
-            self.solver.pop()
-            check = self.solver.check()
-            self.approach += "_no_negative_constraints"
-            if check != sat:
-                raise Exception 
+        # self.solver.push()
+        self.add_negative_constraints(self.binary_strings, index_by_string, base)
+        # check = self.solver.check()
+        # if check == sat:
+        #     print("HELL YEAH")
+        # else: 
+        #     self.solver.pop()
+        #     check = self.solver.check()
+        #     self.approach += "_no_negative_constraints"
+        #     if check != sat:
+        #         raise Exception 
 
         m = self.solver.model()
         macros = set()
@@ -273,20 +274,22 @@ class FlagRecovery:
         return macros
 
     def add_negative_constraints(self, binary_strings, index_by_string, base):
-        # with open(f"/workspaces/RevEng/{self.name}_stripped_strings.txt", "r") as f:
-        with open(f"/workspaces/RevEng/string_diffs/libcurl/negative_strings.txt", "r") as f:
+        with open(f"/workspaces/RevEng/string_diffs/{self.name}/negative_strings.txt", "r") as f:
+        # with open(f"/workspaces/RevEng/string_diffs/libcurl/negative_strings.txt", "r") as f:
             unique_strings = list(set(line.strip() for line in f if line.strip()))
 
         InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
 
-        unique_strings
-
+        unique_strings = unique_strings[-100:]
         print("UNIQUE STRINGS", unique_strings)
         for s in unique_strings:
             if s in base:
+                print(s, "in base, skipping negative constraint")
                 continue
+            print("check s",s)
             if s not in binary_strings and len(s) > 4:
                 indices = index_by_string.get(s, [])
+                print("check s and inidices", s, indices)
                 if indices:
                     print("Checking negative constraint for", s, indices)
                     if self.solver.check(And([Not(InBinary(StringVal(s), IntVal(i))) for i in indices])) == sat:
@@ -340,26 +343,37 @@ class FlagRecovery:
         binary_strings = self.collect_presence_conditions()
         iteration = 0
         external_strings = []
+        self.binary_strings = binary_strings
+        self.external_strings = external_strings
         self.approach = "standard"
         # if stage == "initial":
         try:
             # dirs = [d for d in glob.glob("/workspaces/RevEng/buildroot-2025.02.4/output/build/"+ self.name +"_*_bundle/") if os.path.isfile(os.path.join(d, "config.h"))]
-            # dirs = [
-            #     os.path.join(d, next(f for f in os.listdir(d) if f.endswith(".h")))
-            #     for d in glob.glob(f"/workspaces/RevEng/buildroot-2025.02.4/output/build/{self.name}_*_bundle/")
-            #     if any(f.endswith(".h") for f in os.listdir(d))
-            # ]
-            # selected = random.sample(dirs, min(5, len(dirs)))
-            selected = [Path("/workspaces/RevEng/curl_config1.h"),Path("/workspaces/RevEng/curl_config2.h")]
+            dirs = [
+                os.path.join(d, next(f for f in os.listdir(d) if f.endswith(".h")))
+                for d in glob.glob(f"/workspaces/RevEng/buildroot-2025.02.4/output/build/{self.name}_*_bundle/")
+                if any(f.endswith(".h") for f in os.listdir(d))
+            ]
+            selected = random.sample(dirs, max(3, len(dirs)))
+            # selected = [Path("/workspaces/RevEng/curl_config1.h"),Path("/workspaces/RevEng/curl_config2.h")]
             # selected = []
             for config in selected:
                 external_strings = self.find_external_strings(binary_strings, external_strings,config)
                 print("External strings", external_strings)
-            macros = self.recover_macros(binary_strings, external_strings)
+            
         # # elif stage == "filter":
         except Exception as e:           
         # external_strings = []
         # macros = self.recover_macros(binary_strings, external_strings)
             print("Exception", e)
         # external_strings = []
-        return macros
+        
+    
+    def run_only_macros(self):
+        try:
+            macros = self.recover_macros()
+            return macros
+        except Exception as e:
+            print("Exception in macro recovery", e)
+            return [] 
+        
