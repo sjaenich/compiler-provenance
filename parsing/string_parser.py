@@ -132,24 +132,37 @@ class SourceStringEntry:
 
 
 
+# def clean_string(s: str) -> str:
+#     """
+#     Cleans a string so that only visible characters remain.
+#     - Removes surrounding quotes
+#     - Converts escape sequences (\n, \t, \\ etc.) to their actual characters
+#     - Strips invisible control characters if needed
+#     """
+#     # Remove all single and double quotes
+    
+    
+#     # Decode escape sequences
+    
+#     s = decode_escapes_preserving_unicode(s)
+    
+#     # Optional: remove other non-printable characters
+#     s = ''.join(c for c in s if c.isprintable() or c in ('\n', '\t', ' ', '\"', '\''))
+#     s = s.replace('"', '').replace("'", "")    
+#     return s
+
+
 def clean_string(s: str) -> str:
-    """
-    Cleans a string so that only visible characters remain.
-    - Removes surrounding quotes
-    - Converts escape sequences (\n, \t, \\ etc.) to their actual characters
-    - Strips invisible control characters if needed
-    """
-    # Remove all single and double quotes
-    s = s.replace('"', '').replace("'", "")
-    
-    # Decode escape sequences
-    
-    s = decode_escapes_preserving_unicode(s)
-    
-    # Optional: remove other non-printable characters
-    s = ''.join(c for c in s if c.isprintable() or c in ('\n', '\t', ' '))
-        
+    # Remove only the outer quotes
+    if len(s) >= 2 and s[0] == s[-1] and s[0] in ("'", '"'):
+        s = s[1:-1]
+
+    # Interpret escape sequences
+    s = s.encode("utf-8").decode("unicode_escape")
+
     return s
+
+
 
 def decode_escapes_preserving_unicode(s: str) -> str:
     """

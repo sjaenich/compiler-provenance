@@ -86,17 +86,17 @@ class FlagRecovery:
         with open(output_path, "r", encoding="utf-8") as f:
             print("OPENED CONFIG")
             for line in f:
-                print(line)
+                # print(line)
                 match = DEFINE_BOOL_RE.match(line)                
                 if match:
                     macro_name = match.group(1)
                     self.solver.add((Bool(macro_name)))
-                    print("Bools", macro_name)
+                    # print("Bools", macro_name)
                 m_undef = UNDEF_RE.match(line)        
                 if m_undef:
                     macro_name = m_undef.group(1)
                     self.solver.add(Bool(macro_name) == False)
-                    print("Bools", macro_name, "false")
+                    # print("Bools", macro_name, "false")
             
 
 
@@ -109,14 +109,16 @@ class FlagRecovery:
         
         
         self.add_groundtruth_to_solver(config)
-        for d in self.solver.assertions():
-            print("Assertion", d)
+        # for d in self.solver.assertions():
+            # print("Assertion", d)
 
         
         check = self.solver.check()
         if check == sat:
             print("HELL YEAH")
         else: 
+            print("Solver is unsat with ground truth, skipping external string recovery for this config")
+            self.solver.pop()
             return external_strings
 
 
@@ -126,7 +128,7 @@ class FlagRecovery:
         symbolic = []
         for (r, i) in self.IndexSet:
             if isinstance(r, str):
-                print("concrete", r, i)
+                # print("concrete", r, i)
                 concrete.append((r, i))
             else:
                 symbolic.append((r, i))
@@ -138,7 +140,7 @@ class FlagRecovery:
 
         index_by_symbol = defaultdict(list)
         for (r,i) in symbolic:
-            print(r,i)
+            # print(r,i)
             index_by_symbol[r].append(i)
         not_active = []
         add_list = []
@@ -146,7 +148,7 @@ class FlagRecovery:
             indices = index_by_string.get(s, [])        
             if indices:
                 for i in indices:
-                    print((s,i))
+                    # print((s,i))
                     guard = False
                     eval = m.eval(InBinary(StringVal(s),IntVal(i)))
                     if eval == True:
@@ -158,29 +160,29 @@ class FlagRecovery:
                         print((s,i), "not active")
                     else: 
                         print((s,i), "eval", eval)
-                    print("Done index", s)
+                    # print("Done index", s)
                 if guard:
                     for i in indices:
                         add_list.append((s,i))
             indices = index_by_symbol.get(s, [])
-        
-        if indices:
-            for i in indices:
-                guard = False
-                eval = m.eval(InBinary(StringVal(s),IntVal(i)))
-                if eval == True:
-                    print((s,i),"enabled")
-                    add_list.append((s,i))
-                    guard = True
-                elif eval == False:
-                    not_active.append((s,i))
-                    print((s,i), "not active")
-                else: 
-                    print((s,i), "eval", eval)
-                print("Done index", s)
-            if guard:
+            
+            if indices:
                 for i in indices:
-                    add_list.append((s,i))
+                    guard = False
+                    eval = m.eval(InBinary(StringVal(s),IntVal(i)))
+                    if eval == True:
+                        print((s,i),"enabled")
+                        add_list.append((s,i))
+                        guard = True
+                    elif eval == False:
+                        not_active.append((s,i))
+                        print((s,i), "not active")
+                    else: 
+                        print((s,i), "eval", eval)
+                    # print("Done index", s)
+                if guard:
+                    for i in indices:
+                        add_list.append((s,i))
 
         keys = {first for first, _ in add_list}
         weird_strings = []
@@ -194,7 +196,7 @@ class FlagRecovery:
         print("Weird strings", weird_strings)
         
         if len(external_strings) > 1:
-            weird_strings = list(set(weird_strings) & set(external_strings))
+            weird_strings = list(set(weird_strings) | set(external_strings))
         
         print("Weird strings - external strings", set(weird_strings) - set(external_strings))
         print("External strings- weird strings", set(external_strings) - set(weird_strings))      
@@ -205,9 +207,10 @@ class FlagRecovery:
 
     def recover_macros(self):
         self.solver.push()
+        print("External strings", self.external_strings)
         InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
         print("Binary strings:", self.binary_strings)
-        concrete = []  
+        concrete = []
         symbolic = []
         print("IndexSet:", self.IndexSet)
         print("Länge")
@@ -233,6 +236,7 @@ class FlagRecovery:
         
             
         base = [first for first, _ in self.external_strings]
+        print("Base before reducing", base)
         # with open(f"/workspaces/RevEng/string_diffs/libcurl/positive_strings.txt", "r") as f:
         with open(f"/workspaces/RevEng/string_diffs/{self.name}/positive_strings.txt", "r") as f:
             unique_strings = list(set(line.strip() for line in f if line.strip()))
@@ -253,9 +257,9 @@ class FlagRecovery:
                 )
         # self.solver.push()
         self.add_negative_constraints(self.binary_strings, index_by_string, base)
-        # check = self.solver.check()
-        # if check == sat:
-        #     print("HELL YEAH")
+        check = self.solver.check()
+        if check == sat:
+            print("HELL YEAH")
         # else: 
         #     self.solver.pop()
         #     check = self.solver.check()
@@ -280,18 +284,17 @@ class FlagRecovery:
 
         InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
 
-        unique_strings = unique_strings[-100:]
+        # unique_strings = unique_strings[-100:]
         print("UNIQUE STRINGS", unique_strings)
         for s in unique_strings:
             if s in base:
                 print(s, "in base, skipping negative constraint")
                 continue
-            print("check s",s)
-            if s not in binary_strings and len(s) > 4:
+            if s not in binary_strings and len(s) > 1:
                 indices = index_by_string.get(s, [])
-                print("check s and inidices", s, indices)
+                # print("check s and inidices", s, indices)
                 if indices:
-                    print("Checking negative constraint for", s, indices)
+                    # print("Checking negative constraint for", s, indices)
                     if self.solver.check(And([Not(InBinary(StringVal(s), IntVal(i))) for i in indices])) == sat:
                         self.solver.add(
                             And([Not(InBinary(StringVal(s), IntVal(i))) for i in indices])
@@ -354,12 +357,12 @@ class FlagRecovery:
                 for d in glob.glob(f"/workspaces/RevEng/buildroot-2025.02.4/output/build/{self.name}_*_bundle/")
                 if any(f.endswith(".h") for f in os.listdir(d))
             ]
-            selected = random.sample(dirs, max(3, len(dirs)))
+            selected = random.sample(dirs, min(3, len(dirs)))
             # selected = [Path("/workspaces/RevEng/curl_config1.h"),Path("/workspaces/RevEng/curl_config2.h")]
             # selected = []
             for config in selected:
-                external_strings = self.find_external_strings(binary_strings, external_strings,config)
-                print("External strings", external_strings)
+                self.external_strings = self.find_external_strings(binary_strings, self.external_strings,config)
+                print("External strings", self.external_strings)
             
         # # elif stage == "filter":
         except Exception as e:           

@@ -182,7 +182,7 @@ class SuperC:
       extra_include_flag = "-I"
 
       mock_header ="-include"
-      mock_header_location = "/workspaces/RevEng/header/other_defines/other_defines" + name + ".h"
+      mock_header_location = "/workspaces/RevEng/header/other_defines/other_defines_" + name + ".h"
       if line_number is None:
         pc_file_path = "/workspaces/RevEng/all_strings/all_strings_" + name + "_" + str(srcfile) + ".txt"
         pc_file_path_check = pc_file_path

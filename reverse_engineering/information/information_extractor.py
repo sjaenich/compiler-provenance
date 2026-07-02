@@ -9,7 +9,7 @@ class InformationExtractor:
         self.metadata: list[str] = []
 
 # Run the strings command to get all strings from the binary (must be installed.)
-def run_strings(path: str, min_length: int = 4) -> list[str]:
+def run_strings(path: str, min_length: int = 3) -> list[str]:
     result = subprocess.run(
         ["strings", f"-n{min_length}", path],
         capture_output=True,

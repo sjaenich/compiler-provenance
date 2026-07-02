@@ -138,15 +138,15 @@ class SourceFile:
         for string_tp in resolved_strings:
             self.index = self.index + 1
             string = string_tp.to_string()
-            if len(string) <= 3:
+            if len(string) <= 2:
                 continue
-            print("normal",string_tp.presence_conditions == InBinary(StringVal(string), self.index) )
+            # print("normal",string_tp.presence_conditions == InBinary(StringVal(string), self.index) )
             label = Bool(f"pc_{string}_{self.index}")
             # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(StringVal(string), self.index), label)
             if not str(string_tp.presence_conditions) == "And(True)":
-                print("added to solver")
+                # print("added to solver")
                 self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
-            # print("Added to solver", string_tp.presence_conditions == InBinary(StringVal(string), self.index))
+            print("Added to solver", string_tp.presence_conditions == InBinary(StringVal(string), self.index))
             
             
             # self.solver.check()
@@ -176,7 +176,7 @@ class SourceFile:
             self.index = self.index + 1
             if string_tp.contains_unresolved_macro():
                 arguments = string_tp.to_z3()
-                print("unresolved", InBinary(Concat(arguments), self.index))
+                # print("unresolved", InBinary(Concat(arguments), self.index))
                 label = Bool(f"pc{Concat(arguments)}_{self.index}")
                 # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(Concat(arguments), self.index), label)
                 # self.solver.add(string_tp.presence_conditions == InBinary(Concat(arguments), self.index))
@@ -188,7 +188,7 @@ class SourceFile:
                 label = Bool(f"pc_{string}_{self.index}")
                 # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(StringVal(string), self.index), label)
                 if not str(string_tp.presence_conditions) == "And(True)":
-                    print("added to solver", string_tp.presence_conditions == InBinary(StringVal(string), self.index))
+                    # print("added to solver", string_tp.presence_conditions == InBinary(StringVal(string), self.index))
                     self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
                 print("resolved", string_tp.presence_conditions ==  InBinary(StringVal(string), self.index))
                 if not str(string_tp.presence_conditions) == "And(False)":
