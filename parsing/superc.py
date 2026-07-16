@@ -153,7 +153,7 @@ class SuperC:
 
       srcfile = srcfile_path.stem
 
-
+      
       if macro is not None:
         pc_file_path = "/workspaces/RevEng/superc_output/output_" + name + "_" + macro + "_" + str(srcfile) + ".txt"
         if line_number is not None:
@@ -178,8 +178,10 @@ class SuperC:
         pc_file_path += ":" + macro 
       superc_flags = "-sourcelinePC"
       include_flags = "-I"
-      include = include_dir
+      include = str(include_dir)
       extra_include_flag = "-I"
+      if extra_include == "":
+        extra_include = str(include_dir)
 
       mock_header ="-include"
       mock_header_location = "/workspaces/RevEng/header/other_defines/other_defines_" + name + ".h"
@@ -187,8 +189,9 @@ class SuperC:
         pc_file_path = "/workspaces/RevEng/all_strings/all_strings_" + name + "_" + str(srcfile) + ".txt"
         pc_file_path_check = pc_file_path
       # superc_flags += " -I . " + srcfile_path
-      superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-restrictFreeToHeader", config_h, mock_header, mock_header_location, include_flags, include, extra_include_flag, extra_include,  "-I", "/workspaces/RevEng/buildroot-2025.02.4/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/13.3.0/include", "%s" % superc_flags, pc_file_path, srcfile_path]
+      superc_sourcelinepc_cmd = ["java", "superc.SuperC", "-restrictFreeToHeader", str(config_h), mock_header, mock_header_location, include_flags, include, extra_include_flag, str(extra_include),  "-I", "/workspaces/RevEng/buildroot-2025.02.4/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/13.3.0/include", "%s" % superc_flags, pc_file_path, str(srcfile_path)]
       # Run SuperC
+  
       print("Running SuperC with command:", superc_sourcelinepc_cmd)
       if not os.path.isfile(pc_file_path_check):
         try:

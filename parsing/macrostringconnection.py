@@ -123,7 +123,7 @@ class SourceFile:
         if entries == []:
             print("No Presence Conditions for",  self.source_file_path)
             return None
-        
+        print("Entries", entries)
         for string in strings:
             if string.content.endswith(".h"):
                 continue
@@ -133,6 +133,7 @@ class SourceFile:
                     break
                 entry = e
             string_tp = TreePath([string], entry.pc)
+            print("String and PC", string, entry.pc)
             resolved_strings.append(string_tp)
         
         for string_tp in resolved_strings:
@@ -143,7 +144,7 @@ class SourceFile:
             # print("normal",string_tp.presence_conditions == InBinary(StringVal(string), self.index) )
             label = Bool(f"pc_{string}_{self.index}")
             # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(StringVal(string), self.index), label)
-            if not str(string_tp.presence_conditions) == "And(True)":
+            if not str(string_tp.presence_conditions) == "True":
                 # print("added to solver")
                 self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
             print("Added to solver", string_tp.presence_conditions == InBinary(StringVal(string), self.index))
@@ -152,7 +153,7 @@ class SourceFile:
             # self.solver.check()
             
             self.str_to_pc[label] = string_tp.presence_conditions 
-            if not str(string_tp.presence_conditions) == "And(False)":
+            if not str(string_tp.presence_conditions) == "False":
                 self.index_set.append((string, self.index))
                 self.source_code_strings.append(string)
             # for d in self.solver.assertions():
