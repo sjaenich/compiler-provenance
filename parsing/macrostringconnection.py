@@ -123,7 +123,7 @@ class SourceFile:
         if entries == []:
             print("No Presence Conditions for",  self.source_file_path)
             return None
-        print("Entries", entries)
+        # print("Entries", entries)
         for string in strings:
             if string.content.endswith(".h"):
                 continue
