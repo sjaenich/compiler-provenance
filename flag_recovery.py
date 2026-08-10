@@ -239,11 +239,10 @@ class FlagRecovery:
         print("Base before reducing", base)
         # with open(f"/workspaces/RevEng/string_diffs/libcurl/positive_strings.txt", "r") as f:
         with open(f"/workspaces/RevEng/string_diffs/{self.name}/positive_strings.txt", "r") as f:
-            unique_strings = list(set(line.strip() for line in f if line.strip()))
+            unique_strings = list(set(line.rstrip("\r\n") for line in f if line.strip()))
             print("postive strings", unique_strings)
         base = list(set(base) - set(unique_strings))
         print("Base", base)
-
 
         for s in self.binary_strings:
             indices = index_by_string.get(s, [])        
@@ -280,7 +279,7 @@ class FlagRecovery:
     def add_negative_constraints(self, binary_strings, index_by_string, base):
         with open(f"/workspaces/RevEng/string_diffs/{self.name}/negative_strings.txt", "r") as f:
         # with open(f"/workspaces/RevEng/string_diffs/libcurl/negative_strings.txt", "r") as f:
-            unique_strings = list(set(line.strip() for line in f if line.strip()))
+            unique_strings = list(set(line.rstrip("\r\n") for line in f if line.strip()))
 
         InBinary = Function('InBinary', StringSort(), IntSort(), BoolSort())
 
