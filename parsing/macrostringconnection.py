@@ -1,3 +1,4 @@
+from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 from z3.z3 import *
@@ -62,6 +63,7 @@ class SourceFile:
         self.binary_strings = binary_strings.strings
         self.source_strings: StringParser
         self.str_to_pc: dict[str, BoolRef] = dict()
+        self.pc_condition_counts: dict[BoolRef, int] = defaultdict(int)
         self.macro_to_presence_condition: dict[str, BoolRef] = dict()
         self.macro_string_connection: dict[int, BoolRef] = dict()
         self.covered_lines: set[int] = set()
@@ -80,7 +82,7 @@ class SourceFile:
         self.source_strings = StringParser(self.source_file_path)
         self.source_strings.extract_string_literals()
         self.source_strings.clean_string_literals()
-        # self.source_strings.add_func_names()
+        self.source_strings.add_func_names()
         
 
         print("Getting the strings --> normal and resolved")
@@ -139,16 +141,22 @@ class SourceFile:
         for string_tp in resolved_strings:
             self.index = self.index + 1
             string = string_tp.to_string()
-            if len(string) <= 10:
+            if len(string) <= 3:
                 continue
             # print("normal",string_tp.presence_conditions == InBinary(StringVal(string), self.index) )
             label = Bool(f"pc_{string}_{self.index}")
+            pc = string_tp.presence_conditions
+            pc_key = pc.sexpr() 
             # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(StringVal(string), self.index), label)
             if not str(string_tp.presence_conditions) == "True":
                 # print("added to solver")
-                self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
-                print("Added to solver", string_tp.presence_conditions == InBinary(StringVal(string), self.index))
-            
+                if self.pc_condition_counts[pc_key] < 8:
+                    self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
+                    print("Added to solver", string_tp.presence_conditions == InBinary(StringVal(string), self.index))
+                    self.pc_condition_counts[pc_key] += 1
+                else:
+                    print("Not added to solver", string_tp.presence_conditions == InBinary(StringVal(string), self.index))
+   
             
             # self.solver.check()
             
@@ -187,12 +195,16 @@ class SourceFile:
             else:
                 string = string_tp.to_string()
                 label = Bool(f"pc_{string}_{self.index}")
+                pc = string_tp.presence_conditions
+                pc_key = pc.sexpr()
                 # self.solver.assert_and_track(string_tp.presence_conditions == InBinary(StringVal(string), self.index), label)
-                if not str(string_tp.presence_conditions) == "And(True)":
+                if not str(string_tp.presence_conditions) == "True":
                     # print("added to solver", string_tp.presence_conditions == InBinary(StringVal(string), self.index))
-                    self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
-                    print("resolved", string_tp.presence_conditions ==  InBinary(StringVal(string), self.index))
-                if not str(string_tp.presence_conditions) == "And(False)":
+                    if self.pc_condition_counts[pc_key] < 5:
+                        self.solver.add(string_tp.presence_conditions == InBinary(StringVal(string), self.index))
+                        print("resolved", string_tp.presence_conditions ==  InBinary(StringVal(string), self.index))
+                        self.pc_condition_counts[pc_key] += 1
+                if not str(string_tp.presence_conditions) == "False":
                     self.index_set.append((string, self.index))
                 self.source_code_strings.append(string)
                 self.str_to_pc[label] = string_tp.presence_conditions
